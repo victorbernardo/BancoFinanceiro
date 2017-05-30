@@ -14,7 +14,7 @@ namespace Biblioteca.basica
         private string cargo;
         private string senha;
         private Agencia numeroAgencia;
-        private Endereco enderecoId;
+        private Endereco endereco;
 
         public int Matricula
         {
@@ -60,8 +60,8 @@ namespace Biblioteca.basica
 
         public Endereco EnderecoId
         {
-            get { return enderecoId; }
-            set { enderecoId = value; }
+            get { return endereco; }
+            set { endereco = value; }
         }
     }
 }

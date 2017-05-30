@@ -8,16 +8,16 @@ namespace Biblioteca.basica
 {
     public class Movimentacao
     {
-        private int movimentacaoId;
+        private int idMovimentacao;
         private DateTime data;
         private string tipo;
         private decimal valor;
         private Conta numeroConta;
 
-        public int MovimentacaoId
+        public int IdMovimentacao
         {
-            get { return movimentacaoId; }
-            set { movimentacaoId = value; }
+            get { return idMovimentacao; }
+            set { idMovimentacao = value; }
         }
 
 

@@ -4,21 +4,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Biblioteca.basica
+namespace Model
 {
-    public class Parcela
+    class Parcela
     {
-        private int parcelaId;
+        private double valor;
+        private int idParcela;
+        private int numeroParcela;
         private DateTime dataVencimento;
-        private decimal valor;
-        private Emprestimo emprestimoId;
+        private string status;
 
-        public int ParcelaId
+        public double Valor
         {
-            get { return parcelaId; }
-            set { parcelaId = value; }
+            get { return valor; }
+            set { valor = value; }
         }
 
+        public int IdParcela
+        {
+            get { return idParcela; }
+            set { idParcela = value; }
+        }
+
+        public int NumeroParcela
+        {
+            get { return numeroParcela; }
+            set { numeroParcela = value; }
+        }
 
         public DateTime DataVencimento
         {
@@ -26,18 +38,10 @@ namespace Biblioteca.basica
             set { dataVencimento = value; }
         }
 
-
-        public decimal Valor
+        public String Status
         {
-            get { return valor; }
-            set { valor = value; }
-        }
-
-
-        public Emprestimo EmprestimoId
-        {
-            get { return emprestimoId; }
-            set { emprestimoId = value; }
+            get { return status; }
+            set { status = value; }
         }
     }
 }

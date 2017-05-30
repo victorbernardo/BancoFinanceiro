@@ -9,15 +9,11 @@ namespace Biblioteca.basica
     public class Agencia
     {
         private int numeroAgencia;
-        private String nome;
+        private string nome;
         private Endereco endereco;
 
 
-        public Agencia()
-        {
-            endereco = new Endereco();
-        }
-        public String Nome
+        public string Nome
         {
             get { return nome; }
             set { nome = value; }
@@ -36,8 +32,5 @@ namespace Biblioteca.basica
             get { return endereco; }
             set { endereco = value; }
         }
-
-        
-        
     }
 }

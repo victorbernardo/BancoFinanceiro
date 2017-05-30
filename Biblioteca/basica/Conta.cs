@@ -12,7 +12,7 @@ namespace Biblioteca.basica
         private decimal saldo;
         private DateTime dataCriacao;
         private Agencia numeroAgencia;
-        private Cliente idCliente;
+        private Cliente cliente;
 
 
 
@@ -37,7 +37,7 @@ namespace Biblioteca.basica
             set { dataCriacao = value; }
         }
 
-        public Agencia NumeroAgencia
+        public Agencia Numero_agencia
         {
             get { return numeroAgencia; }
             set { numeroAgencia = value; }
@@ -47,8 +47,8 @@ namespace Biblioteca.basica
 
         public Cliente Cliente
         {
-            get { return idCliente; }
-            set { idCliente = value; }
+            get { return cliente; }
+            set { cliente = value; }
         }
     }
 }

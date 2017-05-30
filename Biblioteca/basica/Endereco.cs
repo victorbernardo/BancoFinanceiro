@@ -8,52 +8,52 @@ namespace Biblioteca.basica
 {
     public class Endereco
     {
-        private int enderecoId;
-        private String rua;
-        private String cep;
-        private String complemento;
-        private String numero;
-        private String cidade;
-        private String bairro;
-        private String uf;
+        private int endereco;
+        private string rua;
+        private string cep;
+        private string complemento;
+        private string numero;
+        private string cidade;
+        private string bairro;
+        private string uf;
 
 
-        public int Endereco_id
+        public int endereco
         {
-            get { return enderecoId; }
-            set { enderecoId = value; }
+            get { return endereco; }
+            set { endereco = value; }
         }
 
 
-        public String Rua
+        public string Rua
         {
             get { return rua; }
             set { rua = value; }
         }
 
 
-        public String Cep
+        public string Cep
         {
             get { return cep; }
             set { cep = value; }
         }
 
 
-        public String Complemento
+        public string Complemento
         {
             get { return complemento; }
             set { complemento = value; }
         }
 
 
-        public String Numero
+        public string Numero
         {
             get { return numero; }
             set { numero = value; }
         }
 
 
-        public String Cidade
+        public string Cidade
         {
             get { return cidade; }
             set { cidade = value; }
@@ -67,7 +67,7 @@ namespace Biblioteca.basica
         }
 
 
-        public String Uf
+        public string Uf
         {
             get { return uf; }
             set { uf = value; }

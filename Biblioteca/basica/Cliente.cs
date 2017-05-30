@@ -3,19 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Runtime.Serialization;
 
 namespace Biblioteca.basica
 {
-
     public class Cliente
     {
-        private String nome;
-
-        private String telefone;
-        private String cpf;
+        private string nome;
+        private string telefone;
+        private string cpf;
         private int idCliente;
-        private String email;
+        private string email;
         private Endereco endereco;
 
 
@@ -40,7 +37,7 @@ namespace Biblioteca.basica
         }
 
 
-        public int IdCliente
+        public int cliente
         {
             get { return idCliente; }
             set { idCliente = value; }
