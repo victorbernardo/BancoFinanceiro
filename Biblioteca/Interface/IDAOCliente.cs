@@ -13,6 +13,7 @@ namespace Biblioteca.Interface
 
         void Excluir(Cliente cliente);
         void Alterar(Cliente cliente);
-        List<Cliente> Pesquisar(Cliente cliente); 
+        List<Cliente> Pesquisar(Cliente cliente);
+        List<Cliente> Consultar();
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace cliente
+﻿namespace clientes
 {
     partial class FormPesquisaCliente
     {
@@ -111,8 +111,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(27, 13);
             this.label4.TabIndex = 7;
-            this.label4.Text = "CPF";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+            this.label4.Text = "CPF";           
             // 
             // groupBox1
             // 

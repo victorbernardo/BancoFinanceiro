@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Biblioteca.Interface;
 using Biblioteca.basica;
 using Biblioteca.dados;
 using System.Data.SqlClient;
 using System.Data;
+
 namespace Biblioteca.dados
 {
     public class DAOParcela : Conexao, IDAOParcela
@@ -17,7 +17,7 @@ namespace Biblioteca.dados
         {
             try
             {
-                //abre uma conexao... Falta fazer a classe de concexao
+                //abre uma conexao
                 this.abrirConexao();
                 string sql = "insert into parcela(data_vencimento, valor, emprestimo_id)";
                 sql += "values(@data_vencimento, @valor, @emprestimo_id)";
@@ -31,14 +31,14 @@ namespace Biblioteca.dados
                 cmd.Parameters["@valor"].Value = parcela.Valor;
 
                 cmd.Parameters.Add("@emprestimo_id", SqlDbType.Int);
-                cmd.Parameters["@emprestimo_id"].Value = parcela.EmprestimoId.IdEmprestimo;
+                cmd.Parameters["@emprestimo_id"].Value = parcela.Emprestimo.IdEmprestimo;
 
 
                 //Executando a instrução
                 cmd.ExecuteNonQuery();
                 //liberando a memoria 
                 cmd.Dispose();
-                //fechando a conexao... Falta criar a classe de conexao
+                //fechando a conexao
                 this.fecharConexao();
             }
             catch (Exception ex)
@@ -52,18 +52,18 @@ namespace Biblioteca.dados
         {
             try
             {
-                //abrir a conexão... Falta fazer a classe de concexao
+                //abrir a conexão
                 this.abrirConexao();
-                string sql = "delete from parcela where parcela_id = @parcela_id";
+                string sql = "delete from parcela where parcela_id = @Parcela_id";
                 //instrucao a ser executada
                 SqlCommand cmd = new SqlCommand(sql, this.sqlConn);
-                cmd.Parameters.Add("@parcela_id", SqlDbType.Int);
-                cmd.Parameters["@parcela_id"].Value = parcela.ParcelaId;
+                cmd.Parameters.Add("@Parcela_id", SqlDbType.Int);
+                cmd.Parameters["@Parcela_id"].Value = parcela.IdParcela;
                 //executando a instrucao 
                 cmd.ExecuteNonQuery();
                 //liberando a memoria 
                 cmd.Dispose();
-                //fechando a conexao... Falta fazer a classe de concexao
+                //fechando a conexao
                 this.fecharConexao();
             }
             catch (Exception ex)
@@ -78,18 +78,18 @@ namespace Biblioteca.dados
             {
                 //abrir a conexão... Falta criar a classe de conexao
                 this.abrirConexao();
-                string sql = "update parcela set data_vencimento = @data_vencimento, valor = @valor where parcela_id = @parcela_id";
+                string sql = "update parcela set Data_vencimento = @Data_vencimento, Valor = @Valor where Parcela_id = @Parcela_id";
                 //instrucao a ser executada
                 SqlCommand cmd = new SqlCommand(sql, this.sqlConn);
 
-                cmd.Parameters.Add("@data_vencimento", SqlDbType.Date);
-                cmd.Parameters["@data_vencimento"].Value = parcela.DataVencimento;
+                cmd.Parameters.Add("@Data_vencimento", SqlDbType.Date);
+                cmd.Parameters["@Data_vencimento"].Value = parcela.DataVencimento;
 
-                cmd.Parameters.Add("@valor", SqlDbType.Decimal);
-                cmd.Parameters["@valor"].Value = parcela.Valor;
+                cmd.Parameters.Add("@Valor", SqlDbType.Decimal);
+                cmd.Parameters["@Valor"].Value = parcela.Valor;
 
-                cmd.Parameters.Add("@parcela_id", SqlDbType.Int);
-                cmd.Parameters["@parcela_id"].Value = parcela.ParcelaId;
+                cmd.Parameters.Add("@Parcela_id", SqlDbType.Int);
+                cmd.Parameters["@Parcela_id"].Value = parcela.IdParcela;
 
                 //executando a instrucao 
                 cmd.ExecuteNonQuery();
@@ -112,12 +112,12 @@ namespace Biblioteca.dados
                 //abrir a conexão... Falta criar a classe de conexao
                 this.abrirConexao();
                 //instrucao a ser executada... Falta configurar essa string sql
-                string sql = "SELECT data_vencimento, parcela_id, valor, emprestimo_id FROM parcela  where parcela_id = @parcela_id";
+                string sql = "SELECT Data_vencimento, Parcela_id, Valor, Emprestimo_id FROM Parcela  where Parcela_id = @parcela_id";
 
                 SqlCommand cmd = new SqlCommand(sql, sqlConn);
 
                 cmd.Parameters.Add("@parcela_id", SqlDbType.Int);
-                cmd.Parameters["@parcela_id"].Value = parcela.ParcelaId;
+                cmd.Parameters["@parcela_id"].Value = parcela.IdParcela;
 
                 //executando a instrucao e colocando o resultado em um leitor
                 SqlDataReader DbReader = cmd.ExecuteReader();
@@ -126,10 +126,10 @@ namespace Biblioteca.dados
                 {
                     Parcela p = new Parcela();
                     //acessando os valores das colunas do resultado
-                    p.DataVencimento = DbReader.GetDateTime(DbReader.GetOrdinal("data_vencimento"));
-                    p.ParcelaId = DbReader.GetInt32(DbReader.GetOrdinal("parcela_id"));
-                    p.Valor = DbReader.GetDecimal(DbReader.GetOrdinal("valor"));
-                    p.EmprestimoId.IdEmprestimo = DbReader.GetInt32(DbReader.GetOrdinal("emprestimo_id"));
+                    p.DataVencimento = DbReader.GetDateTime(DbReader.GetOrdinal("Data_vencimento"));
+                    p.IdParcela = DbReader.GetInt32(DbReader.GetOrdinal("Parcela_id"));
+                    p.Valor = DbReader.GetDecimal(DbReader.GetOrdinal("Valor"));
+                    p.Emprestimo.IdEmprestimo = DbReader.GetInt32(DbReader.GetOrdinal("Emprestimo_id"));
 
 
                     retorno.Add(p);

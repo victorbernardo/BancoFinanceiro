@@ -9,6 +9,7 @@ using Biblioteca.basica;
 using Biblioteca.dados;
 using System.Data.SqlClient;
 using System.Data;
+//importaçao de pacotes
 namespace Biblioteca.dados
 {
    public class DAOCliente : Conexao, IDAOCliente
@@ -17,32 +18,32 @@ namespace Biblioteca.dados
         {
             try
             {
-                //abre uma conexao... Falta fazer a classe de concexao
+                //abre uma conexao
                 this.abrirConexao();
-                string sql = "insert into cliente(nome, telefone, cpf, email, endereco_id)";
-                sql += "values(@nome, @telefone, @cpf, @email, @endereco_id)";
+                string sql = "insert into cliente(Nome, Telefone, Cpf, Email, Endereco_id)";
+                sql += "values(@Nome, @Telefone, @Cpf, @Email, @Endereco_id)";
 
                 SqlCommand cmd = new SqlCommand(sql, this.sqlConn);
 
-                cmd.Parameters.Add("@nome", SqlDbType.NVarChar);
-                cmd.Parameters["@nome"].Value = cliente.Nome;
+                cmd.Parameters.Add("@Nome", SqlDbType.NVarChar);
+                cmd.Parameters["@Nome"].Value = cliente.Nome;
 
-                cmd.Parameters.Add("@telefone", SqlDbType.NVarChar);
-                cmd.Parameters["@telefone"].Value = cliente.Telefone;
+                cmd.Parameters.Add("@Telefone", SqlDbType.NVarChar);
+                cmd.Parameters["@Telefone"].Value = cliente.Telefone;
 
-                cmd.Parameters.Add("@cpf", SqlDbType.NVarChar);
-                cmd.Parameters["@cpf"].Value = cliente.Cpf;
+                cmd.Parameters.Add("@Cpf", SqlDbType.NVarChar);
+                cmd.Parameters["@Cpf"].Value = cliente.Cpf;
 
-                cmd.Parameters.Add("@email", SqlDbType.NVarChar);
-                cmd.Parameters["@email"].Value = cliente.Email;
+                cmd.Parameters.Add("@Email", SqlDbType.NVarChar);
+                cmd.Parameters["@Email"].Value = cliente.Email;
 
-                cmd.Parameters.Add("@endereco_id", SqlDbType.Int);
-                cmd.Parameters["@endereco_id"].Value = cliente.Endereco.Endereco_id;
+                cmd.Parameters.Add("@Endereco_id", SqlDbType.Int);
+                cmd.Parameters["@Endereco_id"].Value = cliente.Endereco.IdEndereco;
                 //Executando a instrução
                 cmd.ExecuteNonQuery();
                 //liberando a memoria 
                 cmd.Dispose();
-                //fechando a conexao... Falta criar a classe de conexao
+                //fechando a conexao
                 this.fecharConexao();
             }
             catch (Exception ex)
@@ -82,27 +83,27 @@ namespace Biblioteca.dados
             {
                 //abrir a conexão
                 this.abrirConexao();
-                string sql = "update cliente set nome = @nome, telefone = @telefone, cpf = @cpf, email = @email, endereco_id = @endereco_id  where IdCliente = @IdCliente";
+                string sql = "update cliente set Nome = @nome, Telefone = @telefone, Cpf = @cpf, Email = @email, Endereco_id = @endereco_id  where Cliente_Id = @Cliente_Id";
                 //instrucao a ser executada
                 SqlCommand cmd = new SqlCommand(sql, this.sqlConn);
 
-                cmd.Parameters.Add("@nome", SqlDbType.NVarChar);
+                cmd.Parameters.Add("@Nome", SqlDbType.NVarChar);
                 cmd.Parameters["@nome"].Value = cliente.Nome;
 
-                cmd.Parameters.Add("@telefone", SqlDbType.NVarChar);
+                cmd.Parameters.Add("@Telefone", SqlDbType.NVarChar);
                 cmd.Parameters["@telefone"].Value = cliente.Telefone;
 
-                cmd.Parameters.Add("@cpf", SqlDbType.NVarChar);
+                cmd.Parameters.Add("@Cpf", SqlDbType.NVarChar);
                 cmd.Parameters["@cpf"].Value = cliente.Cpf;
 
-                cmd.Parameters.Add("@email", SqlDbType.NVarChar);
+                cmd.Parameters.Add("@Email", SqlDbType.NVarChar);
                 cmd.Parameters["@email"].Value = cliente.Email;
 
-                cmd.Parameters.Add("@IdCliente", SqlDbType.Int);
-                cmd.Parameters["@IdCliente"].Value = cliente.IdCliente;
+                cmd.Parameters.Add("@Cliente_Id", SqlDbType.Int);
+                cmd.Parameters["@Cliente_Id"].Value = cliente.IdCliente;
 
-                cmd.Parameters.Add("@endereco_id", SqlDbType.Int);
-                cmd.Parameters["@endereco_id"].Value = cliente.Endereco.Endereco_id;
+                cmd.Parameters.Add("@Endereco_id", SqlDbType.Int);
+                cmd.Parameters["@Endereco_id"].Value = cliente.Endereco.IdEndereco;
 
                 //executando a instrucao 
                 cmd.ExecuteNonQuery();
@@ -144,8 +145,7 @@ namespace Biblioteca.dados
                     c.Cpf = DbReader.GetDataTypeName(DbReader.GetOrdinal("cpf"));
                     c.IdCliente = DbReader.GetInt32(DbReader.GetOrdinal("IdCliente"));
                     c.Email = DbReader.GetDataTypeName(DbReader.GetOrdinal("email"));
-                    c.Endereco.Endereco_id = DbReader.GetInt32(DbReader.GetOrdinal("endereco_id"));
-
+                    c.Endereco.IdEndereco = DbReader.GetInt32(DbReader.GetOrdinal("endereco_id"));
                     retorno.Add(c);
                 }
                 //fechando o leitor de resultados
@@ -158,6 +158,51 @@ namespace Biblioteca.dados
             catch (Exception ex)
             {
                 throw new Exception("Erro ao conectar e pesquisar " + ex.Message);
+            }
+            return retorno;
+        }
+        public List<Cliente> Consultar()
+        {
+            List<Cliente> retorno = new List<Cliente>();
+            try
+            {
+                //abrir a conexão
+                this.abrirConexao();
+                //instrucao a ser executada
+                string sql = "SELECT Cliente.cliente_id, Cliente.nome, Cliente.telefone, cliente.cpf, Cliente.email, Endereco.endereco_id, Endereco.rua FROM Cliente inner join Endereco on Endereco.endereco_id = Cliente.endereco_id";
+                //sql += "FROM Cliente inner join Endereco on Endereco.endereco_id = Cliente.endereco_id";
+
+                SqlCommand cmd = new SqlCommand(sql, sqlConn);
+               
+                    //executando a instrucao e colocando o resultado em um leitor
+                    SqlDataReader DbReader = cmd.ExecuteReader();
+                    //lendo o resultado da consulta
+                    while (DbReader.Read())
+                    {
+                        Cliente c = new Cliente();
+                        Endereco e = new Endereco();
+                        //acessando os valores das colunas do resultado
+                        c.IdCliente = DbReader.GetInt32(DbReader.GetOrdinal("Cliente_id"));
+                        c.Nome = DbReader.GetString(DbReader.GetOrdinal("Nome"));
+                        c.Telefone = DbReader.GetString(DbReader.GetOrdinal("Telefone"));
+                        c.Cpf = DbReader.GetString(DbReader.GetOrdinal("Cpf"));
+                        c.Email = DbReader.GetString(DbReader.GetOrdinal("Email"));
+                        e.IdEndereco = DbReader.GetInt32(DbReader.GetOrdinal("Endereco_id"));
+                        e.Rua = DbReader.GetString(DbReader.GetOrdinal("Rua"));
+                        c.Endereco = e;                       
+                        
+                        retorno.Add(c);
+                    }
+                    //fechando o leitor de resultados
+                    DbReader.Close();
+                    //liberando a memoria 
+                    cmd.Dispose();
+                    //fechando a conexao
+                    this.fecharConexao();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao conectar e consultar " + ex.Message);
             }
             return retorno;
         }

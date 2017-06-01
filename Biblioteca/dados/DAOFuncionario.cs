@@ -17,37 +17,36 @@ namespace Biblioteca.dados
         {
             try
             {
-                //abre uma conexao... Falta fazer a classe de concexao
+                //abre uma conexao
                 this.abrirConexao();
-                string sql = "insert into funcionario(cpf, nome, cargo, senha, numero, endereco_id)";
+                string sql = "insert into funcionario(Cpf, Nome, Cargo, Senha, Numero_Agencia, Endereco_id)";
                 sql += "values(@cpf, @nome, @cargo, @senha, @numero, @endereco_id)";
 
                 SqlCommand cmd = new SqlCommand(sql, this.sqlConn);
 
-                cmd.Parameters.Add("@cpf", SqlDbType.NVarChar);
-                cmd.Parameters["@cpf"].Value = funcionario.Cpf;
+                cmd.Parameters.Add("@Cpf", SqlDbType.NVarChar);
+                cmd.Parameters["@Cpf"].Value = funcionario.Cpf;
 
-                cmd.Parameters.Add("@nome", SqlDbType.NVarChar);
-                cmd.Parameters["@nome"].Value = funcionario.Nome;
+                cmd.Parameters.Add("@Nome", SqlDbType.NVarChar);
+                cmd.Parameters["@Nome"].Value = funcionario.Nome;
 
-                cmd.Parameters.Add("@cargo", SqlDbType.NVarChar);
-                cmd.Parameters["@cargo"].Value = funcionario.Cargo;
+                cmd.Parameters.Add("@Cargo", SqlDbType.NVarChar);
+                cmd.Parameters["@Cargo"].Value = funcionario.Cargo;
 
-                cmd.Parameters.Add("@senha", SqlDbType.NVarChar);
-                cmd.Parameters["@senha"].Value = funcionario.Senha;
+                cmd.Parameters.Add("@Senha", SqlDbType.NVarChar);
+                cmd.Parameters["@Senha"].Value = funcionario.Senha;
 
-                cmd.Parameters.Add("@numero", SqlDbType.Int);
-                cmd.Parameters["@numero"].Value = funcionario.NumeroAgencia.NumeroAgencia;
+                cmd.Parameters.Add("@Numero_Agencia", SqlDbType.Int);
+                cmd.Parameters["@Numero_Agencia"].Value = funcionario.NumeroAgencia.NumeroAgencia;
 
-                cmd.Parameters.Add("@endereco_id", SqlDbType.Int);
-                cmd.Parameters["@endereco_id"].Value = funcionario.EnderecoId.Endereco_id;
-
+                cmd.Parameters.Add("@Endereco_id", SqlDbType.Int);
+                cmd.Parameters["@Endereco_id"].Value = funcionario.Endereco.IdEndereco;
 
                 //Executando a instrução
                 cmd.ExecuteNonQuery();
                 //liberando a memoria 
                 cmd.Dispose();
-                //fechando a conexao... Falta criar a classe de conexao
+                //fechando a conexao
                 this.fecharConexao();
             }
             catch (Exception ex)
@@ -143,7 +142,7 @@ namespace Biblioteca.dados
                     f.Cargo = DbReader.GetDataTypeName(DbReader.GetOrdinal("cargo"));
                     f.Senha = DbReader.GetDataTypeName(DbReader.GetOrdinal("senha"));
                     f.NumeroAgencia.NumeroAgencia = DbReader.GetInt32(DbReader.GetOrdinal("NumeroAgencia"));
-                    f.EnderecoId.Endereco_id = DbReader.GetInt32(DbReader.GetOrdinal("endereco_id"));
+                    f.Endereco.IdEndereco = DbReader.GetInt32(DbReader.GetOrdinal("endereco_id"));
 
                     retorno.Add(f);
                 }

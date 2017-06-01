@@ -1,4 +1,4 @@
-﻿namespace cliente
+﻿namespace clientes
 {
     partial class cadastroConta
     {
@@ -76,8 +76,7 @@
             this.groupBox1.Size = new System.Drawing.Size(710, 134);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Cliente";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            this.groupBox1.Text = "Cliente";          
             // 
             // label1
             // 
@@ -90,6 +89,7 @@
             // 
             // txtEndereco
             // 
+            this.txtEndereco.Enabled = false;
             this.txtEndereco.Location = new System.Drawing.Point(67, 102);
             this.txtEndereco.Name = "txtEndereco";
             this.txtEndereco.Size = new System.Drawing.Size(471, 20);
@@ -99,7 +99,7 @@
             // 
             this.btnBuscarCliente.Location = new System.Drawing.Point(591, 26);
             this.btnBuscarCliente.Name = "btnBuscarCliente";
-            this.btnBuscarCliente.Size = new System.Drawing.Size(98, 30);
+            this.btnBuscarCliente.Size = new System.Drawing.Size(98, 96);
             this.btnBuscarCliente.TabIndex = 7;
             this.btnBuscarCliente.Text = "Buscar Cliente";
             this.btnBuscarCliente.UseVisualStyleBackColor = true;
@@ -107,6 +107,7 @@
             // 
             // txtCpf
             // 
+            this.txtCpf.Enabled = false;
             this.txtCpf.Location = new System.Drawing.Point(438, 65);
             this.txtCpf.Mask = "999\\.999\\.999-99";
             this.txtCpf.Name = "txtCpf";
@@ -142,6 +143,7 @@
             // 
             // txtEmail
             // 
+            this.txtEmail.Enabled = false;
             this.txtEmail.Location = new System.Drawing.Point(67, 65);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(274, 20);
@@ -149,6 +151,7 @@
             // 
             // txtNomeCliente
             // 
+            this.txtNomeCliente.Enabled = false;
             this.txtNomeCliente.Location = new System.Drawing.Point(67, 26);
             this.txtNomeCliente.Name = "txtNomeCliente";
             this.txtNomeCliente.Size = new System.Drawing.Size(471, 20);
@@ -172,9 +175,9 @@
             // 
             // btnBuscarAgencia
             // 
-            this.btnBuscarAgencia.Location = new System.Drawing.Point(591, 32);
+            this.btnBuscarAgencia.Location = new System.Drawing.Point(591, 29);
             this.btnBuscarAgencia.Name = "btnBuscarAgencia";
-            this.btnBuscarAgencia.Size = new System.Drawing.Size(98, 30);
+            this.btnBuscarAgencia.Size = new System.Drawing.Size(98, 67);
             this.btnBuscarAgencia.TabIndex = 8;
             this.btnBuscarAgencia.Text = "Buscar Agencia";
             this.btnBuscarAgencia.UseVisualStyleBackColor = true;
@@ -191,6 +194,7 @@
             // 
             // txtEnderecoAgencia
             // 
+            this.txtEnderecoAgencia.Enabled = false;
             this.txtEnderecoAgencia.Location = new System.Drawing.Point(67, 76);
             this.txtEnderecoAgencia.Name = "txtEnderecoAgencia";
             this.txtEnderecoAgencia.Size = new System.Drawing.Size(471, 20);
@@ -216,6 +220,7 @@
             // 
             // txtNomeAgencia
             // 
+            this.txtNomeAgencia.Enabled = false;
             this.txtNomeAgencia.Location = new System.Drawing.Point(67, 29);
             this.txtNomeAgencia.Name = "txtNomeAgencia";
             this.txtNomeAgencia.Size = new System.Drawing.Size(278, 20);
@@ -223,6 +228,7 @@
             // 
             // txtNumeroAgencia
             // 
+            this.txtNumeroAgencia.Enabled = false;
             this.txtNumeroAgencia.Location = new System.Drawing.Point(414, 29);
             this.txtNumeroAgencia.Name = "txtNumeroAgencia";
             this.txtNumeroAgencia.Size = new System.Drawing.Size(124, 20);
@@ -286,16 +292,17 @@
             // 
             // btnIncluirConta
             // 
-            this.btnIncluirConta.Location = new System.Drawing.Point(605, 407);
+            this.btnIncluirConta.Location = new System.Drawing.Point(605, 377);
             this.btnIncluirConta.Name = "btnIncluirConta";
             this.btnIncluirConta.Size = new System.Drawing.Size(98, 30);
             this.btnIncluirConta.TabIndex = 8;
             this.btnIncluirConta.Text = "Incluir Conta";
             this.btnIncluirConta.UseVisualStyleBackColor = true;
+            this.btnIncluirConta.Click += new System.EventHandler(this.btnIncluirConta_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(454, 407);
+            this.button2.Location = new System.Drawing.Point(454, 377);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(98, 30);
             this.button2.TabIndex = 9;
@@ -304,7 +311,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(272, 407);
+            this.button3.Location = new System.Drawing.Point(309, 377);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(98, 30);
             this.button3.TabIndex = 10;
@@ -315,7 +322,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(737, 459);
+            this.ClientSize = new System.Drawing.Size(739, 423);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnIncluirConta);

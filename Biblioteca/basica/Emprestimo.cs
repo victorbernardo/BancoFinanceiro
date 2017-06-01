@@ -13,6 +13,13 @@ namespace Biblioteca.basica
         private DateTime dataCriacao;
         private decimal valor;
         private Conta numeroConta;
+        private int quantidadeParcela;
+
+        public int QuantidadeParcela
+        {
+            get { return quantidadeParcela; }
+            set { quantidadeParcela = value; }
+        }
 
         public int IdEmprestimo
         {

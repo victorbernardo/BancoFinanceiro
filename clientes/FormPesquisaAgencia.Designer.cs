@@ -1,4 +1,4 @@
-﻿namespace cliente
+﻿namespace clientes
 {
     partial class FormPesquisaAgencia
     {

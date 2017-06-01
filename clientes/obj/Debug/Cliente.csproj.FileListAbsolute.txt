@@ -1,12 +1,3 @@
-C:\Users\victo\Desktop\Victor\Informática\Curso Superior ADS\Periodo 2017.1\Sistema Distribuido\Projeto\Versao 2.0\clientes\bin\Debug\clientes.exe.config
-C:\Users\victo\Desktop\Victor\Informática\Curso Superior ADS\Periodo 2017.1\Sistema Distribuido\Projeto\Versao 2.0\clientes\obj\Debug\clientes.exe
-C:\Users\victo\Desktop\Victor\Informática\Curso Superior ADS\Periodo 2017.1\Sistema Distribuido\Projeto\Versao 2.0\clientes\obj\Debug\clientes.pdb
-C:\Users\victo\Desktop\Victor\Informática\Curso Superior ADS\Periodo 2017.1\Sistema Distribuido\Projeto\Versao 2.0\clientes\bin\Debug\clientes.exe
-C:\Users\victo\Desktop\Victor\Informática\Curso Superior ADS\Periodo 2017.1\Sistema Distribuido\Projeto\Versao 2.0\clientes\bin\Debug\clientes.pdb
-C:\Users\victo\Desktop\Victor\Informática\Curso Superior ADS\Periodo 2017.1\Sistema Distribuido\Projeto\Versao 2.0\clientes\obj\Debug\Cliente.csprojResolveAssemblyReference.cache
-C:\Users\victo\Desktop\Victor\Informática\Curso Superior ADS\Periodo 2017.1\Sistema Distribuido\Projeto\Versao 2.0\clientes\obj\Debug\clientes.Form1.resources
-C:\Users\victo\Desktop\Victor\Informática\Curso Superior ADS\Periodo 2017.1\Sistema Distribuido\Projeto\Versao 2.0\clientes\obj\Debug\clientes.Properties.Resources.resources
-C:\Users\victo\Desktop\Victor\Informática\Curso Superior ADS\Periodo 2017.1\Sistema Distribuido\Projeto\Versao 2.0\clientes\obj\Debug\Cliente.csproj.GenerateResource.Cache
 E:\Download\Versao 2.0\clientes\bin\Debug\clientes.exe.config
 E:\Download\Versao 2.0\clientes\bin\Debug\clientes.exe
 E:\Download\Versao 2.0\clientes\bin\Debug\clientes.pdb
@@ -23,3 +14,16 @@ E:\Download\Versao 2.0\clientes\bin\Debug\Biblioteca.exe
 E:\Download\Versao 2.0\clientes\bin\Debug\Biblioteca.pdb
 E:\Download\Versao 2.0\clientes\bin\Debug\Biblioteca.exe.config
 E:\Download\Versao 2.0\clientes\obj\Debug\clientes.FormPesquisaConta.resources
+C:\Users\victo\Desktop\Victor\Informática\Curso Superior ADS\Periodo 2017.1\Sistema Distribuido\Projeto\Versao 2.0\clientes\bin\Debug\clientes.exe.config
+C:\Users\victo\Desktop\Victor\Informática\Curso Superior ADS\Periodo 2017.1\Sistema Distribuido\Projeto\Versao 2.0\clientes\obj\Debug\cliente.cadastroConta.resources
+C:\Users\victo\Desktop\Victor\Informática\Curso Superior ADS\Periodo 2017.1\Sistema Distribuido\Projeto\Versao 2.0\clientes\obj\Debug\cliente.FormCadastroCliente.resources
+C:\Users\victo\Desktop\Victor\Informática\Curso Superior ADS\Periodo 2017.1\Sistema Distribuido\Projeto\Versao 2.0\clientes\obj\Debug\cliente.FormPesquisaAgencia.resources
+C:\Users\victo\Desktop\Victor\Informática\Curso Superior ADS\Periodo 2017.1\Sistema Distribuido\Projeto\Versao 2.0\clientes\obj\Debug\cliente.FormPesquisaCliente.resources
+C:\Users\victo\Desktop\Victor\Informática\Curso Superior ADS\Periodo 2017.1\Sistema Distribuido\Projeto\Versao 2.0\clientes\obj\Debug\cliente.FormPesquisaConta.resources
+C:\Users\victo\Desktop\Victor\Informática\Curso Superior ADS\Periodo 2017.1\Sistema Distribuido\Projeto\Versao 2.0\clientes\obj\Debug\cliente.Properties.Resources.resources
+C:\Users\victo\Desktop\Victor\Informática\Curso Superior ADS\Periodo 2017.1\Sistema Distribuido\Projeto\Versao 2.0\clientes\obj\Debug\Cliente.csproj.GenerateResource.Cache
+C:\Users\victo\Desktop\Victor\Informática\Curso Superior ADS\Periodo 2017.1\Sistema Distribuido\Projeto\Versao 2.0\clientes\bin\Debug\clientes.exe
+C:\Users\victo\Desktop\Victor\Informática\Curso Superior ADS\Periodo 2017.1\Sistema Distribuido\Projeto\Versao 2.0\clientes\bin\Debug\clientes.pdb
+C:\Users\victo\Desktop\Victor\Informática\Curso Superior ADS\Periodo 2017.1\Sistema Distribuido\Projeto\Versao 2.0\clientes\obj\Debug\Cliente.csprojResolveAssemblyReference.cache
+C:\Users\victo\Desktop\Victor\Informática\Curso Superior ADS\Periodo 2017.1\Sistema Distribuido\Projeto\Versao 2.0\clientes\obj\Debug\clientes.exe
+C:\Users\victo\Desktop\Victor\Informática\Curso Superior ADS\Periodo 2017.1\Sistema Distribuido\Projeto\Versao 2.0\clientes\obj\Debug\clientes.pdb

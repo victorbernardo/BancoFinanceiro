@@ -14,5 +14,6 @@ namespace Biblioteca.Interface
         void Excluir(Agencia agencia);
         void Alterar(Agencia agencia);
         List<Agencia> Pesquisar(Agencia agencia);
+        List<Agencia> Consultar();
     }
 }

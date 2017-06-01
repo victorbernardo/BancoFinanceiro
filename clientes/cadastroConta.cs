@@ -7,57 +7,114 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Biblioteca.basica;
-using clientes;
+//importaçaco de pacotes
+using clientes.localhost1;
 
-namespace cliente
+namespace clientes
 {
     public partial class cadastroConta : Form
     {
         private Cliente cliente;
         private Agencia agencia;
-      
+        private Conta conta;
+        //CONSTRUTOR PADRAO
         public cadastroConta()
         {
-            InitializeComponent();
-    
+            InitializeComponent();    
         }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
+        //
+        //FUNÇOES DOS BOTÕES
+        //         
         private void btnBuscarCliente_Click(object sender, EventArgs e)
         {
-            FormPesquisaCliente fPesquisaCliente = new FormPesquisaCliente();
-            fPesquisaCliente.ShowDialog();
+            try
+            {
+                FormPesquisaCliente fPesquisaCliente = new FormPesquisaCliente();
+                fPesquisaCliente.ShowDialog();
 
-            cliente = fPesquisaCliente.RetornaClienteSelecionado();
-
-            MessageBox.Show(cliente !=null ? cliente.Email:"Nulo");
-     
-           
-
+                cliente = fPesquisaCliente.RetornaClienteSelecionado();                
+                carregaCampoCliente(cliente);               
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Cliente nao selecionado " + ex.Message);
+            }            
         }
-
         private void btnBuscarAgencia_Click(object sender, EventArgs e)
         {
-            FormPesquisaAgencia fPesquisaAgencia = new FormPesquisaAgencia();
-            fPesquisaAgencia.ShowDialog();
+            try
+            {
+                FormPesquisaAgencia fPesquisaAgencia = new FormPesquisaAgencia();
+                fPesquisaAgencia.ShowDialog();
 
-
-            agencia = fPesquisaAgencia.RetornaAgenciaSelecionado();
-
-            MessageBox.Show(agencia != null ? agencia.Nome : "Nulo");
-
+                agencia = fPesquisaAgencia.RetornaAgenciaSelecionado();
+                carregaCampoAgencia(agencia);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Agencia nao selecionada " + ex.Message);
+            }
         }
-
         private void btnBuscarConta_Click(object sender, EventArgs e)
         {
-            FormPesquisaConta fPesquisaConta = new FormPesquisaConta();
-            fPesquisaConta.Show();
+            try
+            {
+                FormPesquisaConta fPesquisaConta = new FormPesquisaConta();
+                fPesquisaConta.Show();
 
+                conta = fPesquisaConta.RetornaContaSelecionado();
+                carregaCampoConta(conta);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Conta nao existe" + ex.Message);
+            }           
+        }
+        private void btnIncluirConta_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //conta precisa de numero da conta, saldo, data de criaçao, numero da agencia e id do cliente
+                conta = new Conta();
+                Agencia agen = new Agencia();
+                Cliente clie = new Cliente();
+                Service1 sv = new Service1();
+
+                conta.NumeroConta = txtNumeroConta.Text;
+                conta.Saldo = txtSaldo.Text;
+                conta.DataCriacao = DateTime.Now;
+                agen.NumeroAgencia = Convert.ToInt32(txtNumeroAgencia.Text);
+                clie.IdCliente = cliente.IdCliente;
+                conta = agen;
+                conta = clie;
+                sv.SalvarConta(conta);
+                MessageBox.Show("Cadastrado com sucesso");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }            
+        }
+        //
+        //FUNÇOES INTERNAS
+        //               
+        private void carregaCampoCliente(clientes.localhost1.Cliente cliente)
+        {
+            txtNomeCliente.Text = cliente.Nome;
+            txtEmail.Text = cliente.Email;
+            txtCpf.Text = cliente.Cpf;
+            txtEndereco.Text = cliente.Endereco.Rua;
+        }
+        private void carregaCampoAgencia(clientes.localhost1.Agencia agencia)
+        {
+            txtNomeAgencia.Text = agencia.Nome;
+            txtNumeroAgencia.Text = agencia.NumeroAgencia.ToString();
+            txtEnderecoAgencia.Text = agencia.Endereco.Rua;        
+        }
+        private void carregaCampoConta(Conta conta)
+        {
+            txtNumeroConta.Text = conta.NumeroConta;
+            txtSaldo.Text = conta.Saldo.toString();
         }
     }
 }

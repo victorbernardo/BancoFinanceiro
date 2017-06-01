@@ -8,7 +8,7 @@ namespace Biblioteca.basica
 {
     public class Endereco
     {
-        private int endereco;
+        private int idEndereco;     
         private string rua;
         private string cep;
         private string complemento;
@@ -17,14 +17,12 @@ namespace Biblioteca.basica
         private string bairro;
         private string uf;
 
-
-        public int endereco
+        public int IdEndereco
         {
-            get { return endereco; }
-            set { endereco = value; }
+            get { return idEndereco; }
+            set { idEndereco = value; }
         }
-
-
+      
         public string Rua
         {
             get { return rua; }
@@ -60,7 +58,7 @@ namespace Biblioteca.basica
         }
 
 
-        public String Bairro
+        public string Bairro
         {
             get { return bairro; }
             set { bairro = value; }

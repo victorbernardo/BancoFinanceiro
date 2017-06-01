@@ -1,0 +1,5 @@
+E:\Download\Versao 2.0\Biblioteca\obj\Debug\Biblioteca.exe
+E:\Download\Versao 2.0\Biblioteca\obj\Debug\Biblioteca.pdb
+E:\Download\Versao 2.0\Biblioteca\bin\Debug\Biblioteca.exe.config
+E:\Download\Versao 2.0\Biblioteca\bin\Debug\Biblioteca.exe
+E:\Download\Versao 2.0\Biblioteca\bin\Debug\Biblioteca.pdb

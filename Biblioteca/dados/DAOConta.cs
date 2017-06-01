@@ -31,7 +31,7 @@ namespace Biblioteca.dados
                 cmd.Parameters["@data_criacao"].Value = conta.DataCriacao;
 
                 cmd.Parameters.Add("@NumeroAgencia", SqlDbType.Int);
-                cmd.Parameters["@NumeroAgencia"].Value = conta.NumeroAgencia.NumeroAgencia;
+                cmd.Parameters["@NumeroAgencia"].Value = conta.Numero_agencia.NumeroAgencia;
 
                 cmd.Parameters.Add("@numero_conta", SqlDbType.Int);
                 cmd.Parameters["@numero_conta"].Value = conta.NumeroConta;
@@ -126,7 +126,7 @@ namespace Biblioteca.dados
                     Conta conta1 = new Conta();
                     //acessando os valores das colunas do resultado
                     conta1.NumeroConta = DbReader.GetInt32(DbReader.GetOrdinal("numero_conta"));
-                    conta1.NumeroAgencia.NumeroAgencia = DbReader.GetInt32(DbReader.GetOrdinal("NumeroAgencia"));
+                    conta1.Numero_agencia.NumeroAgencia = DbReader.GetInt32(DbReader.GetOrdinal("NumeroAgencia"));
                     conta1.Cliente.IdCliente = DbReader.GetInt32(DbReader.GetOrdinal("IdCliente"));
                     conta1.Saldo = DbReader.GetDecimal(DbReader.GetOrdinal("saldo"));
                     conta1.DataCriacao = DbReader.GetDateTime(DbReader.GetOrdinal("data_criacao"));
@@ -139,6 +139,48 @@ namespace Biblioteca.dados
                 cmd.Dispose();
                 //fechando a conexao... Falta criar a classe de conexao
                 this.fecharConexao();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao conectar e pesquisar " + ex.Message);
+            }
+            return retorno;
+        }
+
+        public List<Conta> ListarConta()
+        {
+            List<Conta> retorno = new List<Conta>();
+            try
+            {
+                //abrir a conexão
+                this.abrirConexao();
+                //instrucao a ser executada
+                string sql = "select Numero_conta, Saldo, Data_criacao from Conta";
+
+                SqlCommand cmd = new SqlCommand(sql, sqlConn);
+
+                //executando a instrucao e colocando o resultado em um leitor
+                SqlDataReader DbReader = cmd.ExecuteReader();
+               
+               
+                    //lendo o resultado da consulta
+                    while (DbReader.Read())
+                    {
+                        Conta conta1 = new Conta();
+                        //acessando os valores das colunas do resultado
+                        conta1.NumeroConta = DbReader.GetInt32(DbReader.GetOrdinal("numero_conta"));
+                        conta1.Saldo = DbReader.GetDecimal(DbReader.GetOrdinal("saldo"));
+                        conta1.DataCriacao = DbReader.GetDateTime(DbReader.GetOrdinal("data_criacao"));
+
+                        retorno.Add(conta1);
+                    }
+                    //fechando o leitor de resultados
+                    DbReader.Close();
+                    //liberando a memoria 
+                    cmd.Dispose();
+                    //fechando a conexao
+                    this.fecharConexao();
+                                
             }
             catch (Exception ex)
             {

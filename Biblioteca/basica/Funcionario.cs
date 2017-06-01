@@ -58,7 +58,7 @@ namespace Biblioteca.basica
         }
 
 
-        public Endereco EnderecoId
+        public Endereco Endereco
         {
             get { return endereco; }
             set { endereco = value; }

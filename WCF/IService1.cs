@@ -1,11 +1,12 @@
-﻿using Biblioteca.basica;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+//importaçao de pacotes
+using Biblioteca.basica;
 
 namespace WCF
 {
@@ -13,25 +14,28 @@ namespace WCF
     [ServiceContract]
     public interface IService1
     {
+        //
+        // cliente
+        //
         [OperationContract]
-        Cliente retornaCliente();
+        List<Cliente> PesquisaCliente();
+        //
+        // agencia
+        //
         [OperationContract]
-        List<Cliente> retornaClientes();
+        List<Agencia> PesquisaAgencia();
+        //
+        // conta
+        //
         [OperationContract]
-        void salvaCliente(Cliente cliente);
-
+        List<Conta> PesquisaConta();   
+   
         [OperationContract]
-        void salvaCliente(Conta conta);
-
-        [OperationContract]
-        Conta RetornaConta();
-
+        void SalvarConta(Conta conta);
     }
     // Use a data contract as illustrated in the sample below to add composite types to service operations.
     [DataContract]
     public class CompositeType
-    {
-      
-           
+    {              
     }
 }

@@ -37,7 +37,7 @@ namespace Biblioteca.basica
         }
 
 
-        public int cliente
+        public int IdCliente
         {
             get { return idCliente; }
             set { idCliente = value; }

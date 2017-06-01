@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Biblioteca.Interface;
-using Biblioteca.basica;
-using Biblioteca.dados;
 using System.Data.SqlClient;
 using System.Data;
+//importaçao de pacotes
+using Biblioteca.basica;
+using Biblioteca.dados;
+
 namespace Biblioteca.dados
 {
     public class DAOAgencia : Conexao, IDAOAgencia
@@ -19,8 +20,8 @@ namespace Biblioteca.dados
             {
                 //abre uma conexao... Falta fazer a classe de concexao
                 this.abrirConexao();
-                string sql = "insert into agencia(nome, NumeroAgencia, endereco_id)";
-                sql += "value(@nome, @NumeroAgencia, @endereco_id)";
+                string sql = "insert into agencia(Nome, NumeroAgencia, Endereco_id)";
+                sql += "values(@Nome, @NumeroAgencia, @Endereco_id)";
 
                 SqlCommand cmd = new SqlCommand(sql, this.sqlConn);
 
@@ -31,7 +32,7 @@ namespace Biblioteca.dados
                 cmd.Parameters["@NumeroAgencia"].Value = agencia.NumeroAgencia;
 
                 cmd.Parameters.Add("@endereco_id", SqlDbType.Int);
-                cmd.Parameters["@endereco_id"].Value = agencia.Endereco.Endereco_id;
+                cmd.Parameters["@endereco_id"].Value = agencia.Endereco.IdEndereco;
 
 
                 //Executando a instrução
@@ -125,7 +126,7 @@ namespace Biblioteca.dados
                     //acessando os valores das colunas do resultado
                     a.Nome = DbReader.GetDataTypeName(DbReader.GetOrdinal("nome"));
                     a.NumeroAgencia = DbReader.GetInt32(DbReader.GetOrdinal("NumeroAgencia"));
-                    a.Endereco.Endereco_id = DbReader.GetInt32(DbReader.GetOrdinal("endereco_id"));
+                    a.Endereco.IdEndereco = DbReader.GetInt32(DbReader.GetOrdinal("endereco_id"));
 
                     retorno.Add(a);
                 }
@@ -139,6 +140,47 @@ namespace Biblioteca.dados
             catch (Exception ex)
             {
                 throw new Exception("Erro ao conectar e pesquisar " + ex.Message);
+            }
+            return retorno;
+        }
+        public List<Agencia> Consultar()
+        {
+            List<Agencia> retorno = new List<Agencia>();
+            try
+            {
+                //abrir a conexão
+                this.abrirConexao();
+                //instrucao a ser executada
+                string sql = "select Agencia.Numero_agencia, Agencia.Nome, Endereco.Endereco_id, Endereco.Rua From Agencia inner join Endereco on Agencia.Endereco_id = Endereco.Endereco_id;";
+
+                SqlCommand cmd = new SqlCommand(sql, sqlConn);
+
+                //executando a instrucao e colocando o resultado em um leitor
+                SqlDataReader DbReader = cmd.ExecuteReader();
+                //lendo o resultado da consulta
+                while (DbReader.Read())
+                {
+                    Agencia a = new Agencia();
+                    Endereco e = new Endereco();
+                    //acessando os valores das colunas do resultado
+                    a.NumeroAgencia = DbReader.GetInt32(DbReader.GetOrdinal("Numero_agencia"));
+                    a.Nome = DbReader.GetString(DbReader.GetOrdinal("Nome"));
+                    e.IdEndereco = DbReader.GetInt32(DbReader.GetOrdinal("Endereco_id"));
+                    e.Rua = DbReader.GetString(DbReader.GetOrdinal("Rua"));
+                    a.Endereco = e;
+
+                    retorno.Add(a);
+                }
+                //fechando o leitor de resultados
+                DbReader.Close();
+                //liberando a memoria 
+                cmd.Dispose();
+                //fechando a conexao
+                this.fecharConexao();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao conectar e ConsultarAgencia " + ex.Message);
             }
             return retorno;
         }

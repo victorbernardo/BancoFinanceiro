@@ -1,5 +1,4 @@
-﻿using Biblioteca.basica;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,45 +7,47 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+//importaçao de pacotes
+using clientes.localhost1;
+//using Biblioteca.basica;
 
-namespace cliente
+namespace clientes
 {
     public partial class FormPesquisaAgencia : Form
     {
         private List<Agencia> agencias;
+        //
+        //CONSTRUTOR PADRAO
+        //
         public FormPesquisaAgencia()
         {
             InitializeComponent();
         }
-
+        //
+        //FUNÇOES DOS BOTÕES
+        //
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
-            agencias = new List<Agencia>();
-              
-            Agencia agencia1 = new Agencia() {Nome="Ipinga 01",NumeroAgencia=1111111,Endereco = new Endereco() { Cidade="cidade01",Cep="123456"
-            } };
-
-            Agencia agencia2 = new Agencia() { Nome = "Ipinga 02", NumeroAgencia = 22222, Endereco = new Endereco() { Cidade = "cidade02" } };
-
-            agencias.Add(agencia1);
-            agencias.Add(agencia2);
-
-            dgvAgencias.DataSource = agencias;
-
-
-            MessageBox.Show("");
-
+            carregaGridAgencia();
         }
-
         private void btnSelecionar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+        //
+        //FUNÇOES INTERNAS
+        //
+        private void carregaGridAgencia()
+        {
+            agencias = new List<Agencia>();
+            Service1 sv = new Service1();         
+            agencias = sv.PesquisaAgencia().ToList();
+            dgvAgencias.AutoGenerateColumns = false;
+            dgvAgencias.DataSource = agencias;
+        }
         public Agencia RetornaAgenciaSelecionado()
         {
-
             Agencia agencia = dgvAgencias.CurrentRow != null ? agencias.Find(c => c.NumeroAgencia.Equals(dgvAgencias.CurrentRow.Cells[1].Value)) : null;
-
             return agencia;
         }
     }

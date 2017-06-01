@@ -59,8 +59,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 13);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Número ";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.label1.Text = "Número ";          
             // 
             // txtNumeroConta
             // 
@@ -77,6 +76,7 @@
             this.btnSelecionar.TabIndex = 15;
             this.btnSelecionar.Text = "Selecionar";
             this.btnSelecionar.UseVisualStyleBackColor = true;
+            this.btnSelecionar.Click += new System.EventHandler(this.btnSelecionar_Click);
             // 
             // btnPesquisar
             // 

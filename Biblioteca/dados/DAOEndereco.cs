@@ -63,18 +63,18 @@ namespace Biblioteca.dados
         {
             try
             {
-                //abrir a conexão... Falta fazer a classe de concexao
+                //abrir a conexão
                 this.abrirConexao();
-                string sql = "delete from endereco where endereco_id = @endereco_id";
+                string sql = "delete from endereco where Endereco_id = @Endereco_id";
                 //instrucao a ser executada
                 SqlCommand cmd = new SqlCommand(sql, this.sqlConn);
-                cmd.Parameters.Add("@endereco_id", SqlDbType.Int);
-                cmd.Parameters["@endereco_id"].Value = endereco.Endereco_id;
+                cmd.Parameters.Add("@Endereco_id", SqlDbType.Int);
+                cmd.Parameters["@Endereco_id"].Value = endereco.IdEndereco;
                 //executando a instrucao 
                 cmd.ExecuteNonQuery();
                 //liberando a memoria 
                 cmd.Dispose();
-                //fechando a conexao... Falta fazer a classe de concexao
+                //fechando a conexao
                 this.fecharConexao();
             }
             catch (Exception ex)
@@ -89,7 +89,7 @@ namespace Biblioteca.dados
             {
                 //abrir a conexão... Falta criar a classe de conexao
                 this.abrirConexao();
-                string sql = "update endereco set rua = @rua, cep = @cep, complemento = @complemento, numero = @numero, cidade = @cidade, bairro = @bairro, uf = @uf where endereco_id = @endereco_id";
+                string sql = "update endereco set Rua = @rua, Cep = @cep, Complemento = @complemento, Numero = @numero, Cidade = @cidade, Bairro = @bairro, Uf = @uf where Endereco_id = @Endereco_id";
                 //instrucao a ser executada
                 SqlCommand cmd = new SqlCommand(sql, this.sqlConn);
 
@@ -115,7 +115,7 @@ namespace Biblioteca.dados
                 cmd.Parameters["@uf"].Value = endereco.Uf;
 
                 cmd.Parameters.Add("@endereco_id", SqlDbType.Int);
-                cmd.Parameters["@endereco_id"].Value = endereco.Endereco_id;
+                cmd.Parameters["@endereco_id"].Value = endereco.IdEndereco;
 
 
 
@@ -145,7 +145,7 @@ namespace Biblioteca.dados
                 SqlCommand cmd = new SqlCommand(sql, sqlConn);
 
                 cmd.Parameters.Add("@endereco_id", SqlDbType.Int);
-                cmd.Parameters["@endereco_id"].Value = endereco.Endereco_id;
+                cmd.Parameters["@endereco_id"].Value = endereco.IdEndereco;
 
                 //executando a instrucao e colocando o resultado em um leitor
                 SqlDataReader DbReader = cmd.ExecuteReader();
@@ -161,7 +161,7 @@ namespace Biblioteca.dados
                     e.Cidade = DbReader.GetDataTypeName(DbReader.GetOrdinal("cidade"));
                     e.Bairro = DbReader.GetDataTypeName(DbReader.GetOrdinal("bairro"));
                     e.Uf = DbReader.GetDataTypeName(DbReader.GetOrdinal("uf"));
-                    e.Endereco_id = DbReader.GetInt32(DbReader.GetOrdinal("endereco_id"));
+                    e.IdEndereco = DbReader.GetInt32(DbReader.GetOrdinal("endereco_id"));
 
                     retorno.Add(e);
                 }
