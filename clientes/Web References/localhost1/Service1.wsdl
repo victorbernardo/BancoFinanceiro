@@ -19,6 +19,18 @@
   <wsdl:message name="IService1_PesquisaAgencia_OutputMessage">
     <wsdl:part name="parameters" element="tns:PesquisaAgenciaResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_PesquisaConta_InputMessage">
+    <wsdl:part name="parameters" element="tns:PesquisaConta" />
+  </wsdl:message>
+  <wsdl:message name="IService1_PesquisaConta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PesquisaContaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SalvarConta_InputMessage">
+    <wsdl:part name="parameters" element="tns:SalvarConta" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SalvarConta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SalvarContaResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="PesquisaCliente">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/PesquisaCliente" message="tns:IService1_PesquisaCliente_InputMessage" />
@@ -27,6 +39,14 @@
     <wsdl:operation name="PesquisaAgencia">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/PesquisaAgencia" message="tns:IService1_PesquisaAgencia_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/PesquisaAgenciaResponse" message="tns:IService1_PesquisaAgencia_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PesquisaConta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/PesquisaConta" message="tns:IService1_PesquisaConta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/PesquisaContaResponse" message="tns:IService1_PesquisaConta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SalvarConta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SalvarConta" message="tns:IService1_SalvarConta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SalvarContaResponse" message="tns:IService1_SalvarConta_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -42,6 +62,24 @@
     </wsdl:operation>
     <wsdl:operation name="PesquisaAgencia">
       <soap:operation soapAction="http://tempuri.org/IService1/PesquisaAgencia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PesquisaConta">
+      <soap:operation soapAction="http://tempuri.org/IService1/PesquisaConta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SalvarConta">
+      <soap:operation soapAction="http://tempuri.org/IService1/SalvarConta" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

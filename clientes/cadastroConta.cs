@@ -74,19 +74,18 @@ namespace clientes
         {
             try
             {
-                //conta precisa de numero da conta, saldo, data de criaçao, numero da agencia e id do cliente
                 conta = new Conta();
                 Agencia agen = new Agencia();
                 Cliente clie = new Cliente();
                 Service1 sv = new Service1();
 
-                conta.NumeroConta = txtNumeroConta.Text;
-                conta.Saldo = txtSaldo.Text;
-                conta.DataCriacao = DateTime.Now;
+                conta.NumeroConta = Convert.ToInt32(txtNumeroConta.Text);
+                conta.Saldo = Convert.ToDecimal(txtSaldo.Text);
+                conta.DataCriacao = DateTime.Today;
                 agen.NumeroAgencia = Convert.ToInt32(txtNumeroAgencia.Text);
                 clie.IdCliente = cliente.IdCliente;
-                conta = agen;
-                conta = clie;
+                conta.Numero_agencia = agen;
+                conta.Cliente = clie;
                 sv.SalvarConta(conta);
                 MessageBox.Show("Cadastrado com sucesso");
             }
@@ -113,8 +112,8 @@ namespace clientes
         }
         private void carregaCampoConta(Conta conta)
         {
-            txtNumeroConta.Text = conta.NumeroConta;
-            txtSaldo.Text = conta.Saldo.toString();
+            txtNumeroConta.Text = conta.NumeroConta.ToString();
+            txtSaldo.Text = conta.Saldo.ToString();
         }
     }
 }

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 //importaçao de pacotes
-using clientes.localhost2;
+using clientes.localhost1;
 //using Biblioteca.basica;
 
 namespace clientes

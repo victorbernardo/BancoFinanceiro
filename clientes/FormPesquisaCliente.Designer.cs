@@ -45,7 +45,6 @@
             this.btnLimpar = new System.Windows.Forms.Button();
             this.btnPesquisar = new System.Windows.Forms.Button();
             this.btnSelecionar = new System.Windows.Forms.Button();
-            this.endereco = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.SuspendLayout();
@@ -112,7 +111,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(27, 13);
             this.label4.TabIndex = 7;
-            this.label4.Text = "CPF";
+            this.label4.Text = "CPF";           
             // 
             // groupBox1
             // 
@@ -140,8 +139,7 @@
             this.Nome,
             this.Telefone,
             this.Cpf,
-            this.Email,
-            this.endereco});
+            this.Email});
             this.dgvClientes.Location = new System.Drawing.Point(12, 143);
             this.dgvClientes.Name = "dgvClientes";
             this.dgvClientes.ReadOnly = true;
@@ -206,12 +204,6 @@
             this.btnSelecionar.UseVisualStyleBackColor = true;
             this.btnSelecionar.Click += new System.EventHandler(this.btnSelecionar_Click);
             // 
-            // endereco
-            // 
-            this.endereco.HeaderText = "Endereco";
-            this.endereco.Name = "endereco";
-            this.endereco.ReadOnly = true;
-            // 
             // FormPesquisaCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -250,6 +242,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefone;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cpf;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
-        private System.Windows.Forms.DataGridViewTextBoxColumn endereco;
     }
 }

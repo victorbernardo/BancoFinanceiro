@@ -33,6 +33,10 @@ namespace clientes.localhost1 {
         
         private System.Threading.SendOrPostCallback PesquisaAgenciaOperationCompleted;
         
+        private System.Threading.SendOrPostCallback PesquisaContaOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback SalvarContaOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -76,6 +80,12 @@ namespace clientes.localhost1 {
         
         /// <remarks/>
         public event PesquisaAgenciaCompletedEventHandler PesquisaAgenciaCompleted;
+        
+        /// <remarks/>
+        public event PesquisaContaCompletedEventHandler PesquisaContaCompleted;
+        
+        /// <remarks/>
+        public event SalvarContaCompletedEventHandler SalvarContaCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/PesquisaCliente", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -132,6 +142,63 @@ namespace clientes.localhost1 {
             if ((this.PesquisaAgenciaCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.PesquisaAgenciaCompleted(this, new PesquisaAgenciaCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/PesquisaConta", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+        [return: System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/Biblioteca.basica")]
+        public Conta[] PesquisaConta() {
+            object[] results = this.Invoke("PesquisaConta", new object[0]);
+            return ((Conta[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void PesquisaContaAsync() {
+            this.PesquisaContaAsync(null);
+        }
+        
+        /// <remarks/>
+        public void PesquisaContaAsync(object userState) {
+            if ((this.PesquisaContaOperationCompleted == null)) {
+                this.PesquisaContaOperationCompleted = new System.Threading.SendOrPostCallback(this.OnPesquisaContaOperationCompleted);
+            }
+            this.InvokeAsync("PesquisaConta", new object[0], this.PesquisaContaOperationCompleted, userState);
+        }
+        
+        private void OnPesquisaContaOperationCompleted(object arg) {
+            if ((this.PesquisaContaCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.PesquisaContaCompleted(this, new PesquisaContaCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/SalvarConta", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void SalvarConta([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] Conta conta) {
+            this.Invoke("SalvarConta", new object[] {
+                        conta});
+        }
+        
+        /// <remarks/>
+        public void SalvarContaAsync(Conta conta) {
+            this.SalvarContaAsync(conta, null);
+        }
+        
+        /// <remarks/>
+        public void SalvarContaAsync(Conta conta, object userState) {
+            if ((this.SalvarContaOperationCompleted == null)) {
+                this.SalvarContaOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSalvarContaOperationCompleted);
+            }
+            this.InvokeAsync("SalvarConta", new object[] {
+                        conta}, this.SalvarContaOperationCompleted, userState);
+        }
+        
+        private void OnSalvarContaOperationCompleted(object arg) {
+            if ((this.SalvarContaCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.SalvarContaCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -384,6 +451,116 @@ namespace clientes.localhost1 {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/Biblioteca.basica")]
+    public partial class Conta {
+        
+        private Cliente clienteField;
+        
+        private System.DateTime dataCriacaoField;
+        
+        private bool dataCriacaoFieldSpecified;
+        
+        private int numeroContaField;
+        
+        private bool numeroContaFieldSpecified;
+        
+        private Agencia numero_agenciaField;
+        
+        private decimal saldoField;
+        
+        private bool saldoFieldSpecified;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public Cliente Cliente {
+            get {
+                return this.clienteField;
+            }
+            set {
+                this.clienteField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime DataCriacao {
+            get {
+                return this.dataCriacaoField;
+            }
+            set {
+                this.dataCriacaoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool DataCriacaoSpecified {
+            get {
+                return this.dataCriacaoFieldSpecified;
+            }
+            set {
+                this.dataCriacaoFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int NumeroConta {
+            get {
+                return this.numeroContaField;
+            }
+            set {
+                this.numeroContaField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool NumeroContaSpecified {
+            get {
+                return this.numeroContaFieldSpecified;
+            }
+            set {
+                this.numeroContaFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public Agencia Numero_agencia {
+            get {
+                return this.numero_agenciaField;
+            }
+            set {
+                this.numero_agenciaField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public decimal Saldo {
+            get {
+                return this.saldoField;
+            }
+            set {
+                this.saldoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool SaldoSpecified {
+            get {
+                return this.saldoFieldSpecified;
+            }
+            set {
+                this.saldoFieldSpecified = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/Biblioteca.basica")]
     public partial class Agencia {
         
         private Endereco enderecoField;
@@ -489,6 +666,36 @@ namespace clientes.localhost1 {
             }
         }
     }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    public delegate void PesquisaContaCompletedEventHandler(object sender, PesquisaContaCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class PesquisaContaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal PesquisaContaCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Conta[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Conta[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    public delegate void SalvarContaCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
 }
 
 #pragma warning restore 1591

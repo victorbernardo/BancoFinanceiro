@@ -16,7 +16,7 @@ namespace clientes
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormcadastroConta());
+            Application.Run(new cadastroConta());
         }
     }
 }

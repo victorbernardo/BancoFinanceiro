@@ -44,4 +44,20 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Agencia" nillable="true" type="tns:Agencia" />
+  <xs:complexType name="ArrayOfConta">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Conta" nillable="true" type="tns:Conta" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfConta" nillable="true" type="tns:ArrayOfConta" />
+  <xs:complexType name="Conta">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Cliente" nillable="true" type="tns:Cliente" />
+      <xs:element minOccurs="0" name="DataCriacao" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="NumeroConta" type="xs:int" />
+      <xs:element minOccurs="0" name="Numero_agencia" nillable="true" type="tns:Agencia" />
+      <xs:element minOccurs="0" name="Saldo" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Conta" nillable="true" type="tns:Conta" />
 </xs:schema>
