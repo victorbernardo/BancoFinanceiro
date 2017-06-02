@@ -27,3 +27,19 @@ C:\Users\victo\Desktop\Victor\Informática\Curso Superior ADS\Periodo 2017.1\Sis
 C:\Users\victo\Desktop\Victor\Informática\Curso Superior ADS\Periodo 2017.1\Sistema Distribuido\Projeto\Versao 2.0\clientes\obj\Debug\Cliente.csprojResolveAssemblyReference.cache
 C:\Users\victo\Desktop\Victor\Informática\Curso Superior ADS\Periodo 2017.1\Sistema Distribuido\Projeto\Versao 2.0\clientes\obj\Debug\clientes.exe
 C:\Users\victo\Desktop\Victor\Informática\Curso Superior ADS\Periodo 2017.1\Sistema Distribuido\Projeto\Versao 2.0\clientes\obj\Debug\clientes.pdb
+E:\Repositórios\Projeto Melo\trunk\clientes\obj\Debug\Cliente.csprojResolveAssemblyReference.cache
+E:\Repositórios\Projeto Melo\trunk\clientes\obj\Debug\clientes.FormcadastroConta.resources
+E:\Repositórios\Projeto Melo\trunk\clientes\obj\Debug\clientes.FormCadastroCliente.resources
+E:\Repositórios\Projeto Melo\trunk\clientes\obj\Debug\clientes.FormPesquisaAgencia.resources
+E:\Repositórios\Projeto Melo\trunk\clientes\obj\Debug\clientes.FormPesquisaCliente.resources
+E:\Repositórios\Projeto Melo\trunk\clientes\obj\Debug\clientes.FormPesquisaConta.resources
+E:\Repositórios\Projeto Melo\trunk\clientes\obj\Debug\clientes.Properties.Resources.resources
+E:\Repositórios\Projeto Melo\trunk\clientes\obj\Debug\Cliente.csproj.GenerateResource.Cache
+E:\Repositórios\Projeto Melo\trunk\clientes\obj\Debug\clientes.exe
+E:\Repositórios\Projeto Melo\trunk\clientes\obj\Debug\clientes.pdb
+E:\Repositórios\Projeto Melo\trunk\clientes\bin\Debug\clientes.exe.config
+E:\Repositórios\Projeto Melo\trunk\clientes\bin\Debug\clientes.exe
+E:\Repositórios\Projeto Melo\trunk\clientes\bin\Debug\clientes.pdb
+E:\Repositórios\Projeto Melo\trunk\clientes\bin\Debug\Biblioteca.exe
+E:\Repositórios\Projeto Melo\trunk\clientes\bin\Debug\Biblioteca.pdb
+E:\Repositórios\Projeto Melo\trunk\clientes\bin\Debug\Biblioteca.exe.config

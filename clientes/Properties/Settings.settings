@@ -5,5 +5,8 @@
     <Setting Name="clientes_localhost1_Service1" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://localhost:61577/Service1.svc</Value>
     </Setting>
+    <Setting Name="clientes_localhost2_Service1" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:61577/Service1.svc</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

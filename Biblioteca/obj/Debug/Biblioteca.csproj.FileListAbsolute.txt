@@ -3,3 +3,9 @@ E:\Download\Versao 2.0\Biblioteca\obj\Debug\Biblioteca.pdb
 E:\Download\Versao 2.0\Biblioteca\bin\Debug\Biblioteca.exe.config
 E:\Download\Versao 2.0\Biblioteca\bin\Debug\Biblioteca.exe
 E:\Download\Versao 2.0\Biblioteca\bin\Debug\Biblioteca.pdb
+E:\Repositórios\Projeto Melo\trunk\Biblioteca\bin\Debug\Biblioteca.exe.config
+E:\Repositórios\Projeto Melo\trunk\Biblioteca\bin\Debug\Biblioteca.exe
+E:\Repositórios\Projeto Melo\trunk\Biblioteca\bin\Debug\Biblioteca.pdb
+E:\Repositórios\Projeto Melo\trunk\Biblioteca\obj\Debug\Biblioteca.csprojResolveAssemblyReference.cache
+E:\Repositórios\Projeto Melo\trunk\Biblioteca\obj\Debug\Biblioteca.exe
+E:\Repositórios\Projeto Melo\trunk\Biblioteca\obj\Debug\Biblioteca.pdb

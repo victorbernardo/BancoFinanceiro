@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 //importaçao de pacotes
-using clientes.localhost1;
+using clientes.localhost2;
 
 namespace clientes
 {
@@ -47,7 +47,14 @@ namespace clientes
            
             clientes = sv.PesquisaCliente().ToList();           
             dgvClientes.AutoGenerateColumns = false;
-            dgvClientes.DataSource = clientes;
+            //dgvClientes.DataSource = clientes;
+
+            //dgvClientes.Rows.Add();
+
+            clientes.ForEach(c => dgvClientes.Rows.Add(c.Nome,c.Telefone,c.Cpf, c.Email,c.Endereco.Cidade + ", "+c.Endereco.Cep));
+
+
+
         }
         public Cliente RetornaClienteSelecionado()
         {

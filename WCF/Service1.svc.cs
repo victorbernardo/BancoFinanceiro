@@ -40,12 +40,6 @@ namespace WCF
         }
 
 
-        public void salvaCliente(Cliente cliente)
-        {
-          
-            
-        }
-
         public void salvaCliente(Conta conta)
         {
             throw new NotImplementedException();
@@ -54,6 +48,34 @@ namespace WCF
         public Conta RetornaConta()
         {
             return new Conta();
+        }
+
+        public List<Cliente> PesquisaCliente()
+        {
+            List<Cliente> clientes = new List<Cliente>();
+
+            Cliente cliente1 = new Cliente() { Email = "teste01@01", Nome ="Teste01",IdCliente = 1234, Cpf = "2222222",Endereco = new Endereco {Cidade="teste01",Bairro="Teste01", Cep="11111111"} };
+            Cliente cliente2 = new Cliente() { Email ="teste02@02",Nome="Teste02",IdCliente = 2222, Cpf = "33333333", Endereco = new Endereco { Cidade = "teste02", Bairro = "Teste02", Cep = "11111111" } };
+
+            clientes.Add(cliente1);
+            clientes.Add(cliente2);
+
+            return clientes;
+        }
+
+        public List<Agencia> PesquisaAgencia()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Conta> PesquisaConta()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SalvarConta(Conta conta)
+        {
+            throw new NotImplementedException();
         }
     }
 }
