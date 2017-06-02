@@ -17,33 +17,33 @@ namespace Biblioteca.dados
         {
             try
             {
-                //abre uma conexao... Falta fazer a classe de concexao
+                //abre uma conexao
                 this.abrirConexao();
-                string sql = "insert into conta(saldo, data_criacao, numero_conta, NumeroAgencia, IdCliente)";
-                sql += "values(@saldo, @data_criacao, @numero_conta, @NumeroAgencia, @IdCliente)";
+                string sql = "insert into conta(Numero_conta, Saldo, Data_criacao, Numero_agencia, cliente_id)";
+                sql += "values(@Numero_conta, @Saldo, @Data_criacao, @Numero_agencia, @cliente_id)";
 
                 SqlCommand cmd = new SqlCommand(sql, this.sqlConn);
 
-                cmd.Parameters.Add("@saldo", SqlDbType.Decimal);
-                cmd.Parameters["@saldo"].Value = conta.Saldo;
+                cmd.Parameters.Add("@Saldo", SqlDbType.Decimal);
+                cmd.Parameters["@Saldo"].Value = conta.Saldo;
 
-                cmd.Parameters.Add("@data_criacao", SqlDbType.DateTime);
-                cmd.Parameters["@data_criacao"].Value = conta.DataCriacao;
+                cmd.Parameters.Add("@Data_criacao", SqlDbType.DateTime);
+                cmd.Parameters["@Data_criacao"].Value = conta.DataCriacao;
 
-                cmd.Parameters.Add("@NumeroAgencia", SqlDbType.Int);
-                cmd.Parameters["@NumeroAgencia"].Value = conta.Numero_agencia.NumeroAgencia;
+                cmd.Parameters.Add("@Numero_agencia", SqlDbType.Int);
+                cmd.Parameters["@Numero_agencia"].Value = conta.Numero_agencia.NumeroAgencia;
 
-                cmd.Parameters.Add("@numero_conta", SqlDbType.Int);
-                cmd.Parameters["@numero_conta"].Value = conta.NumeroConta;
+                cmd.Parameters.Add("@Numero_conta", SqlDbType.Int);
+                cmd.Parameters["@Numero_conta"].Value = conta.NumeroConta;
 
-                cmd.Parameters.Add("@IdCliente", SqlDbType.Int);
-                cmd.Parameters["@IdCliente"].Value = conta.Cliente.IdCliente;
+                cmd.Parameters.Add("@Cliente_id", SqlDbType.Int);
+                cmd.Parameters["@Cliente_id"].Value = conta.Cliente.IdCliente;
 
                 //Executando a instrução
                 cmd.ExecuteNonQuery();
                 //liberando a memoria 
                 cmd.Dispose();
-                //fechando a conexao... Falta criar a classe de conexao
+                //fechando a conexao
                 this.fecharConexao();
             }
             catch (Exception ex)
