@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 //importaçao de pacotes
-using clientes.localhost1;
+using clientes.ServiceReference1;
 //using Biblioteca.basica;
 
 namespace clientes
@@ -40,7 +40,7 @@ namespace clientes
         private void carregaGridAgencia()
         {
             agencias = new List<Agencia>();
-            Service1 sv = new Service1();         
+            Service1Client sv = new Service1Client();         
             agencias = sv.PesquisaAgencia().ToList();
             dgvAgencias.AutoGenerateColumns = false;
             dgvAgencias.DataSource = agencias;

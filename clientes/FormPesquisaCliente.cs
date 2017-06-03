@@ -43,7 +43,7 @@ namespace clientes
         private void carrehaGridClientes()
         {
             clientes = new List<Cliente>();
-            Service1 sv = new Service1();
+            Service1Client sv = new Service1Client();
            
             clientes = sv.PesquisaCliente().ToList();           
             dgvClientes.AutoGenerateColumns = false;

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 //importaçao de pacotes;
-using clientes.localhost1;
+using clientes.ServiceReference1;
 
 namespace clientes
 {
@@ -39,7 +39,7 @@ namespace clientes
         private void carregaGridConta()
         {
             contas = new List<Conta>();
-            Service1 sv = new Service1();
+            Service1Client sv = new Service1Client();
 
             contas = sv.PesquisaConta().ToList();
             dgvContas.AutoGenerateColumns = false;
