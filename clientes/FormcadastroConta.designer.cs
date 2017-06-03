@@ -1,6 +1,6 @@
 ﻿namespace clientes
 {
-    partial class cadastroConta
+    partial class FormcadastroConta
     {
         /// <summary>
         /// Required designer variable.

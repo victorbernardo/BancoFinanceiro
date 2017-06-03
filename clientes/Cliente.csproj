@@ -48,11 +48,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="cadastroConta.cs">
+    <Compile Include="FormcadastroConta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="cadastroConta.designer.cs">
-      <DependentUpon>cadastroConta.cs</DependentUpon>
+    <Compile Include="FormcadastroConta.designer.cs">
+      <DependentUpon>FormcadastroConta.cs</DependentUpon>
     </Compile>
     <Compile Include="FormCadastroCliente.cs">
       <SubType>Form</SubType>
@@ -85,8 +85,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="cadastroConta.resx">
-      <DependentUpon>cadastroConta.cs</DependentUpon>
+    <EmbeddedResource Include="FormcadastroConta.resx">
+      <DependentUpon>FormcadastroConta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormCadastroCliente.resx">
       <DependentUpon>FormCadastroCliente.cs</DependentUpon>

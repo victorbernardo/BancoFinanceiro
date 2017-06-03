@@ -12,13 +12,13 @@ using clientes.ServiceReference1;
 
 namespace clientes
 {
-    public partial class cadastroConta : Form
+    public partial class FormcadastroConta : Form
     {
         private Cliente cliente;
         private Agencia agencia;
         private Conta conta;
         //CONSTRUTOR PADRAO
-        public cadastroConta()
+        public FormcadastroConta()
         {
             InitializeComponent();
             cliente = new Cliente();
