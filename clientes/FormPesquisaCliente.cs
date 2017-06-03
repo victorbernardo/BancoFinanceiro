@@ -47,7 +47,9 @@ namespace clientes
            
             clientes = sv.PesquisaCliente().ToList();           
             dgvClientes.AutoGenerateColumns = false;
-            dgvClientes.DataSource = clientes;
+            //dgvClientes.DataSource = clientes;
+       
+            clientes.ForEach(c=> dgvClientes.Rows.Add(c.Nome,c.Cpf,c.Telefone,c.Email, c.Endereco.Rua+", "+c.Endereco.Bairro+", "+c.Endereco.Cidade));
         }
         public Cliente RetornaClienteSelecionado()
         {
