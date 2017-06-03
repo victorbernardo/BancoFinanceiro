@@ -47,13 +47,15 @@ namespace clientes
            
             clientes = sv.PesquisaCliente().ToList();           
             dgvClientes.AutoGenerateColumns = false;
+            dgvClientes.AutoSize = true;
             //dgvClientes.DataSource = clientes;
-       
+            dgvClientes.Rows.Clear();
             clientes.ForEach(c=> dgvClientes.Rows.Add(c.Nome,c.Cpf,c.Telefone,c.Email, c.Endereco.Rua+", "+c.Endereco.Bairro+", "+c.Endereco.Cidade));
+            
         }
         public Cliente RetornaClienteSelecionado()
         {
-            Cliente cliente = dgvClientes.CurrentRow != null ? clientes.Find(c => c.Cpf.Equals(dgvClientes.CurrentRow.Cells[2].Value)) : null;
+            Cliente cliente = dgvClientes.CurrentRow != null ? clientes.Find(c => c.Cpf.Equals(dgvClientes.CurrentRow.Cells[1].Value)) : null;
             return cliente;
         }        
     }

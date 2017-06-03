@@ -102,9 +102,9 @@ namespace Biblioteca.dados
             }
         }
 
-        public List<Agencia> Pesquisar(Agencia agencia)
+        public Agencia PesquisarPorId(int numeroAgencia)
         {
-            List<Agencia> retorno = new List<Agencia>();
+            Agencia agencia = new Agencia();
             try
             {
                 //abrir a conexão... Falta criar a classe de conexao
@@ -115,21 +115,18 @@ namespace Biblioteca.dados
                 SqlCommand cmd = new SqlCommand(sql, sqlConn);
 
                 cmd.Parameters.Add("@NumeroAgencia", SqlDbType.Int);
-                cmd.Parameters["@NumeroAgencia"].Value = agencia.NumeroAgencia;
+                cmd.Parameters["@NumeroAgencia"].Value = numeroAgencia;
 
                 //executando a instrucao e colocando o resultado em um leitor
                 SqlDataReader DbReader = cmd.ExecuteReader();
                 //lendo o resultado da consulta
-                while (DbReader.Read())
-                {
-                    Agencia a = new Agencia();
-                    //acessando os valores das colunas do resultado
-                    a.Nome = DbReader.GetDataTypeName(DbReader.GetOrdinal("nome"));
-                    a.NumeroAgencia = DbReader.GetInt32(DbReader.GetOrdinal("NumeroAgencia"));
-                    a.Endereco.IdEndereco = DbReader.GetInt32(DbReader.GetOrdinal("endereco_id"));
-
-                    retorno.Add(a);
-                }
+                               
+                //acessando os valores das colunas do resultado
+                agencia.Nome = DbReader.GetDataTypeName(DbReader.GetOrdinal("nome"));
+                agencia.NumeroAgencia = DbReader.GetInt32(DbReader.GetOrdinal("NumeroAgencia"));
+                agencia.Endereco.IdEndereco = DbReader.GetInt32(DbReader.GetOrdinal("endereco_id"));
+                    
+               
                 //fechando o leitor de resultados
                 DbReader.Close();
                 //liberando a memoria 
@@ -141,7 +138,7 @@ namespace Biblioteca.dados
             {
                 throw new Exception("Erro ao conectar e pesquisar " + ex.Message);
             }
-            return retorno;
+            return agencia;
         }
         public List<Agencia> Consultar()
         {

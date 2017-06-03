@@ -36,11 +36,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvAgencias = new System.Windows.Forms.DataGridView();
+            this.nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSelecionar = new System.Windows.Forms.Button();
             this.btnPesquisar = new System.Windows.Forms.Button();
             this.btnLimpar = new System.Windows.Forms.Button();
-            this.nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.endereco = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAgencias)).BeginInit();
             this.SuspendLayout();
@@ -115,12 +116,27 @@
             this.dgvAgencias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAgencias.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nome,
-            this.Numero});
+            this.Numero,
+            this.endereco});
             this.dgvAgencias.Location = new System.Drawing.Point(19, 137);
             this.dgvAgencias.Name = "dgvAgencias";
             this.dgvAgencias.ReadOnly = true;
             this.dgvAgencias.Size = new System.Drawing.Size(626, 211);
             this.dgvAgencias.TabIndex = 7;
+            // 
+            // nome
+            // 
+            this.nome.DataPropertyName = "Nome";
+            this.nome.HeaderText = "Nome";
+            this.nome.Name = "nome";
+            this.nome.ReadOnly = true;
+            // 
+            // Numero
+            // 
+            this.Numero.DataPropertyName = "NumeroAgencia";
+            this.Numero.HeaderText = "Número";
+            this.Numero.Name = "Numero";
+            this.Numero.ReadOnly = true;
             // 
             // btnSelecionar
             // 
@@ -151,19 +167,11 @@
             this.btnLimpar.Text = "Limpar";
             this.btnLimpar.UseVisualStyleBackColor = true;
             // 
-            // nome
+            // endereco
             // 
-            this.nome.DataPropertyName = "Nome";
-            this.nome.HeaderText = "Nome";
-            this.nome.Name = "nome";
-            this.nome.ReadOnly = true;
-            // 
-            // Numero
-            // 
-            this.Numero.DataPropertyName = "NumeroAgencia";
-            this.Numero.HeaderText = "Número";
-            this.Numero.Name = "Numero";
-            this.Numero.ReadOnly = true;
+            this.endereco.HeaderText = "Endereço";
+            this.endereco.Name = "endereco";
+            this.endereco.ReadOnly = true;
             // 
             // FormPesquisaAgencia
             // 
@@ -199,5 +207,6 @@
         private System.Windows.Forms.Button btnLimpar;
         private System.Windows.Forms.DataGridViewTextBoxColumn nome;
         private System.Windows.Forms.DataGridViewTextBoxColumn Numero;
+        private System.Windows.Forms.DataGridViewTextBoxColumn endereco;
     }
 }

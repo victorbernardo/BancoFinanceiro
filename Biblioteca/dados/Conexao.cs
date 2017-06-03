@@ -13,11 +13,11 @@ namespace Biblioteca.dados
         //tipo responsável para se trabalhar com o sqlserver
         public SqlConnection sqlConn;
         //máquina no qual estará o banco de dados
-        private const string local = "DESKTOP-998UBD7";
+        private const string local = "DESKTOP-5GDF70F";
         //nome do banco de dados no qual desejamos nos comunicar
         private const string banco_de_dados = "BancoFinanceiro";
         //usuário que tenha os privilégios para utilizar o banco de dados
-        private const string usuario = "victor";
+        private const string usuario = "sa";
         //senha do usuario
         private const string senha = "12345";
         #endregion

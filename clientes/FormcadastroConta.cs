@@ -63,7 +63,7 @@ namespace clientes
             try
             {
                 FormPesquisaConta fPesquisaConta = new FormPesquisaConta();
-                fPesquisaConta.Show();
+                fPesquisaConta.ShowDialog();
 
                 conta = fPesquisaConta.RetornaContaSelecionado();
                 carregaCampoConta(conta);
@@ -88,7 +88,7 @@ namespace clientes
                 conta.DataCriacao = DateTime.Today;
                 agen.NumeroAgencia = Convert.ToInt32(txtNumeroAgencia.Text);
                 clie.IdCliente = cliente.IdCliente;
-                conta.Numero_agencia = agen;
+                conta.Agencia = agen;
                 conta.Cliente = clie;
                 sv.SalvarConta(conta);
                 MessageBox.Show("Cadastrado com sucesso");

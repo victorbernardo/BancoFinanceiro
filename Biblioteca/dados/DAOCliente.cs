@@ -118,9 +118,9 @@ namespace Biblioteca.dados
             }
         }
 
-        public List<Cliente> Pesquisar(Cliente cliente)
+        public Cliente PesquisarPorId(int  idCliente)
         {
-            List<Cliente> retorno = new List<Cliente>();
+            Cliente c = new Cliente();
             try
             {
                 //abrir a conexão... Falta criar a classe de conexao
@@ -131,23 +131,20 @@ namespace Biblioteca.dados
                 SqlCommand cmd = new SqlCommand(sql, sqlConn);
 
                 cmd.Parameters.Add("@IdCliente", SqlDbType.Int);
-                cmd.Parameters["@IdCliente"].Value = cliente.IdCliente;
+                cmd.Parameters["@IdCliente"].Value = idCliente;
 
                 //executando a instrucao e colocando o resultado em um leitor
                 SqlDataReader DbReader = cmd.ExecuteReader();
-                //lendo o resultado da consulta
-                while (DbReader.Read())
-                {
-                    Cliente c = new Cliente();
-                    //acessando os valores das colunas do resultado
-                    c.Nome = DbReader.GetDataTypeName(DbReader.GetOrdinal("nome"));
-                    c.Telefone = DbReader.GetDataTypeName(DbReader.GetOrdinal("telefone"));
-                    c.Cpf = DbReader.GetDataTypeName(DbReader.GetOrdinal("cpf"));
-                    c.IdCliente = DbReader.GetInt32(DbReader.GetOrdinal("IdCliente"));
-                    c.Email = DbReader.GetDataTypeName(DbReader.GetOrdinal("email"));
-                    c.Endereco.IdEndereco = DbReader.GetInt32(DbReader.GetOrdinal("endereco_id"));
-                    retorno.Add(c);
-                }
+              
+              
+                //acessando os valores das colunas do resultado
+                c.Nome = DbReader.GetDataTypeName(DbReader.GetOrdinal("nome"));
+                c.Telefone = DbReader.GetDataTypeName(DbReader.GetOrdinal("telefone"));
+                c.Cpf = DbReader.GetDataTypeName(DbReader.GetOrdinal("cpf"));
+                c.IdCliente = DbReader.GetInt32(DbReader.GetOrdinal("IdCliente"));
+                c.Email = DbReader.GetDataTypeName(DbReader.GetOrdinal("email"));
+                c.Endereco.IdEndereco = DbReader.GetInt32(DbReader.GetOrdinal("endereco_id"));        
+              
                 //fechando o leitor de resultados
                 DbReader.Close();
                 //liberando a memoria 
@@ -159,7 +156,7 @@ namespace Biblioteca.dados
             {
                 throw new Exception("Erro ao conectar e pesquisar " + ex.Message);
             }
-            return retorno;
+            return c;
         }
         public List<Cliente> Consultar()
         {

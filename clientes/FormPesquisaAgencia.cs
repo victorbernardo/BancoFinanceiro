@@ -43,7 +43,9 @@ namespace clientes
             Service1Client sv = new Service1Client();         
             agencias = sv.PesquisaAgencia().ToList();
             dgvAgencias.AutoGenerateColumns = false;
-            dgvAgencias.DataSource = agencias;
+            dgvAgencias.AutoSize = true;
+
+            agencias.ForEach(a=> dgvAgencias.Rows.Add(a.Nome, a.NumeroAgencia,a.Endereco.Rua + ", " + a.Endereco.Bairro + ", " + a.Endereco.Cidade));
         }
         public Agencia RetornaAgenciaSelecionado()
         {

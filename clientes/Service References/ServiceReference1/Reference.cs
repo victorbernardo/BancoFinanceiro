@@ -382,6 +382,9 @@ namespace clientes.ServiceReference1 {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private clientes.ServiceReference1.Agencia AgenciaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private clientes.ServiceReference1.Cliente ClienteField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -389,9 +392,6 @@ namespace clientes.ServiceReference1 {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int NumeroContaField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private clientes.ServiceReference1.Agencia Numero_agenciaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private decimal SaldoField;
@@ -403,6 +403,19 @@ namespace clientes.ServiceReference1 {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public clientes.ServiceReference1.Agencia Agencia {
+            get {
+                return this.AgenciaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AgenciaField, value) != true)) {
+                    this.AgenciaField = value;
+                    this.RaisePropertyChanged("Agencia");
+                }
             }
         }
         
@@ -441,19 +454,6 @@ namespace clientes.ServiceReference1 {
                 if ((this.NumeroContaField.Equals(value) != true)) {
                     this.NumeroContaField = value;
                     this.RaisePropertyChanged("NumeroConta");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public clientes.ServiceReference1.Agencia Numero_agencia {
-            get {
-                return this.Numero_agenciaField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.Numero_agenciaField, value) != true)) {
-                    this.Numero_agenciaField = value;
-                    this.RaisePropertyChanged("Numero_agencia");
                 }
             }
         }

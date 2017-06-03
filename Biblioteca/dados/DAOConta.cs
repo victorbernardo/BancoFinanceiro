@@ -13,6 +13,13 @@ namespace Biblioteca.dados
 {
     public class DAOConta : Conexao, IDAOConta
     {
+        private DAOCliente daoCliente;
+        private DAOAgencia daoAgencia;
+        public DAOConta()
+        {
+            daoCliente = new DAOCliente();
+            daoAgencia = new DAOAgencia();
+        }
         public void Inserir(Conta conta)
         {
             try
@@ -31,7 +38,7 @@ namespace Biblioteca.dados
                 cmd.Parameters["@Data_criacao"].Value = conta.DataCriacao;
 
                 cmd.Parameters.Add("@Numero_agencia", SqlDbType.Int);
-                cmd.Parameters["@Numero_agencia"].Value = conta.Numero_agencia.NumeroAgencia;
+                cmd.Parameters["@Numero_agencia"].Value = conta.Agencia.NumeroAgencia;
 
                 cmd.Parameters.Add("@Numero_conta", SqlDbType.Int);
                 cmd.Parameters["@Numero_conta"].Value = conta.NumeroConta;
@@ -103,9 +110,9 @@ namespace Biblioteca.dados
             }
         }
 
-        public List<Conta> Pesquisar(Conta conta)
+        public Conta PesquisarPorId(int numeroConta)
         {
-            List<Conta> retorno = new List<Conta>();
+            Conta conta = new Conta();
             try
             {
                 //abrir a conexão... Falta criar a classe de conexao
@@ -116,23 +123,20 @@ namespace Biblioteca.dados
                 SqlCommand cmd = new SqlCommand(sql, sqlConn);
 
                 cmd.Parameters.Add("@numero_conta", SqlDbType.Int);
-                cmd.Parameters["@numero_conta"].Value = conta.NumeroConta;
+                cmd.Parameters["@numero_conta"].Value = numeroConta;
 
                 //executando a instrucao e colocando o resultado em um leitor
                 SqlDataReader DbReader = cmd.ExecuteReader();
                 //lendo o resultado da consulta
-                while (DbReader.Read())
-                {
-                    Conta conta1 = new Conta();
-                    //acessando os valores das colunas do resultado
-                    conta1.NumeroConta = DbReader.GetInt32(DbReader.GetOrdinal("numero_conta"));
-                    conta1.Numero_agencia.NumeroAgencia = DbReader.GetInt32(DbReader.GetOrdinal("NumeroAgencia"));
-                    conta1.Cliente.IdCliente = DbReader.GetInt32(DbReader.GetOrdinal("IdCliente"));
-                    conta1.Saldo = DbReader.GetDecimal(DbReader.GetOrdinal("saldo"));
-                    conta1.DataCriacao = DbReader.GetDateTime(DbReader.GetOrdinal("data_criacao"));
-
-                    retorno.Add(conta1);
-                }
+               
+               
+                //acessando os valores das colunas do resultado
+                conta.NumeroConta = DbReader.GetInt32(DbReader.GetOrdinal("numero_conta"));
+                conta.Agencia = daoAgencia.PesquisarPorId(DbReader.GetInt32(DbReader.GetOrdinal("NumeroAgencia")));
+                conta.Cliente = daoCliente.PesquisarPorId(DbReader.GetInt32(DbReader.GetOrdinal("IdCliente")));
+                conta.Saldo = DbReader.GetDecimal(DbReader.GetOrdinal("saldo"));
+                conta.DataCriacao = DbReader.GetDateTime(DbReader.GetOrdinal("data_criacao"));
+                
                 //fechando o leitor de resultados
                 DbReader.Close();
                 //liberando a memoria 
@@ -144,7 +148,7 @@ namespace Biblioteca.dados
             {
                 throw new Exception("Erro ao conectar e pesquisar " + ex.Message);
             }
-            return retorno;
+            return conta;
         }
 
         public List<Conta> ListarConta()
@@ -166,13 +170,14 @@ namespace Biblioteca.dados
                     //lendo o resultado da consulta
                     while (DbReader.Read())
                     {
-                        Conta conta1 = new Conta();
-                        //acessando os valores das colunas do resultado
-                        conta1.NumeroConta = DbReader.GetInt32(DbReader.GetOrdinal("numero_conta"));
-                        conta1.Saldo = DbReader.GetDecimal(DbReader.GetOrdinal("saldo"));
-                        conta1.DataCriacao = DbReader.GetDateTime(DbReader.GetOrdinal("data_criacao"));
-
-                        retorno.Add(conta1);
+                        Conta conta = new Conta();
+                    //acessando os valores das colunas do resultado
+                        conta.Agencia = daoAgencia.PesquisarPorId(DbReader.GetInt32(DbReader.GetOrdinal("NumeroAgencia")));
+                        conta.NumeroConta = DbReader.GetInt32(DbReader.GetOrdinal("numero_conta"));
+                        conta.Saldo = DbReader.GetDecimal(DbReader.GetOrdinal("saldo"));
+                        conta.DataCriacao = DbReader.GetDateTime(DbReader.GetOrdinal("data_criacao"));
+                        conta.Cliente = daoCliente.PesquisarPorId(DbReader.GetInt32(DbReader.GetOrdinal("IdCliente")));
+                        retorno.Add(conta);
                     }
                     //fechando o leitor de resultados
                     DbReader.Close();
