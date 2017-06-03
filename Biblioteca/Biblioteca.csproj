@@ -66,15 +66,14 @@
     <Compile Include="Interface\IDAOFuncionario.cs" />
     <Compile Include="Interface\IDAOMovimentacao.cs" />
     <Compile Include="Interface\IDAOParcela.cs" />
+    <Compile Include="negocio\ContaController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="negocio\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
