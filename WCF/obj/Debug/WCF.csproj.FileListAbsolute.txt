@@ -15,3 +15,12 @@ C:\Users\victo\Desktop\Victor\Informática\Curso Superior ADS\Periodo 2017.1\Sis
 C:\Users\victo\Desktop\Victor\Informática\Curso Superior ADS\Periodo 2017.1\Sistema Distribuido\Projeto\Versao 2.0\WCF\obj\Debug\WCF.csprojResolveAssemblyReference.cache
 C:\Users\victo\Desktop\Victor\Informática\Curso Superior ADS\Periodo 2017.1\Sistema Distribuido\Projeto\Versao 2.0\WCF\obj\Debug\WCF.dll
 C:\Users\victo\Desktop\Victor\Informática\Curso Superior ADS\Periodo 2017.1\Sistema Distribuido\Projeto\Versao 2.0\WCF\obj\Debug\WCF.pdb
+E:\Repositórios\Projeto Melo\trunk\WCF\bin\WCF.dll.config
+E:\Repositórios\Projeto Melo\trunk\WCF\bin\WCF.dll
+E:\Repositórios\Projeto Melo\trunk\WCF\bin\WCF.pdb
+E:\Repositórios\Projeto Melo\trunk\WCF\bin\Biblioteca.exe
+E:\Repositórios\Projeto Melo\trunk\WCF\bin\Biblioteca.pdb
+E:\Repositórios\Projeto Melo\trunk\WCF\bin\Biblioteca.exe.config
+E:\Repositórios\Projeto Melo\trunk\WCF\obj\Debug\WCF.csprojResolveAssemblyReference.cache
+E:\Repositórios\Projeto Melo\trunk\WCF\obj\Debug\WCF.dll
+E:\Repositórios\Projeto Melo\trunk\WCF\obj\Debug\WCF.pdb

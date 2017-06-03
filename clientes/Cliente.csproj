@@ -121,6 +121,15 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Service References\ServiceReference1\clientes.ServiceReference1.Agencia.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference1\clientes.ServiceReference1.Cliente.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference1\clientes.ServiceReference1.Conta.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\ServiceReference1\Service1.wsdl" />
     <None Include="Service References\ServiceReference1\Service1.xsd">
       <SubType>Designer</SubType>
@@ -140,12 +149,6 @@
   </ItemGroup>
   <ItemGroup>
     <WebReferences Include="Web References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Biblioteca\Biblioteca.csproj">
-      <Project>{5E206A3F-E68B-4898-BF54-645121729C92}</Project>
-      <Name>Biblioteca</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\ServiceReference1\" />

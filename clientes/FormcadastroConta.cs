@@ -1,4 +1,5 @@
-﻿using System;
+﻿using clientes.ServiceReference1;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,7 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 //importaçaco de pacotes
-using clientes.ServiceReference1;
 
 namespace clientes
 {
@@ -81,6 +81,7 @@ namespace clientes
                 Agencia agen = new Agencia();
                 Cliente clie = new Cliente();
                 Service1Client sv = new Service1Client();
+                
                 
                 conta.NumeroConta = Convert.ToInt32(txtNumeroConta.Text);
                 conta.Saldo = Convert.ToDecimal(txtSaldo.Text);
