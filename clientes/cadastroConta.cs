@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 //importaçaco de pacotes
-using clientes.localhost1;
+using clientes.ServiceReference1;
 
 namespace clientes
 {
@@ -20,7 +20,10 @@ namespace clientes
         //CONSTRUTOR PADRAO
         public cadastroConta()
         {
-            InitializeComponent();    
+            InitializeComponent();
+            cliente = new Cliente();
+            agencia = new Agencia();
+            conta = new Conta();
         }
         //
         //FUNÇOES DOS BOTÕES
@@ -74,11 +77,11 @@ namespace clientes
         {
             try
             {
-                conta = new Conta();
+                conta = new Conta();              
                 Agencia agen = new Agencia();
                 Cliente clie = new Cliente();
-                Service1 sv = new Service1();
-
+                Service1Client sv = new Service1Client();
+                
                 conta.NumeroConta = Convert.ToInt32(txtNumeroConta.Text);
                 conta.Saldo = Convert.ToDecimal(txtSaldo.Text);
                 conta.DataCriacao = DateTime.Today;
@@ -91,20 +94,20 @@ namespace clientes
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                MessageBox.Show(ex.Message);
             }            
         }
         //
         //FUNÇOES INTERNAS
         //               
-        private void carregaCampoCliente(clientes.localhost1.Cliente cliente)
+        private void carregaCampoCliente(Cliente cliente)
         {
             txtNomeCliente.Text = cliente.Nome;
             txtEmail.Text = cliente.Email;
             txtCpf.Text = cliente.Cpf;
             txtEndereco.Text = cliente.Endereco.Rua;
         }
-        private void carregaCampoAgencia(clientes.localhost1.Agencia agencia)
+        private void carregaCampoAgencia(Agencia agencia)
         {
             txtNomeAgencia.Text = agencia.Nome;
             txtNumeroAgencia.Text = agencia.NumeroAgencia.ToString();

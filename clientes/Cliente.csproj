@@ -48,11 +48,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormcadastroConta.cs">
+    <Compile Include="cadastroConta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormcadastroConta.designer.cs">
-      <DependentUpon>FormcadastroConta.cs</DependentUpon>
+    <Compile Include="cadastroConta.designer.cs">
+      <DependentUpon>cadastroConta.cs</DependentUpon>
     </Compile>
     <Compile Include="FormCadastroCliente.cs">
       <SubType>Form</SubType>
@@ -80,13 +80,13 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Web References\localhost2\Reference.cs">
+    <Compile Include="Service References\ServiceReference1\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.map</DependentUpon>
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="FormcadastroConta.resx">
-      <DependentUpon>FormcadastroConta.cs</DependentUpon>
+    <EmbeddedResource Include="cadastroConta.resx">
+      <DependentUpon>cadastroConta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormCadastroCliente.resx">
       <DependentUpon>FormCadastroCliente.cs</DependentUpon>
@@ -109,7 +109,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Properties\DataSources\Biblioteca.basica.Agencia.datasource" />
     <None Include="Properties\DataSources\Biblioteca.basica.Cliente.datasource" />
+    <None Include="Properties\DataSources\Biblioteca.basica.Conta.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -119,27 +121,14 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Web References\localhost2\Agencia.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Include="Web References\localhost2\Cliente.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Include="Web References\localhost2\Conta.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Include="Web References\localhost2\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Web References\localhost2\Service1.wsdl" />
-    <None Include="Web References\localhost2\Service1.xsd">
+    <None Include="Service References\ServiceReference1\Service1.wsdl" />
+    <None Include="Service References\ServiceReference1\Service1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Web References\localhost2\Service10.xsd">
+    <None Include="Service References\ServiceReference1\Service11.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Web References\localhost2\Service11.xsd">
+    <None Include="Service References\ServiceReference1\Service12.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -159,20 +148,22 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://localhost:61577/Service1.svc">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\localhost2\</RelPath>
-      <UpdateFromURL>http://localhost:61577/Service1.svc</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>clientes_localhost2_Service1</CachedSettingsPropName>
-    </WebReferenceUrl>
+    <WCFMetadataStorage Include="Service References\ServiceReference1\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Web References\localhost2\Service1.disco" />
+    <None Include="Service References\ServiceReference1\Service1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReference1\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReference1\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReference1\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

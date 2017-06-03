@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 //importaçao de pacotes
-using clientes.localhost1;
+using clientes.ServiceReference1;
 
 namespace clientes
 {
