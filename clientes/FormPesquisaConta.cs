@@ -47,7 +47,7 @@ namespace clientes
         }      
         public Conta RetornaContaSelecionado()
         {
-            Conta conta = dgvContas.CurrentRow != null ? contas.Find(c => c.NumeroConta.Equals(dgvContas.CurrentRow.Cells[1].Value)) : null;
+            Conta conta = dgvContas.CurrentRow != null ? contas.Find(c => c.NumeroConta.Equals(dgvContas.CurrentRow.Cells[0].Value)) : null;
             return conta;
         }
     }

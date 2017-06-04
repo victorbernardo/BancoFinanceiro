@@ -20,16 +20,16 @@ namespace Biblioteca.dados
             {
                 //abre uma conexao... Falta fazer a classe de concexao
                 this.abrirConexao();
-                string sql = "insert into agencia(Nome, NumeroAgencia, Endereco_id)";
-                sql += "values(@Nome, @NumeroAgencia, @Endereco_id)";
+                string sql = "insert into agencia(Nome, Numero_Agencia, Endereco_id)";
+                sql += "values(@Nome, @Numero_Agencia, @Endereco_id)";
 
                 SqlCommand cmd = new SqlCommand(sql, this.sqlConn);
 
                 cmd.Parameters.Add("@nome", SqlDbType.NVarChar);
                 cmd.Parameters["@nome"].Value = agencia.Nome;
 
-                cmd.Parameters.Add("@NumeroAgencia", SqlDbType.Int);
-                cmd.Parameters["@NumeroAgencia"].Value = agencia.NumeroAgencia;
+                cmd.Parameters.Add("@Numero_Agencia", SqlDbType.Int);
+                cmd.Parameters["@Numero_Agencia"].Value = agencia.NumeroAgencia;
 
                 cmd.Parameters.Add("@endereco_id", SqlDbType.Int);
                 cmd.Parameters["@endereco_id"].Value = agencia.Endereco.IdEndereco;
@@ -55,11 +55,11 @@ namespace Biblioteca.dados
             {
                 //abrir a conexão... Falta fazer a classe de concexao
                 this.abrirConexao();
-                string sql = "delete from agencia where NumeroAgencia = @NumeroAgencia";
+                string sql = "delete from agencia where Numero_Agencia = @Numero_Agencia";
                 //instrucao a ser executada
                 SqlCommand cmd = new SqlCommand(sql, this.sqlConn);
-                cmd.Parameters.Add("@NumeroAgencia", SqlDbType.Int);
-                cmd.Parameters["@NumeroAgencia"].Value = agencia.NumeroAgencia;
+                cmd.Parameters.Add("@Numero_Agencia", SqlDbType.Int);
+                cmd.Parameters["@Numero_Agencia"].Value = agencia.NumeroAgencia;
                 //executando a instrucao 
                 cmd.ExecuteNonQuery();
                 //liberando a memoria 
@@ -79,15 +79,15 @@ namespace Biblioteca.dados
             {
                 //abrir a conexão... Falta criar a classe de conexao
                 this.abrirConexao();
-                string sql = "update agencia set nome = @nome where NumeroAgencia = @NumeroAgencia";
+                string sql = "update agencia set nome = @nome where Numero_Agencia = @Numero_Agencia";
                 //instrucao a ser executada
                 SqlCommand cmd = new SqlCommand(sql, this.sqlConn);
 
                 cmd.Parameters.Add("@nome", SqlDbType.NVarChar);
                 cmd.Parameters["@nome"].Value = agencia.Nome;
 
-                cmd.Parameters.Add("@NumeroAgencia", SqlDbType.Int);
-                cmd.Parameters["@NumeroAgencia"].Value = agencia.NumeroAgencia;
+                cmd.Parameters.Add("@Numero_Agencia", SqlDbType.Int);
+                cmd.Parameters["@Numero_Agencia"].Value = agencia.NumeroAgencia;
 
                 //executando a instrucao 
                 cmd.ExecuteNonQuery();
@@ -102,7 +102,7 @@ namespace Biblioteca.dados
             }
         }
 
-        public Agencia PesquisarPorId(int numeroAgencia)
+        public Agencia PesquisarPorId(int numeroConta)
         {
             Agencia agencia = new Agencia();
             try
@@ -110,23 +110,24 @@ namespace Biblioteca.dados
                 //abrir a conexão... Falta criar a classe de conexao
                 this.abrirConexao();
                 //instrucao a ser executada... Falta configurar essa string sql
-                string sql = "SELECT nome, NumeroAgencia, endereco_id FROM agencia  where NumeroAgencia = @NumeroAgencia";
+                string sql = "SELECT nome, Numero_Agencia, endereco_id FROM agencia  where Numero_Agencia = @Numero_Agencia";
 
                 SqlCommand cmd = new SqlCommand(sql, sqlConn);
 
-                cmd.Parameters.Add("@NumeroAgencia", SqlDbType.Int);
-                cmd.Parameters["@NumeroAgencia"].Value = numeroAgencia;
+                cmd.Parameters.Add("@Numero_Agencia", SqlDbType.Int);
+                cmd.Parameters["@Numero_Agencia"].Value = numeroConta;
 
                 //executando a instrucao e colocando o resultado em um leitor
                 SqlDataReader DbReader = cmd.ExecuteReader();
                 //lendo o resultado da consulta
-                               
-                //acessando os valores das colunas do resultado
-                agencia.Nome = DbReader.GetDataTypeName(DbReader.GetOrdinal("nome"));
-                agencia.NumeroAgencia = DbReader.GetInt32(DbReader.GetOrdinal("NumeroAgencia"));
-                agencia.Endereco.IdEndereco = DbReader.GetInt32(DbReader.GetOrdinal("endereco_id"));
-                    
-               
+                while (DbReader.Read())
+                {
+                    //acessando os valores das colunas do resultado
+                    agencia.Nome = DbReader.GetDataTypeName(DbReader.GetOrdinal("nome"));
+                    agencia.NumeroAgencia = DbReader.GetInt32(DbReader.GetOrdinal("Numero_Agencia"));
+                   // agencia.Endereco.IdEndereco = DbReader.GetInt32(DbReader.GetOrdinal("endereco_id"));
+
+                }
                 //fechando o leitor de resultados
                 DbReader.Close();
                 //liberando a memoria 

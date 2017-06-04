@@ -126,25 +126,26 @@ namespace Biblioteca.dados
                 //abrir a conexão... Falta criar a classe de conexao
                 this.abrirConexao();
                 //instrucao a ser executada... Falta configurar essa string sql
-                string sql = "SELECT nome, telefone, cpf, IdCliente, email, endereco_id FROM cliente  where IdCliente = @IdCliente";
+                string sql = "SELECT nome, telefone, cpf, Cliente_id, email, endereco_id FROM cliente  where Cliente_id = @Cliente_id";
 
                 SqlCommand cmd = new SqlCommand(sql, sqlConn);
 
-                cmd.Parameters.Add("@IdCliente", SqlDbType.Int);
-                cmd.Parameters["@IdCliente"].Value = idCliente;
+                cmd.Parameters.Add("@Cliente_id", SqlDbType.Int);
+                cmd.Parameters["@Cliente_id"].Value = idCliente;
 
                 //executando a instrucao e colocando o resultado em um leitor
                 SqlDataReader DbReader = cmd.ExecuteReader();
-              
-              
-                //acessando os valores das colunas do resultado
-                c.Nome = DbReader.GetDataTypeName(DbReader.GetOrdinal("nome"));
-                c.Telefone = DbReader.GetDataTypeName(DbReader.GetOrdinal("telefone"));
-                c.Cpf = DbReader.GetDataTypeName(DbReader.GetOrdinal("cpf"));
-                c.IdCliente = DbReader.GetInt32(DbReader.GetOrdinal("IdCliente"));
-                c.Email = DbReader.GetDataTypeName(DbReader.GetOrdinal("email"));
-                c.Endereco.IdEndereco = DbReader.GetInt32(DbReader.GetOrdinal("endereco_id"));        
-              
+
+                while (DbReader.Read())
+                {
+                    //acessando os valores das colunas do resultado
+                    c.Nome = DbReader.GetDataTypeName(DbReader.GetOrdinal("nome"));
+                    c.Telefone = DbReader.GetDataTypeName(DbReader.GetOrdinal("telefone"));
+                    c.Cpf = DbReader.GetDataTypeName(DbReader.GetOrdinal("cpf"));
+                    c.IdCliente = DbReader.GetInt32(DbReader.GetOrdinal("Cliente_id"));
+                    c.Email = DbReader.GetDataTypeName(DbReader.GetOrdinal("email"));
+                    //c.Endereco.IdEndereco = DbReader.GetInt32(DbReader.GetOrdinal("endereco_id"));
+                }
                 //fechando o leitor de resultados
                 DbReader.Close();
                 //liberando a memoria 

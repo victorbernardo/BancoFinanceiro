@@ -103,21 +103,23 @@ namespace clientes
         //               
         private void carregaCampoCliente(Cliente cliente)
         {
-            txtNomeCliente.Text = cliente.Nome;
-            txtEmail.Text = cliente.Email;
-            txtCpf.Text = cliente.Cpf;
-            txtEndereco.Text = cliente.Endereco.Rua;
+            txtNomeCliente.Text =cliente.Nome;
+            txtEmail.Text = cliente.Email ?? "";
+            txtCpf.Text = cliente.Cpf ?? "";
+            //txtEndereco.Text = cliente.Endereco.Rua ?? "";
         }
         private void carregaCampoAgencia(Agencia agencia)
         {
-            txtNomeAgencia.Text = agencia.Nome;
-            txtNumeroAgencia.Text = agencia.NumeroAgencia.ToString();
-            txtEnderecoAgencia.Text = agencia.Endereco.Rua;        
+            txtNomeAgencia.Text = agencia.Nome??"";
+            txtNumeroAgencia.Text = Convert.ToString(agencia.NumeroAgencia);
+           // txtEnderecoAgencia.Text = agencia.Endereco.Rua ?? "";        
         }
         private void carregaCampoConta(Conta conta)
         {
             txtNumeroConta.Text = conta.NumeroConta.ToString();
-            txtSaldo.Text = conta.Saldo.ToString();
+            txtSaldo.Text = Convert.ToString(conta.Saldo);
+            carregaCampoAgencia(conta.Agencia);
+            carregaCampoCliente(conta.Cliente);
         }
     }
 }

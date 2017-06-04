@@ -118,7 +118,7 @@ namespace Biblioteca.dados
                 //abrir a conexão... Falta criar a classe de conexao
                 this.abrirConexao();
                 //instrucao a ser executada... Falta configurar essa string sql
-                string sql = "SELECT numero_conta, NumeroAgencia, IdCliente, saldo, data_criacao FROM conta  where numero_conta = @numero_conta";
+                string sql = "SELECT numero_conta, Numero_Agencia, cliente_id, saldo, data_criacao FROM conta  where numero_conta = @numero_conta";
 
                 SqlCommand cmd = new SqlCommand(sql, sqlConn);
 
@@ -128,14 +128,16 @@ namespace Biblioteca.dados
                 //executando a instrucao e colocando o resultado em um leitor
                 SqlDataReader DbReader = cmd.ExecuteReader();
                 //lendo o resultado da consulta
-               
-               
-                //acessando os valores das colunas do resultado
-                conta.NumeroConta = DbReader.GetInt32(DbReader.GetOrdinal("numero_conta"));
-                conta.Agencia = daoAgencia.PesquisarPorId(DbReader.GetInt32(DbReader.GetOrdinal("NumeroAgencia")));
-                conta.Cliente = daoCliente.PesquisarPorId(DbReader.GetInt32(DbReader.GetOrdinal("IdCliente")));
-                conta.Saldo = DbReader.GetDecimal(DbReader.GetOrdinal("saldo"));
-                conta.DataCriacao = DbReader.GetDateTime(DbReader.GetOrdinal("data_criacao"));
+
+                while (DbReader.Read())
+                {
+                    //acessando os valores das colunas do resultado
+                    conta.NumeroConta = DbReader.GetInt32(DbReader.GetOrdinal("numero_conta"));
+                    conta.Agencia = daoAgencia.PesquisarPorId(DbReader.GetInt32(DbReader.GetOrdinal("Numero_Agencia")));
+                    conta.Cliente = daoCliente.PesquisarPorId(DbReader.GetInt32(DbReader.GetOrdinal("cliente_id")));
+                    conta.Saldo = DbReader.GetDecimal(DbReader.GetOrdinal("saldo"));
+                    conta.DataCriacao = DbReader.GetDateTime(DbReader.GetOrdinal("data_criacao"));
+                }
                 
                 //fechando o leitor de resultados
                 DbReader.Close();
@@ -159,7 +161,7 @@ namespace Biblioteca.dados
                 //abrir a conexão
                 this.abrirConexao();
                 //instrucao a ser executada
-                string sql = "select Numero_conta, Saldo, Data_criacao from Conta";
+                string sql = "select Numero_conta, Saldo, Data_criacao, Numero_Agencia, cliente_id from Conta";
 
                 SqlCommand cmd = new SqlCommand(sql, sqlConn);
 
@@ -172,11 +174,11 @@ namespace Biblioteca.dados
                     {
                         Conta conta = new Conta();
                     //acessando os valores das colunas do resultado
-                        conta.Agencia = daoAgencia.PesquisarPorId(DbReader.GetInt32(DbReader.GetOrdinal("NumeroAgencia")));
+                        conta.Agencia = daoAgencia.PesquisarPorId(DbReader.GetInt32(DbReader.GetOrdinal("Numero_Agencia")));
                         conta.NumeroConta = DbReader.GetInt32(DbReader.GetOrdinal("numero_conta"));
                         conta.Saldo = DbReader.GetDecimal(DbReader.GetOrdinal("saldo"));
                         conta.DataCriacao = DbReader.GetDateTime(DbReader.GetOrdinal("data_criacao"));
-                        conta.Cliente = daoCliente.PesquisarPorId(DbReader.GetInt32(DbReader.GetOrdinal("IdCliente")));
+                        conta.Cliente = daoCliente.PesquisarPorId(DbReader.GetInt32(DbReader.GetOrdinal("cliente_id")));
                         retorno.Add(conta);
                     }
                     //fechando o leitor de resultados
