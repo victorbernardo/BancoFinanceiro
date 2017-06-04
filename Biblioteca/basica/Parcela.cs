@@ -15,7 +15,11 @@ namespace Biblioteca.basica
         private string status;
         private Emprestimo emprestimo;
 
-      
+
+        public Parcela()
+        {
+            emprestimo = new Emprestimo();
+    }
 
         public decimal Valor
         {

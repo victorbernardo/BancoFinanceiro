@@ -132,9 +132,9 @@ namespace Biblioteca.dados
             }
         }
 
-        public List<Endereco> Pesquisar(Endereco endereco)
+        public Endereco PesquisarPorId(int idEndereco)
         {
-            List<Endereco> retorno = new List<Endereco>();
+            Endereco endereco = new Endereco();
             try
             {
                 //abrir a conexão... Falta criar a classe de conexao
@@ -145,25 +145,23 @@ namespace Biblioteca.dados
                 SqlCommand cmd = new SqlCommand(sql, sqlConn);
 
                 cmd.Parameters.Add("@endereco_id", SqlDbType.Int);
-                cmd.Parameters["@endereco_id"].Value = endereco.IdEndereco;
+                cmd.Parameters["@endereco_id"].Value = idEndereco;
 
                 //executando a instrucao e colocando o resultado em um leitor
                 SqlDataReader DbReader = cmd.ExecuteReader();
                 //lendo o resultado da consulta
                 while (DbReader.Read())
                 {
-                    Endereco e = new Endereco();
                     //acessando os valores das colunas do resultado
-                    e.Rua = DbReader.GetDataTypeName(DbReader.GetOrdinal("rua"));
-                    e.Cep = DbReader.GetDataTypeName(DbReader.GetOrdinal("cep"));
-                    e.Complemento = DbReader.GetDataTypeName(DbReader.GetOrdinal("complemento"));
-                    e.Numero = DbReader.GetDataTypeName(DbReader.GetOrdinal("numero"));
-                    e.Cidade = DbReader.GetDataTypeName(DbReader.GetOrdinal("cidade"));
-                    e.Bairro = DbReader.GetDataTypeName(DbReader.GetOrdinal("bairro"));
-                    e.Uf = DbReader.GetDataTypeName(DbReader.GetOrdinal("uf"));
-                    e.IdEndereco = DbReader.GetInt32(DbReader.GetOrdinal("endereco_id"));
-
-                    retorno.Add(e);
+                    endereco.Rua = DbReader.GetString(DbReader.GetOrdinal("rua"));
+                    endereco.Cep = DbReader.GetString(DbReader.GetOrdinal("cep"));
+                    endereco.Complemento = DbReader.GetString(DbReader.GetOrdinal("complemento"));
+                    endereco.Numero = DbReader.GetString(DbReader.GetOrdinal("numero"));
+                    endereco.Cidade = DbReader.GetString(DbReader.GetOrdinal("cidade"));
+                    endereco.Bairro = DbReader.GetString(DbReader.GetOrdinal("bairro"));
+                    endereco.Uf = DbReader.GetString(DbReader.GetOrdinal("uf"));
+                    endereco.IdEndereco = DbReader.GetInt32(DbReader.GetOrdinal("endereco_id"));
+                    
                 }
                 //fechando o leitor de resultados
                 DbReader.Close();
@@ -176,7 +174,7 @@ namespace Biblioteca.dados
             {
                 throw new Exception("Erro ao conectar e pesquisar " + ex.Message);
             }
-            return retorno;
+            return endereco;
         }
     }
 }

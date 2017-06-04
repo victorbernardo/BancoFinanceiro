@@ -15,6 +15,10 @@ namespace Biblioteca.basica
         private Conta numeroConta;
         private int quantidadeParcela;
 
+        public Emprestimo()
+        {
+            numeroConta = new Conta();
+    }
         public int QuantidadeParcela
         {
             get { return quantidadeParcela; }

@@ -12,7 +12,10 @@ namespace Biblioteca.basica
         private string nome;
         private Endereco endereco;
 
-
+        public Agencia()
+        {
+            endereco = new Endereco();
+    }
         public string Nome
         {
             get { return nome; }

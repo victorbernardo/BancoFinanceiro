@@ -14,6 +14,7 @@ namespace Biblioteca.dados
 {
    public class DAOCliente : Conexao, IDAOCliente
     {
+        DAOEndereco daoEndereco = new DAOEndereco();
         public void Inserir(Cliente cliente)
         {
             try
@@ -144,7 +145,7 @@ namespace Biblioteca.dados
                     c.Cpf = DbReader.GetString(DbReader.GetOrdinal("cpf"));
                     c.IdCliente = DbReader.GetInt32(DbReader.GetOrdinal("Cliente_id"));
                     c.Email = DbReader.GetString(DbReader.GetOrdinal("email"));
-                    //c.Endereco.IdEndereco = DbReader.GetInt32(DbReader.GetOrdinal("endereco_id"));
+                    c.Endereco = daoEndereco.PesquisarPorId(DbReader.GetInt32(DbReader.GetOrdinal("endereco_id")));
                 }
                 //fechando o leitor de resultados
                 DbReader.Close();

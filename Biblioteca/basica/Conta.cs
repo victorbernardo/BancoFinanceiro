@@ -14,6 +14,11 @@ namespace Biblioteca.basica
         private Agencia agencia;
         private Cliente cliente;
 
+        public Conta()
+        {
+            agencia = new Agencia();
+            cliente = new  Cliente();
+    }
         public int NumeroConta
         {
             get { return numeroConta; }

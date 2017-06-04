@@ -15,6 +15,10 @@ namespace Biblioteca.basica
         private string email;
         private Endereco endereco;
 
+        public Cliente()
+        {
+            endereco = new Endereco();
+    }
 
         public String Nome
         {

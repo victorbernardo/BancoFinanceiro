@@ -13,6 +13,6 @@ namespace Biblioteca.Interface
 
         void Excluir(Endereco endereco);
         void Alterar(Endereco endereco);
-        List<Endereco> Pesquisar(Endereco endereco); 
+        Endereco PesquisarPorId(int idEndereco); 
     }
 }

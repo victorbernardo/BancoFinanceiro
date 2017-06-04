@@ -13,6 +13,10 @@ namespace Biblioteca.basica
         private string tipo;
         private decimal valor;
         private Conta numeroConta;
+        public Movimentacao()
+        {
+            numeroConta = new  Conta();
+    }
 
         public int IdMovimentacao
         {

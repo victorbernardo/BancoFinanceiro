@@ -13,6 +13,7 @@ namespace Biblioteca.dados
 {
     public class DAOFuncionario : Conexao, IDAOFuncionario
     {
+        private DAOEndereco daoEndereco = new DAOEndereco();
         public void Inserir(Funcionario funcionario)
         {
             try
@@ -115,7 +116,51 @@ namespace Biblioteca.dados
             }
         }
 
-        public List<Funcionario> Pesquisar(Funcionario funcionario)
+        public Funcionario PesquisarPorId(int idFuncionario)
+        {
+            Funcionario funcionario = new Funcionario();
+            try
+            {
+
+                //abrir a conexão... Falta criar a classe de conexao
+                this.abrirConexao();
+                //instrucao a ser executada... Falta configurar essa string sql
+                string sql = "SELECT matricula, nome, cargo, senha, Numero_Agencia, endereco_id FROM funcionario  where matricula = @matricula";
+
+                SqlCommand cmd = new SqlCommand(sql, sqlConn);
+
+                cmd.Parameters.Add("@matricula", SqlDbType.Int);
+                cmd.Parameters["@matricula"].Value = idFuncionario;
+
+                //executando a instrucao e colocando o resultado em um leitor
+                SqlDataReader DbReader = cmd.ExecuteReader();
+                //lendo o resultado da consulta
+                while (DbReader.Read())
+                {
+                    
+                    //acessando os valores das colunas do resultado
+                    funcionario.Matricula = DbReader.GetInt32(DbReader.GetOrdinal("matricula"));
+                    funcionario.Nome = DbReader.GetDataTypeName(DbReader.GetOrdinal("nome"));
+                    funcionario.Cargo = DbReader.GetDataTypeName(DbReader.GetOrdinal("cargo"));
+                    funcionario.Senha = DbReader.GetDataTypeName(DbReader.GetOrdinal("senha"));
+                    funcionario.NumeroAgencia.NumeroAgencia = DbReader.GetInt32(DbReader.GetOrdinal("Numero_Agencia"));
+                    funcionario.Endereco = daoEndereco.PesquisarPorId(DbReader.GetInt32(DbReader.GetOrdinal("endereco_id")));
+                }
+                //fechando o leitor de resultados
+                DbReader.Close();
+                //liberando a memoria 
+                cmd.Dispose();
+                //fechando a conexao... Falta criar a classe de conexao
+                this.fecharConexao();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao conectar e pesquisar " + ex.Message);
+            }
+            return funcionario;
+        }
+
+        public List<Funcionario> ListarFuncionario()
         {
             List<Funcionario> retorno = new List<Funcionario>();
             try
@@ -123,12 +168,9 @@ namespace Biblioteca.dados
                 //abrir a conexão... Falta criar a classe de conexao
                 this.abrirConexao();
                 //instrucao a ser executada... Falta configurar essa string sql
-                string sql = "SELECT matricula, nome, cargo, senha, NumeroAgencia, endereco_id FROM funcionario  where matricula = @matricula";
+                string sql = "SELECT matricula, nome, cargo, senha, Numero_Agencia, endereco_id FROM funcionario ";
 
                 SqlCommand cmd = new SqlCommand(sql, sqlConn);
-
-                cmd.Parameters.Add("@matricula", SqlDbType.Int);
-                cmd.Parameters["@matricula"].Value = funcionario.Matricula;
 
                 //executando a instrucao e colocando o resultado em um leitor
                 SqlDataReader DbReader = cmd.ExecuteReader();
@@ -141,8 +183,8 @@ namespace Biblioteca.dados
                     f.Nome = DbReader.GetDataTypeName(DbReader.GetOrdinal("nome"));
                     f.Cargo = DbReader.GetDataTypeName(DbReader.GetOrdinal("cargo"));
                     f.Senha = DbReader.GetDataTypeName(DbReader.GetOrdinal("senha"));
-                    f.NumeroAgencia.NumeroAgencia = DbReader.GetInt32(DbReader.GetOrdinal("NumeroAgencia"));
-                    f.Endereco.IdEndereco = DbReader.GetInt32(DbReader.GetOrdinal("endereco_id"));
+                    f.NumeroAgencia.NumeroAgencia = DbReader.GetInt32(DbReader.GetOrdinal("Numero_Agencia"));
+                    f.Endereco = daoEndereco.PesquisarPorId(DbReader.GetInt32(DbReader.GetOrdinal("endereco_id")));
 
                     retorno.Add(f);
                 }

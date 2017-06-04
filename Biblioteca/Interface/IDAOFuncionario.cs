@@ -13,6 +13,7 @@ namespace Biblioteca.Interface
 
         void Excluir(Funcionario funcionario);
         void Alterar(Funcionario funcionario);
-        List<Funcionario> Pesquisar(Funcionario funcionario); 
+        Funcionario PesquisarPorId(int idFuncionario);
+        List<Funcionario> ListarFuncionario();
     }
 }

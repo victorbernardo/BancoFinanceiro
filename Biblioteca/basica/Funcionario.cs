@@ -16,6 +16,11 @@ namespace Biblioteca.basica
         private Agencia numeroAgencia;
         private Endereco endereco;
 
+        public Funcionario()
+        {
+            numeroAgencia = new Agencia();
+            endereco = new Endereco();
+    }
         public int Matricula
         {
             get { return matricula; }

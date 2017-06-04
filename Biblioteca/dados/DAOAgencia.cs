@@ -14,6 +14,7 @@ namespace Biblioteca.dados
 {
     public class DAOAgencia : Conexao, IDAOAgencia
     {
+        private DAOEndereco daoEndereco = new DAOEndereco();
         public void Inserir(Agencia agencia)
         {
             try
@@ -125,7 +126,7 @@ namespace Biblioteca.dados
                     //acessando os valores das colunas do resultado
                     agencia.Nome = DbReader.GetDataTypeName(DbReader.GetOrdinal("nome"));
                     agencia.NumeroAgencia = DbReader.GetInt32(DbReader.GetOrdinal("Numero_Agencia"));
-                   // agencia.Endereco.IdEndereco = DbReader.GetInt32(DbReader.GetOrdinal("endereco_id"));
+                    agencia.Endereco = daoEndereco.PesquisarPorId( DbReader.GetInt32(DbReader.GetOrdinal("endereco_id")));
 
                 }
                 //fechando o leitor de resultados
