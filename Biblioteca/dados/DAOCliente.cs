@@ -139,11 +139,11 @@ namespace Biblioteca.dados
                 while (DbReader.Read())
                 {
                     //acessando os valores das colunas do resultado
-                    c.Nome = DbReader.GetDataTypeName(DbReader.GetOrdinal("nome"));
-                    c.Telefone = DbReader.GetDataTypeName(DbReader.GetOrdinal("telefone"));
-                    c.Cpf = DbReader.GetDataTypeName(DbReader.GetOrdinal("cpf"));
+                    c.Nome = DbReader.GetString(DbReader.GetOrdinal("nome"));
+                    c.Telefone = DbReader.GetString(DbReader.GetOrdinal("telefone"));
+                    c.Cpf = DbReader.GetString(DbReader.GetOrdinal("cpf"));
                     c.IdCliente = DbReader.GetInt32(DbReader.GetOrdinal("Cliente_id"));
-                    c.Email = DbReader.GetDataTypeName(DbReader.GetOrdinal("email"));
+                    c.Email = DbReader.GetString(DbReader.GetOrdinal("email"));
                     //c.Endereco.IdEndereco = DbReader.GetInt32(DbReader.GetOrdinal("endereco_id"));
                 }
                 //fechando o leitor de resultados
