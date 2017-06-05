@@ -40,7 +40,7 @@ namespace clientes
             }
             catch (Exception ex)
             {
-                throw new Exception("Cliente nao selecionado " + ex.Message);
+                MessageBox.Show(ex.Message);
             }            
         }
         private void btnBuscarAgencia_Click(object sender, EventArgs e)
@@ -70,32 +70,37 @@ namespace clientes
             }
             catch (Exception ex)
             {
-                throw new Exception("Conta nao existe" + ex.Message);
+                MessageBox.Show(ex.Message);
             }           
         }
         private void btnIncluirConta_Click(object sender, EventArgs e)
         {
-            try
+            Agencia agen = new Agencia();
+            Cliente clie = new Cliente();
+            Service1Client sv = new Service1Client();
+            if (txtNumeroConta.Text == " ")
+                MessageBox.Show("Voce deve informar o numero da conta");
+            if (conta.Saldo < 0)
+                MessageBox.Show("Voce nao pode criar uma conta com saldo R$ 0,00");
+            else
             {
-                conta = new Conta();              
-                Agencia agen = new Agencia();
-                Cliente clie = new Cliente();
-                Service1Client sv = new Service1Client();
-                
-                
-                conta.NumeroConta = Convert.ToInt32(txtNumeroConta.Text);
-                conta.Saldo = Convert.ToDecimal(txtSaldo.Text);
+                conta.NumeroConta = Convert.ToInt32(txtNumeroConta.Text.Trim());
+                conta.Saldo = Convert.ToDecimal(txtSaldo.Text.Trim());
                 conta.DataCriacao = DateTime.Today;
-                agen.NumeroAgencia = Convert.ToInt32(txtNumeroAgencia.Text);
+                agen.NumeroAgencia = Convert.ToInt32(txtNumeroAgencia.Text.Trim());
                 clie.IdCliente = cliente.IdCliente;
-                conta.Agencia = agen;
+                conta.Numero_agencia = agen;
                 conta.Cliente = clie;
-                sv.SalvarConta(conta);
-                MessageBox.Show("Cadastrado com sucesso");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                try
+                {
+                    sv.SalvarConta(conta);
+                    MessageBox.Show("Cadastrado com sucesso");
+                    this.LimparCampo();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }            
         }
         //
@@ -106,20 +111,32 @@ namespace clientes
             txtNomeCliente.Text =cliente.Nome;
             txtEmail.Text = cliente.Email ?? "";
             txtCpf.Text = cliente.Cpf ?? "";
-            //txtEndereco.Text = cliente.Endereco.Rua ?? "";
+            txtEndereco.Text = cliente.Endereco.Rua ?? "";
         }
         private void carregaCampoAgencia(Agencia agencia)
         {
             txtNomeAgencia.Text = agencia.Nome??"";
             txtNumeroAgencia.Text = Convert.ToString(agencia.NumeroAgencia);
-           // txtEnderecoAgencia.Text = agencia.Endereco.Rua ?? "";        
+            txtEnderecoAgencia.Text = agencia.Endereco.Rua ?? "";        
         }
         private void carregaCampoConta(Conta conta)
         {
             txtNumeroConta.Text = conta.NumeroConta.ToString();
             txtSaldo.Text = Convert.ToString(conta.Saldo);
-            carregaCampoAgencia(conta.Agencia);
-            carregaCampoCliente(conta.Cliente);
+            //carregaCampoAgencia(conta.Numero_agencia);
+            //carregaCampoCliente(conta.Cliente);
+        }
+        private void LimparCampo()
+        {
+            txtNomeCliente.Text = ("");
+            txtEmail.Text = ("");
+            txtCpf.Text = ("");
+            txtEndereco.Text = ("");
+            txtNomeAgencia.Text = ("");
+            txtNumeroAgencia.Text = ("");
+            txtEnderecoAgencia.Text = ("");
+            txtNumeroConta.Text = ("");
+            txtSaldo.Text = ("");
         }
     }
 }

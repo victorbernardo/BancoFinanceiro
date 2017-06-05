@@ -44,8 +44,8 @@ namespace clientes
         {
             clientes = new List<Cliente>();
             Service1Client sv = new Service1Client();
-           
-            clientes = sv.PesquisaCliente().ToList();           
+
+            clientes = sv.PesquisaCliente().ToList();//sv.PesquisaCliente().ToList();           
             dgvClientes.AutoGenerateColumns = false;
             dgvClientes.AutoSize = true;
             //dgvClientes.DataSource = clientes;

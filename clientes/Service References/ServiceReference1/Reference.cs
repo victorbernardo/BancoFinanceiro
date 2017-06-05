@@ -22,22 +22,16 @@ namespace clientes.ServiceReference1 {
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CpfField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string EmailField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private clientes.ServiceReference1.Endereco EnderecoField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdClienteField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NomeField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TelefoneField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -50,7 +44,7 @@ namespace clientes.ServiceReference1 {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
         public string Cpf {
             get {
                 return this.CpfField;
@@ -63,7 +57,7 @@ namespace clientes.ServiceReference1 {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
         public string Email {
             get {
                 return this.EmailField;
@@ -76,7 +70,7 @@ namespace clientes.ServiceReference1 {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
         public clientes.ServiceReference1.Endereco Endereco {
             get {
                 return this.EnderecoField;
@@ -89,7 +83,7 @@ namespace clientes.ServiceReference1 {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
         public int IdCliente {
             get {
                 return this.IdClienteField;
@@ -102,7 +96,7 @@ namespace clientes.ServiceReference1 {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
         public string Nome {
             get {
                 return this.NomeField;
@@ -115,7 +109,7 @@ namespace clientes.ServiceReference1 {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
         public string Telefone {
             get {
                 return this.TelefoneField;
@@ -147,28 +141,20 @@ namespace clientes.ServiceReference1 {
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string BairroField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CepField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CidadeField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ComplementoField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdEnderecoField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NumeroField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string RuaField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string UfField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -181,7 +167,7 @@ namespace clientes.ServiceReference1 {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
         public string Bairro {
             get {
                 return this.BairroField;
@@ -194,7 +180,7 @@ namespace clientes.ServiceReference1 {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
         public string Cep {
             get {
                 return this.CepField;
@@ -207,7 +193,7 @@ namespace clientes.ServiceReference1 {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
         public string Cidade {
             get {
                 return this.CidadeField;
@@ -220,7 +206,7 @@ namespace clientes.ServiceReference1 {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
         public string Complemento {
             get {
                 return this.ComplementoField;
@@ -233,7 +219,7 @@ namespace clientes.ServiceReference1 {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
         public int IdEndereco {
             get {
                 return this.IdEnderecoField;
@@ -246,7 +232,7 @@ namespace clientes.ServiceReference1 {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
         public string Numero {
             get {
                 return this.NumeroField;
@@ -259,7 +245,7 @@ namespace clientes.ServiceReference1 {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
         public string Rua {
             get {
                 return this.RuaField;
@@ -272,7 +258,7 @@ namespace clientes.ServiceReference1 {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
         public string Uf {
             get {
                 return this.UfField;
@@ -304,13 +290,10 @@ namespace clientes.ServiceReference1 {
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private clientes.ServiceReference1.Endereco EnderecoField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NomeField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int NumeroAgenciaField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -323,7 +306,7 @@ namespace clientes.ServiceReference1 {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
         public clientes.ServiceReference1.Endereco Endereco {
             get {
                 return this.EnderecoField;
@@ -336,7 +319,7 @@ namespace clientes.ServiceReference1 {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
         public string Nome {
             get {
                 return this.NomeField;
@@ -349,7 +332,7 @@ namespace clientes.ServiceReference1 {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
         public int NumeroAgencia {
             get {
                 return this.NumeroAgenciaField;
@@ -381,19 +364,14 @@ namespace clientes.ServiceReference1 {
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private clientes.ServiceReference1.Agencia AgenciaField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private clientes.ServiceReference1.Cliente ClienteField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime DataCriacaoField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int NumeroContaField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private clientes.ServiceReference1.Agencia Numero_agenciaField;
+        
         private decimal SaldoField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -406,20 +384,7 @@ namespace clientes.ServiceReference1 {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public clientes.ServiceReference1.Agencia Agencia {
-            get {
-                return this.AgenciaField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.AgenciaField, value) != true)) {
-                    this.AgenciaField = value;
-                    this.RaisePropertyChanged("Agencia");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
         public clientes.ServiceReference1.Cliente Cliente {
             get {
                 return this.ClienteField;
@@ -432,7 +397,7 @@ namespace clientes.ServiceReference1 {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
         public System.DateTime DataCriacao {
             get {
                 return this.DataCriacaoField;
@@ -445,7 +410,7 @@ namespace clientes.ServiceReference1 {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
         public int NumeroConta {
             get {
                 return this.NumeroContaField;
@@ -458,7 +423,20 @@ namespace clientes.ServiceReference1 {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public clientes.ServiceReference1.Agencia Numero_agencia {
+            get {
+                return this.Numero_agenciaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Numero_agenciaField, value) != true)) {
+                    this.Numero_agenciaField = value;
+                    this.RaisePropertyChanged("Numero_agencia");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
         public decimal Saldo {
             get {
                 return this.SaldoField;

@@ -8,25 +8,25 @@
   <xs:element name="ArrayOfCliente" nillable="true" type="tns:ArrayOfCliente" />
   <xs:complexType name="Cliente">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Cpf" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Endereco" nillable="true" type="tns:Endereco" />
-      <xs:element minOccurs="0" name="IdCliente" type="xs:int" />
-      <xs:element minOccurs="0" name="Nome" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Telefone" nillable="true" type="xs:string" />
+      <xs:element name="Cpf" nillable="true" type="xs:string" />
+      <xs:element name="Email" nillable="true" type="xs:string" />
+      <xs:element name="Endereco" nillable="true" type="tns:Endereco" />
+      <xs:element name="IdCliente" type="xs:int" />
+      <xs:element name="Nome" nillable="true" type="xs:string" />
+      <xs:element name="Telefone" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Cliente" nillable="true" type="tns:Cliente" />
   <xs:complexType name="Endereco">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Bairro" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Cep" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Cidade" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Complemento" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="IdEndereco" type="xs:int" />
-      <xs:element minOccurs="0" name="Numero" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Rua" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Uf" nillable="true" type="xs:string" />
+      <xs:element name="Bairro" nillable="true" type="xs:string" />
+      <xs:element name="Cep" nillable="true" type="xs:string" />
+      <xs:element name="Cidade" nillable="true" type="xs:string" />
+      <xs:element name="Complemento" nillable="true" type="xs:string" />
+      <xs:element name="IdEndereco" type="xs:int" />
+      <xs:element name="Numero" nillable="true" type="xs:string" />
+      <xs:element name="Rua" nillable="true" type="xs:string" />
+      <xs:element name="Uf" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Endereco" nillable="true" type="tns:Endereco" />
@@ -38,9 +38,9 @@
   <xs:element name="ArrayOfAgencia" nillable="true" type="tns:ArrayOfAgencia" />
   <xs:complexType name="Agencia">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Endereco" nillable="true" type="tns:Endereco" />
-      <xs:element minOccurs="0" name="Nome" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="NumeroAgencia" type="xs:int" />
+      <xs:element name="Endereco" nillable="true" type="tns:Endereco" />
+      <xs:element name="Nome" nillable="true" type="xs:string" />
+      <xs:element name="NumeroAgencia" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Agencia" nillable="true" type="tns:Agencia" />
@@ -52,11 +52,11 @@
   <xs:element name="ArrayOfConta" nillable="true" type="tns:ArrayOfConta" />
   <xs:complexType name="Conta">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Agencia" nillable="true" type="tns:Agencia" />
-      <xs:element minOccurs="0" name="Cliente" nillable="true" type="tns:Cliente" />
-      <xs:element minOccurs="0" name="DataCriacao" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="NumeroConta" type="xs:int" />
-      <xs:element minOccurs="0" name="Saldo" type="xs:decimal" />
+      <xs:element name="Cliente" nillable="true" type="tns:Cliente" />
+      <xs:element name="DataCriacao" type="xs:dateTime" />
+      <xs:element name="NumeroConta" type="xs:int" />
+      <xs:element name="Numero_agencia" nillable="true" type="tns:Agencia" />
+      <xs:element name="Saldo" type="xs:decimal" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Conta" nillable="true" type="tns:Conta" />
