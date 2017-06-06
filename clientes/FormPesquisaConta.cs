@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 //importaçao de pacotes;
 using clientes.ServiceReference1;
+using Microsoft.VisualBasic;
 
 namespace clientes
 {
@@ -32,7 +33,10 @@ namespace clientes
             else
             {
                 int numeroConta = Int32.Parse(txtNumeroConta.Text);
-                this.CarregaGridPorNumerConta(numeroConta);
+                if (!Information.IsNumeric(numeroConta))
+                    MessageBox.Show("Voce deve informar só numeros");
+                else                    
+                    this.CarregaGridPorNumerConta(numeroConta);
             }
                  
         }
