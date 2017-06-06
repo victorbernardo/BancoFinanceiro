@@ -1,6 +1,6 @@
 ﻿using Biblioteca.dados;
-//using Biblioteca.exception;
-using Biblioteca.basica;
+using Biblioteca.exception;
+using Biblioteca;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,122 +9,70 @@ using System.Threading.Tasks;
 
 namespace Biblioteca.negocio
 {
-    public class ContaController : Exception
+    class ContaController : Exception
     {
         private DAOConta contaDao;
 
-        public ContaController()
+        public ContaController(DAOConta contaDao)
         {
-            this.contaDao = new DAOConta();
+            this.contaDao = contaDao;
         }
+
         public void CriarConta(Conta conta)
         {
-            this.ValidarPreenchimento(conta);
-            this.Duplicidade(conta);
-            this.Salvar(conta);
-        }
-        public List<Conta> ListarTodasContas()
-        {
-            return this.Listar();
-        }      
-        public void RemoverConta(Conta conta)
-        {
-            Conta conta1 = contaDao.PesquisarPorId(conta.NumeroConta);
-            if (conta1 != null)
+
+            conta = contaDao.ProcurarConta(conta.NumeroConta);
+            if (conta != null)
             {
-                contaDao.Excluir(conta);
-		    }
+                throw new GeralException("Conta já existe!");
+            }
             else
-            {
-			    throw new Exception("Conta Não Existe");
-		    }
-	    }
-        public Conta ProcurarContaPorId(int numeroConta)
-        {    
-            return Pesquisa(numeroConta);
-        }
-       
-        /*
-        public void ProcurarConta(Conta conta)
-        {
-            try
-            {
-                if (conta.Agencia != null)
-                {
-                    throw new BancoException("Agência não encontrada!");
-                }
-                else if (conta.NumeroConta < 10000)
-                {
-                    throw new BancoException("Conta inexiste!");
-                }
-                else if (contaDao.Pesquisar(conta) != null)
-                {
-                    throw new BancoException("Conta inexiste!");
-                }
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }            
-        }*/
-        /*
-###########################################################
-FUNÇÕES INTERNAS (fragmentação dos métodos)
-###########################################################
-*/
-       
-        private List<Conta> Listar()
-        {
-            try
-            {
-                return contaDao.ListarConta();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Erro no listar conta " + ex.Message);
-            }
-        }
-        private void Salvar(Conta conta)
-        {
-            try
             {
                 contaDao.Inserir(conta);
             }
-            catch (Exception ex)
-            {
-                throw new Exception("Erro ao inserir " + ex.Message);
-            }  
+
         }
-        private void ValidarPreenchimento(Conta conta)
-        {          
-            if(conta == null)
-                throw new Exception("Conta invalida");
-        }
-        private void Duplicidade(Conta conta)
-        {
-            if (contaDao.PesquisarPorId(conta.NumeroConta) != null)
-                throw new Exception("Conta ja existe");
-        }
+
         public bool Sacar(Conta conta, decimal valor)
         {
             if (conta.Saldo > valor)
             {
                 conta.Saldo -= valor;
+
             }
+
             return false;
+
         }
-        public Conta Pesquisa(int numeroConta)
+
+        public void Atualizar(Conta conta)
         {
-            try
-            {
-                return contaDao.PesquisarPorId(numeroConta);
-            }                            
-            catch (Exception ex)
-            {
-                throw new Exception("Conta nao existe " + ex.Message);
-            }                                                
+
         }
-    
+
+        public void RemoverConta(int numeroConta)
+        {
+            Conta conta = contaDao.ProcurarConta(numeroConta);
+            if (conta != null)
+            {
+                contaDao.RemoverConta(conta.NumeroConta);
+		    }else{
+			    throw new GeralException("Cliente Não Existe");
+		    }
+	    }
+
+        public bool depositar(Conta conta)
+        {
+            conta = contaDao.ProcurarConta(conta.NumeroConta);
+            if (conta != null)
+            {
+                contaDao.Depositar(conta.valorDepositado);
+                return true;
+            }
+            
+            return false;
+        }    
     }
+
 }
 
