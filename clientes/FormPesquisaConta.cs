@@ -15,6 +15,7 @@ namespace clientes
     public partial class FormPesquisaConta : Form
     {
         private List<Conta> contas;
+        private Conta conta;
 
         //CONSTRUTOR PADRAO
         public FormPesquisaConta()
@@ -26,7 +27,13 @@ namespace clientes
         //
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
-            carregaGridConta();
+            if(txtNumeroConta.Text.Equals(""))
+                carregaGridConta();
+            else
+            {
+                int numeroConta = Int32.Parse(txtNumeroConta.Text);
+                this.CarregaGridPorNumerConta(numeroConta);
+            }
                  
         }
         private void btnSelecionar_Click(object sender, EventArgs e)
@@ -40,15 +47,23 @@ namespace clientes
         {
             contas = new List<Conta>();
             Service1Client sv = new Service1Client();
-
             contas = sv.PesquisaConta().ToList();
             dgvContas.AutoGenerateColumns = false;
             dgvContas.DataSource = contas;
+           
         }      
         public Conta RetornaContaSelecionado()
         {
             Conta conta = dgvContas.CurrentRow != null ? contas.Find(c => c.NumeroConta.Equals(dgvContas.CurrentRow.Cells[0].Value)) : null;
             return conta;
+        }
+        private void CarregaGridPorNumerConta(int numeroConta)
+        {
+            contas = new List<Conta>();
+            Service1Client sv = new Service1Client();
+            contas.Add(sv.PesquisaContaPorNumeroConta(numeroConta));    
+            dgvContas.AutoGenerateColumns = false;
+            dgvContas.DataSource = contas;
         }
     }
 }

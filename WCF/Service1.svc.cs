@@ -53,5 +53,10 @@ namespace WCF
         {
             contaController.CriarConta(conta);
         }
+
+        public Conta PesquisaContaPorNumeroConta(int numeroConta)
+        {
+            return contaController.ProcurarContaPorId(numeroConta);
+        }
     }
 }

@@ -1,5 +1,4 @@
-﻿using clientes.ServiceReference1;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 //importaçaco de pacotes
+using clientes.ServiceReference1;
+using Microsoft.VisualBasic;
 
 namespace clientes
 {
@@ -34,7 +35,8 @@ namespace clientes
             {
                 FormPesquisaCliente fPesquisaCliente = new FormPesquisaCliente();
                 fPesquisaCliente.ShowDialog();
-
+                if(fPesquisaCliente.RetornaClienteSelecionado() == null)
+                    MessageBox.Show("Voce nao selecionou nenhum cliente ou nao existe cliente cadastrado");
                 cliente = fPesquisaCliente.RetornaClienteSelecionado();                
                 carregaCampoCliente(cliente);               
             }
@@ -49,13 +51,17 @@ namespace clientes
             {
                 FormPesquisaAgencia fPesquisaAgencia = new FormPesquisaAgencia();
                 fPesquisaAgencia.ShowDialog();
-
-                agencia = fPesquisaAgencia.RetornaAgenciaSelecionado();
-                carregaCampoAgencia(agencia);
+                if (fPesquisaAgencia.RetornaAgenciaSelecionado() == null)
+                    MessageBox.Show("Voce nao selecionou nenhuma agencia ou nao existe agencia cadastrada");
+                else
+                {
+                    agencia = fPesquisaAgencia.RetornaAgenciaSelecionado();
+                    carregaCampoAgencia(agencia);
+                }                
             }
             catch (Exception ex)
             {
-                throw new Exception("Agencia nao selecionada " + ex.Message);
+                MessageBox.Show(ex.Message);
             }
         }
         private void btnBuscarConta_Click(object sender, EventArgs e)
@@ -64,9 +70,13 @@ namespace clientes
             {
                 FormPesquisaConta fPesquisaConta = new FormPesquisaConta();
                 fPesquisaConta.ShowDialog();
-
-                conta = fPesquisaConta.RetornaContaSelecionado();
-                carregaCampoConta(conta);
+                if (fPesquisaConta.RetornaContaSelecionado() == null)
+                    MessageBox.Show("Voce nao selecionou nenhuma conta ou nao existe conta cadastrada");
+                else
+                {
+                    conta = fPesquisaConta.RetornaContaSelecionado();
+                    carregaCampoConta(conta);
+                }                
             }
             catch (Exception ex)
             {
@@ -78,9 +88,14 @@ namespace clientes
             Agencia agen = new Agencia();
             Cliente clie = new Cliente();
             Service1Client sv = new Service1Client();
-            if (txtNumeroConta.Text == " ")
-                MessageBox.Show("Voce deve informar o numero da conta");
-            if (conta.Saldo < 0)
+
+            if (txtNomeCliente.Text.Equals("") || txtEmail.Text.Equals("") || txtCpf.Text.Equals("") || txtEndereco.Text.Equals("") || txtNumeroAgencia.Text.Equals("") || txtNomeAgencia.Text.Equals("") || txtEnderecoAgencia.Text.Equals(""))
+                MessageBox.Show("Voce nao pode criar um conta com Cliente e Agencia vazios");
+            else if (txtNumeroConta.Text.Equals("") || txtSaldo.Text.Equals(""))
+                MessageBox.Show("Voce deve preencher todos os campos");
+            else if (!Information.IsNumeric(txtNumeroConta.Text) || !Information.IsNumeric(txtSaldo.Text))
+                MessageBox.Show("Voce só deve informar numeros");
+            else if (Convert.ToInt32(txtSaldo.Text) <= 0)
                 MessageBox.Show("Voce nao pode criar uma conta com saldo R$ 0,00");
             else
             {
@@ -89,7 +104,7 @@ namespace clientes
                 conta.DataCriacao = DateTime.Today;
                 agen.NumeroAgencia = Convert.ToInt32(txtNumeroAgencia.Text.Trim());
                 clie.IdCliente = cliente.IdCliente;
-                conta.Numero_agencia = agen;
+                conta.Agencia = agen;
                 conta.Cliente = clie;
                 try
                 {
@@ -108,7 +123,7 @@ namespace clientes
         //               
         private void carregaCampoCliente(Cliente cliente)
         {
-            txtNomeCliente.Text =cliente.Nome;
+            txtNomeCliente.Text = cliente.Nome;
             txtEmail.Text = cliente.Email ?? "";
             txtCpf.Text = cliente.Cpf ?? "";
             txtEndereco.Text = cliente.Endereco.Rua ?? "";

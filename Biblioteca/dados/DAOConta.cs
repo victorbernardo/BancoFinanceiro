@@ -115,9 +115,9 @@ namespace Biblioteca.dados
             Conta conta = new Conta();
             try
             {
-                //abrir a conexão... Falta criar a classe de conexao
+                //abrir a conexão
                 this.abrirConexao();
-                //instrucao a ser executada... Falta configurar essa string sql
+                //instrucao a ser executada
                 string sql = "SELECT numero_conta, Numero_Agencia, cliente_id, saldo, data_criacao FROM conta  where numero_conta = @numero_conta";
 
                 SqlCommand cmd = new SqlCommand(sql, sqlConn);
@@ -128,13 +128,14 @@ namespace Biblioteca.dados
                 //executando a instrucao e colocando o resultado em um leitor
                 SqlDataReader DbReader = cmd.ExecuteReader();
                 //lendo o resultado da consulta
-
+                
                 while (DbReader.Read())
                 {
+                    
                     //acessando os valores das colunas do resultado
                     conta.NumeroConta = DbReader.GetInt32(DbReader.GetOrdinal("numero_conta"));
                     conta.Agencia = daoAgencia.PesquisarPorId(DbReader.GetInt32(DbReader.GetOrdinal("Numero_Agencia")));
-                    conta.Cliente = daoCliente.PesquisarPorId(DbReader.GetInt32(DbReader.GetOrdinal("cliente_id")));
+                    conta.Cliente = daoCliente.PesquisarPorId(DbReader.GetInt32(DbReader.GetOrdinal("cliente_id")));                    
                     conta.Saldo = DbReader.GetDecimal(DbReader.GetOrdinal("saldo"));
                     conta.DataCriacao = DbReader.GetDateTime(DbReader.GetOrdinal("data_criacao"));
                 }
@@ -143,8 +144,9 @@ namespace Biblioteca.dados
                 DbReader.Close();
                 //liberando a memoria 
                 cmd.Dispose();
-                //fechando a conexao... Falta criar a classe de conexao
+                //fechando a conexao
                 this.fecharConexao();
+               
             }
             catch (Exception ex)
             {
