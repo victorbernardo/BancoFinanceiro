@@ -6,3 +6,11 @@ C:\Users\victo\Desktop\Projeto Melo\trunk\WCF\bin\Biblioteca.pdb
 C:\Users\victo\Desktop\Projeto Melo\trunk\WCF\obj\Debug\WCF.csprojResolveAssemblyReference.cache
 C:\Users\victo\Desktop\Projeto Melo\trunk\WCF\obj\Debug\WCF.dll
 C:\Users\victo\Desktop\Projeto Melo\trunk\WCF\obj\Debug\WCF.pdb
+C:\Projeto Melo\BancoFinanceiro\WCF\bin\WCF.dll.config
+C:\Projeto Melo\BancoFinanceiro\WCF\bin\WCF.dll
+C:\Projeto Melo\BancoFinanceiro\WCF\bin\WCF.pdb
+C:\Projeto Melo\BancoFinanceiro\WCF\bin\Biblioteca.exe
+C:\Projeto Melo\BancoFinanceiro\WCF\bin\Biblioteca.pdb
+C:\Projeto Melo\BancoFinanceiro\WCF\obj\Debug\WCF.csprojResolveAssemblyReference.cache
+C:\Projeto Melo\BancoFinanceiro\WCF\obj\Debug\WCF.dll
+C:\Projeto Melo\BancoFinanceiro\WCF\obj\Debug\WCF.pdb

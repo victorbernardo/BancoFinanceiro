@@ -3,3 +3,9 @@ C:\Users\victo\Desktop\Projeto Melo\trunk\Biblioteca\bin\Debug\Biblioteca.exe
 C:\Users\victo\Desktop\Projeto Melo\trunk\Biblioteca\bin\Debug\Biblioteca.pdb
 C:\Users\victo\Desktop\Projeto Melo\trunk\Biblioteca\obj\Debug\Biblioteca.exe
 C:\Users\victo\Desktop\Projeto Melo\trunk\Biblioteca\obj\Debug\Biblioteca.pdb
+C:\Projeto Melo\BancoFinanceiro\Biblioteca\bin\Debug\Biblioteca.exe.config
+C:\Projeto Melo\BancoFinanceiro\Biblioteca\obj\Debug\Biblioteca.exe
+C:\Projeto Melo\BancoFinanceiro\Biblioteca\obj\Debug\Biblioteca.pdb
+C:\Projeto Melo\BancoFinanceiro\Biblioteca\bin\Debug\Biblioteca.exe
+C:\Projeto Melo\BancoFinanceiro\Biblioteca\bin\Debug\Biblioteca.pdb
+C:\Projeto Melo\BancoFinanceiro\Biblioteca\obj\Debug\Biblioteca.csprojResolveAssemblyReference.cache
