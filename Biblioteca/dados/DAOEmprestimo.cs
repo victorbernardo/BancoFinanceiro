@@ -13,14 +13,20 @@ namespace Biblioteca.dados
 {
     public class DAOEmprestimo : Conexao, IDAOEmprestimo
     {
+        private DAOConta daoConta;
+        public DAOEmprestimo()
+        {
+            daoConta = new DAOConta();
+        }
+        
         public void Inserir(Emprestimo emprestimo)
         {
             try
             {
                 //abre uma conexao... Falta fazer a classe de concexao
                 this.abrirConexao();
-                string sql = "insert into emprestimo(taxa_juros_mensal, data_criacao, valor, numero)";
-                sql += "values(@taxa_juros_mensal, @data_criacao, @valor, @numero)";
+                string sql = "insert into emprestimo(taxa_juros_mensal, data_criacao, valor, numero_conta, quantidade_parcela)";
+                sql += "values(@taxa_juros_mensal, @data_criacao, @valor, @numero_conta, @quantidade_parcela)";
 
                 SqlCommand cmd = new SqlCommand(sql, this.sqlConn);
 
@@ -33,8 +39,11 @@ namespace Biblioteca.dados
                 cmd.Parameters.Add("@valor", SqlDbType.Decimal);
                 cmd.Parameters["@valor"].Value = emprestimo.Valor;
 
-                cmd.Parameters.Add("@numero", SqlDbType.Int);
-                cmd.Parameters["@numero"].Value = emprestimo.NumeroConta.NumeroConta;
+                cmd.Parameters.Add("@numero_conta", SqlDbType.Int);
+                cmd.Parameters["@numero_conta"].Value = emprestimo.NumeroConta.NumeroConta;
+
+                cmd.Parameters.Add("@quantidade_parcela", SqlDbType.Int);
+                cmd.Parameters["@quantidade_parcela"].Value = emprestimo.QuantidadeParcela;
 
                 //Executando a instrução
                 cmd.ExecuteNonQuery();
@@ -78,12 +87,15 @@ namespace Biblioteca.dados
             {
                 //abrir a conexão... Falta criar a classe de conexao
                 this.abrirConexao();
-                string sql = "update emprestimo set valor = @valor where idEmprestimo = @idEmprestimo";
+                string sql = "update emprestimo set valor = @valor where emprestimo_id = @emprestimo_id";
                 //instrucao a ser executada
                 SqlCommand cmd = new SqlCommand(sql, this.sqlConn);
 
                 cmd.Parameters.Add("@valor", SqlDbType.Decimal);
                 cmd.Parameters["@valor"].Value = emprestimo.Valor;
+
+                cmd.Parameters.Add("@emprestimo_id", SqlDbType.Decimal);
+                cmd.Parameters["@emprestimo_id"].Value = emprestimo.IdEmprestimo;
 
                 //executando a instrucao 
                 cmd.ExecuteNonQuery();
@@ -139,6 +151,48 @@ namespace Biblioteca.dados
                 throw new Exception("Erro ao conectar e pesquisar " + ex.Message);
             }
             return retorno;
+        }
+
+        public Emprestimo PesquisaPorId(int idEmprestimo)
+        {            
+            Emprestimo e = new Emprestimo();
+            try
+            {
+                //abrir a conexão... Falta criar a classe de conexao
+                this.abrirConexao();
+                //instrucao a ser executada... Falta configurar essa string sql
+                string sql = "SELECT emprestimo_id, taxa_juros_mensal, data_criacao, valor, numero_conta, quantidade_parcela FROM emprestimo  where emprestimo_id = @emprestimo_id";
+
+                SqlCommand cmd = new SqlCommand(sql, sqlConn);
+
+                cmd.Parameters.Add("@emprestimo_id", SqlDbType.Int);
+                cmd.Parameters["@emprestimo_id"].Value = idEmprestimo;
+
+                //executando a instrucao e colocando o resultado em um leitor
+                SqlDataReader DbReader = cmd.ExecuteReader();
+                while (DbReader.Read())
+                {
+                    //acessando os valores das colunas do resultado
+                    e.IdEmprestimo = DbReader.GetInt32(DbReader.GetOrdinal("emprestimo_id"));
+                    e.TaxaJurosMensal = DbReader.GetDecimal(DbReader.GetOrdinal("taxa_juros_mensal"));
+                    e.DataCriacao = DbReader.GetDateTime(DbReader.GetOrdinal("data_criacao"));
+                    e.Valor = DbReader.GetInt32(DbReader.GetOrdinal("valor"));
+                    e.NumeroConta = daoConta.PesquisarPorId(DbReader.GetInt32(DbReader.GetOrdinal("numero_conta")));
+                    e.QuantidadeParcela = DbReader.GetInt32(DbReader.GetOrdinal("quantidade_parcela"));
+                }
+                //fechando o leitor de resultados
+                DbReader.Close();
+                //liberando a memoria 
+                cmd.Dispose();
+                //fechando a conexao
+                this.fecharConexao();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao conectar e pesquisar " + ex.Message);
+            }
+            return e;
         }
     }
 }

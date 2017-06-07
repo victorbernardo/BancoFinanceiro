@@ -40,6 +40,7 @@ namespace Biblioteca.dados
 
                 cmd.Parameters.Add("@Endereco_id", SqlDbType.Int);
                 cmd.Parameters["@Endereco_id"].Value = cliente.Endereco.IdEndereco;
+                
                 //Executando a instrução
                 cmd.ExecuteNonQuery();
                 //liberando a memoria 
@@ -136,9 +137,11 @@ namespace Biblioteca.dados
 
                 //executando a instrucao e colocando o resultado em um leitor
                 SqlDataReader DbReader = cmd.ExecuteReader();
+               
 
                 while (DbReader.Read())
                 {
+                    
                     //acessando os valores das colunas do resultado
                     c.Nome = DbReader.GetString(DbReader.GetOrdinal("nome"));
                     c.Telefone = DbReader.GetString(DbReader.GetOrdinal("telefone"));
@@ -153,6 +156,7 @@ namespace Biblioteca.dados
                 cmd.Dispose();
                 //fechando a conexao... Falta criar a classe de conexao
                 this.fecharConexao();
+                
             }
             catch (Exception ex)
             {

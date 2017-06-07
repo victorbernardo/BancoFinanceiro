@@ -1,5 +1,4 @@
-﻿using clientes.ServiceReference1;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 //importaçaco de pacotes
+using clientes.ServiceReference1;
+using Microsoft.VisualBasic;
 
 namespace clientes
 {
@@ -17,6 +18,7 @@ namespace clientes
         private Cliente cliente;
         private Agencia agencia;
         private Conta conta;
+        private Service1Client sv;
         //CONSTRUTOR PADRAO
         public FormcadastroConta()
         {
@@ -24,6 +26,7 @@ namespace clientes
             cliente = new Cliente();
             agencia = new Agencia();
             conta = new Conta();
+            sv = new Service1Client();
         }
         //
         //FUNÇOES DOS BOTÕES
@@ -34,13 +37,14 @@ namespace clientes
             {
                 FormPesquisaCliente fPesquisaCliente = new FormPesquisaCliente();
                 fPesquisaCliente.ShowDialog();
-
+                if(fPesquisaCliente.RetornaClienteSelecionado() == null)
+                    MessageBox.Show("Voce nao selecionou nenhum cliente ou nao existe cliente cadastrado");
                 cliente = fPesquisaCliente.RetornaClienteSelecionado();                
                 carregaCampoCliente(cliente);               
             }
             catch (Exception ex)
             {
-                throw new Exception("Cliente nao selecionado " + ex.Message);
+                MessageBox.Show(ex.Message);
             }            
         }
         private void btnBuscarAgencia_Click(object sender, EventArgs e)
@@ -49,13 +53,17 @@ namespace clientes
             {
                 FormPesquisaAgencia fPesquisaAgencia = new FormPesquisaAgencia();
                 fPesquisaAgencia.ShowDialog();
-
-                agencia = fPesquisaAgencia.RetornaAgenciaSelecionado();
-                carregaCampoAgencia(agencia);
+                if (fPesquisaAgencia.RetornaAgenciaSelecionado() == null)
+                    MessageBox.Show("Voce nao selecionou nenhuma agencia ou nao existe agencia cadastrada");
+                else
+                {
+                    agencia = fPesquisaAgencia.RetornaAgenciaSelecionado();
+                    carregaCampoAgencia(agencia);
+                }                
             }
             catch (Exception ex)
             {
-                throw new Exception("Agencia nao selecionada " + ex.Message);
+                MessageBox.Show(ex.Message);
             }
         }
         private void btnBuscarConta_Click(object sender, EventArgs e)
@@ -64,38 +72,52 @@ namespace clientes
             {
                 FormPesquisaConta fPesquisaConta = new FormPesquisaConta();
                 fPesquisaConta.ShowDialog();
-
-                conta = fPesquisaConta.RetornaContaSelecionado();
-                carregaCampoConta(conta);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Conta nao existe" + ex.Message);
-            }           
-        }
-        private void btnIncluirConta_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                conta = new Conta();              
-                Agencia agen = new Agencia();
-                Cliente clie = new Cliente();
-                Service1Client sv = new Service1Client();
-                
-                
-                conta.NumeroConta = Convert.ToInt32(txtNumeroConta.Text);
-                conta.Saldo = Convert.ToDecimal(txtSaldo.Text);
-                conta.DataCriacao = DateTime.Today;
-                agen.NumeroAgencia = Convert.ToInt32(txtNumeroAgencia.Text);
-                clie.IdCliente = cliente.IdCliente;
-                conta.Agencia = agen;
-                conta.Cliente = clie;
-                sv.SalvarConta(conta);
-                MessageBox.Show("Cadastrado com sucesso");
+                if (fPesquisaConta.RetornaContaSelecionado() == null)
+                    MessageBox.Show("Voce nao selecionou nenhuma conta ou nao existe conta cadastrada");
+                else
+                {
+                    conta = fPesquisaConta.RetornaContaSelecionado();
+                    carregaCampoConta(conta);
+                }                
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }           
+        }
+        private void btnIncluirConta_Click(object sender, EventArgs e)
+        {
+            Agencia agen = new Agencia();
+            Cliente clie = new Cliente();
+            
+
+            if (txtNomeCliente.Text.Equals("") || txtEmail.Text.Equals("") || txtCpf.Text.Equals("") || txtEndereco.Text.Equals("") || txtNumeroAgencia.Text.Equals("") || txtNomeAgencia.Text.Equals("") || txtEnderecoAgencia.Text.Equals(""))
+                MessageBox.Show("Voce nao pode criar um conta com Cliente e Agencia vazios");
+            else if (txtNumeroConta.Text.Equals("") || txtSaldo.Text.Equals(""))
+                MessageBox.Show("Voce deve preencher todos os campos");
+            else if (!Information.IsNumeric(txtNumeroConta.Text) || !Information.IsNumeric(txtSaldo.Text))
+                MessageBox.Show("Voce só deve informar numeros");
+            else if (Convert.ToInt32(txtSaldo.Text) <= 0)
+                MessageBox.Show("Voce nao pode criar uma conta com saldo R$ 0,00");
+            else
+            {
+                conta.NumeroConta = Convert.ToInt32(txtNumeroConta.Text.Trim());
+                conta.Saldo = Convert.ToDecimal(txtSaldo.Text.Trim());
+                conta.DataCriacao = DateTime.Today;
+                agen.NumeroAgencia = Convert.ToInt32(txtNumeroAgencia.Text.Trim());
+                clie.IdCliente = cliente.IdCliente;
+                conta.Agencia = agen;
+                conta.Cliente = clie;
+                try
+                {
+                    sv.SalvarConta(conta);
+                    MessageBox.Show("Cadastrado com sucesso");
+                    this.LimparCampo();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }            
         }
         //
@@ -103,23 +125,46 @@ namespace clientes
         //               
         private void carregaCampoCliente(Cliente cliente)
         {
-            txtNomeCliente.Text =cliente.Nome;
+            txtNomeCliente.Text = cliente.Nome;
             txtEmail.Text = cliente.Email ?? "";
             txtCpf.Text = cliente.Cpf ?? "";
-            //txtEndereco.Text = cliente.Endereco.Rua ?? "";
+            txtEndereco.Text = cliente.Endereco.Rua ?? "";
         }
         private void carregaCampoAgencia(Agencia agencia)
         {
             txtNomeAgencia.Text = agencia.Nome??"";
             txtNumeroAgencia.Text = Convert.ToString(agencia.NumeroAgencia);
-           // txtEnderecoAgencia.Text = agencia.Endereco.Rua ?? "";        
+            txtEnderecoAgencia.Text = agencia.Endereco.Rua ?? "";        
         }
         private void carregaCampoConta(Conta conta)
         {
             txtNumeroConta.Text = conta.NumeroConta.ToString();
             txtSaldo.Text = Convert.ToString(conta.Saldo);
-            carregaCampoAgencia(conta.Agencia);
-            carregaCampoCliente(conta.Cliente);
+            //carregaCampoAgencia(conta.Numero_agencia);
+            //carregaCampoCliente(conta.Cliente);
+        }
+        private void LimparCampo()
+        {
+            txtNomeCliente.Text = ("");
+            txtEmail.Text = ("");
+            txtCpf.Text = ("");
+            txtEndereco.Text = ("");
+            txtNomeAgencia.Text = ("");
+            txtNumeroAgencia.Text = ("");
+            txtEnderecoAgencia.Text = ("");
+            txtNumeroConta.Text = ("");
+            txtSaldo.Text = ("");
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void btnIncluirEmprestimo_Click(object sender, EventArgs e)
+        {
+            FormCadastroEmprestimo fEmprestimo = new FormCadastroEmprestimo();
+            fEmprestimo.ShowDialog();
         }
     }
 }

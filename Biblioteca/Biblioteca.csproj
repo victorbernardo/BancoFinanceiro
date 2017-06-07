@@ -58,6 +58,7 @@
     <Compile Include="dados\DAOFuncionario.cs" />
     <Compile Include="dados\DAOMovimentacao.cs" />
     <Compile Include="dados\DAOParcela.cs" />
+    <Compile Include="exception\GeralException.cs" />
     <Compile Include="Interface\IDAOAgencia.cs" />
     <Compile Include="Interface\IDAOCliente.cs" />
     <Compile Include="Interface\IDAOConta.cs" />
@@ -66,15 +67,17 @@
     <Compile Include="Interface\IDAOFuncionario.cs" />
     <Compile Include="Interface\IDAOMovimentacao.cs" />
     <Compile Include="Interface\IDAOParcela.cs" />
+    <Compile Include="negocio\AgenciaController.cs" />
+    <Compile Include="negocio\ClienteController.cs" />
+    <Compile Include="negocio\ContaController.cs" />
+    <Compile Include="negocio\EmprestimoController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="negocio\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>

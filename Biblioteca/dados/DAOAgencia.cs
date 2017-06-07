@@ -105,7 +105,7 @@ namespace Biblioteca.dados
 
         public Agencia PesquisarPorId(int numeroConta)
         {
-            Agencia agencia = new Agencia();
+           Agencia agencia = new Agencia();
             try
             {
                 //abrir a conexão... Falta criar a classe de conexao
@@ -120,11 +120,13 @@ namespace Biblioteca.dados
 
                 //executando a instrucao e colocando o resultado em um leitor
                 SqlDataReader DbReader = cmd.ExecuteReader();
+                
                 //lendo o resultado da consulta
                 while (DbReader.Read())
                 {
+                    
                     //acessando os valores das colunas do resultado
-                    agencia.Nome = DbReader.GetDataTypeName(DbReader.GetOrdinal("nome"));
+                    agencia.Nome = DbReader.GetString(DbReader.GetOrdinal("nome"));
                     agencia.NumeroAgencia = DbReader.GetInt32(DbReader.GetOrdinal("Numero_Agencia"));
                     agencia.Endereco = daoEndereco.PesquisarPorId( DbReader.GetInt32(DbReader.GetOrdinal("endereco_id")));
 
@@ -135,6 +137,7 @@ namespace Biblioteca.dados
                 cmd.Dispose();
                 //fechando a conexao... Falta criar a classe de conexao
                 this.fecharConexao();
+                
             }
             catch (Exception ex)
             {

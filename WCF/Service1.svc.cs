@@ -7,7 +7,7 @@ using System.ServiceModel.Web;
 using System.Text;
 //importaçao de pacotes
 using Biblioteca.basica;
-using Biblioteca.dados;
+using Biblioteca.negocio;
 
 namespace WCF
 {
@@ -15,41 +15,61 @@ namespace WCF
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class Service1 : IService1
     {
+        private static ContaController contaController;
+        private static ClienteController clienteController;
+        private static AgenciaController agenciaController;
+        private static EmprestimoController emprestimoController;
+        //
+        // construtor
+        //
+        private Service1()
+        {
+            contaController = new ContaController();
+            clienteController = new ClienteController();
+            agenciaController = new AgenciaController();
+            emprestimoController = new EmprestimoController();
+        }
         //
         // cliente
         //
         public List<Cliente> PesquisaCliente()
         {
-            List<Cliente> listaCliente = new List<Cliente>();
-            DAOCliente daoCliente = new DAOCliente();
-            listaCliente = daoCliente.Consultar();
-            return listaCliente;
+            return clienteController.ListarTodosClientes();
         }
         //
         // agencia
         //
         public List<Agencia> PesquisaAgencia()
         {
-            List<Agencia> listaAgencia = new List<Agencia>();
-            DAOAgencia daoAgencia = new DAOAgencia();
-            listaAgencia = daoAgencia.Consultar();
-            return listaAgencia;
+            return agenciaController.ListarTodasAgencia();
         }
         //
         // conta
         //
-        public List<Conta> PesquisaConta()
-        {
-            List<Conta> listaConta = new List<Conta>();
-            DAOConta daoConta = new DAOConta();
-            listaConta = daoConta.ListarConta();            
-            return listaConta;
-        }
-
+     
         public void SalvarConta(Conta conta)
         {
-            DAOConta daoConta = new DAOConta();
-            daoConta.Inserir(conta);
+            contaController.CriarConta(conta);
+        }
+       
+        public Conta PesquisaContaPorNumeroConta(int numeroConta)
+        {
+            return contaController.PesquisarPorId(numeroConta);
+        }
+        //
+        // emprestimo
+        //
+        public void SalvarEmprestimo(Emprestimo emprestimo)
+        {
+            emprestimoController.Salvar(emprestimo);
+        }
+
+
+
+
+        public List<Conta> PesquisaConta()
+        {
+            return contaController.Listar();
         }
     }
 }

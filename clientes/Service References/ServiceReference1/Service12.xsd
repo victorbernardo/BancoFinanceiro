@@ -60,4 +60,15 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Conta" nillable="true" type="tns:Conta" />
+  <xs:complexType name="Emprestimo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DataCriacao" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IdEmprestimo" type="xs:int" />
+      <xs:element minOccurs="0" name="NumeroConta" nillable="true" type="tns:Conta" />
+      <xs:element minOccurs="0" name="QuantidadeParcela" type="xs:int" />
+      <xs:element minOccurs="0" name="TaxaJurosMensal" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Valor" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Emprestimo" nillable="true" type="tns:Emprestimo" />
 </xs:schema>

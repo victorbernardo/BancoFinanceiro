@@ -481,6 +481,131 @@ namespace clientes.ServiceReference1 {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Emprestimo", Namespace="http://schemas.datacontract.org/2004/07/Biblioteca.basica")]
+    [System.SerializableAttribute()]
+    public partial class Emprestimo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime DataCriacaoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdEmprestimoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private clientes.ServiceReference1.Conta NumeroContaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int QuantidadeParcelaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal TaxaJurosMensalField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal ValorField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime DataCriacao {
+            get {
+                return this.DataCriacaoField;
+            }
+            set {
+                if ((this.DataCriacaoField.Equals(value) != true)) {
+                    this.DataCriacaoField = value;
+                    this.RaisePropertyChanged("DataCriacao");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdEmprestimo {
+            get {
+                return this.IdEmprestimoField;
+            }
+            set {
+                if ((this.IdEmprestimoField.Equals(value) != true)) {
+                    this.IdEmprestimoField = value;
+                    this.RaisePropertyChanged("IdEmprestimo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public clientes.ServiceReference1.Conta NumeroConta {
+            get {
+                return this.NumeroContaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NumeroContaField, value) != true)) {
+                    this.NumeroContaField = value;
+                    this.RaisePropertyChanged("NumeroConta");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int QuantidadeParcela {
+            get {
+                return this.QuantidadeParcelaField;
+            }
+            set {
+                if ((this.QuantidadeParcelaField.Equals(value) != true)) {
+                    this.QuantidadeParcelaField = value;
+                    this.RaisePropertyChanged("QuantidadeParcela");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal TaxaJurosMensal {
+            get {
+                return this.TaxaJurosMensalField;
+            }
+            set {
+                if ((this.TaxaJurosMensalField.Equals(value) != true)) {
+                    this.TaxaJurosMensalField = value;
+                    this.RaisePropertyChanged("TaxaJurosMensal");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Valor {
+            get {
+                return this.ValorField;
+            }
+            set {
+                if ((this.ValorField.Equals(value) != true)) {
+                    this.ValorField = value;
+                    this.RaisePropertyChanged("Valor");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService1")]
     public interface IService1 {
@@ -508,6 +633,18 @@ namespace clientes.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SalvarConta", ReplyAction="http://tempuri.org/IService1/SalvarContaResponse")]
         System.Threading.Tasks.Task SalvarContaAsync(clientes.ServiceReference1.Conta conta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/PesquisaContaPorNumeroConta", ReplyAction="http://tempuri.org/IService1/PesquisaContaPorNumeroContaResponse")]
+        clientes.ServiceReference1.Conta PesquisaContaPorNumeroConta(int numeroConta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/PesquisaContaPorNumeroConta", ReplyAction="http://tempuri.org/IService1/PesquisaContaPorNumeroContaResponse")]
+        System.Threading.Tasks.Task<clientes.ServiceReference1.Conta> PesquisaContaPorNumeroContaAsync(int numeroConta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SalvarEmprestimo", ReplyAction="http://tempuri.org/IService1/SalvarEmprestimoResponse")]
+        void SalvarEmprestimo(clientes.ServiceReference1.Emprestimo emprestimo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SalvarEmprestimo", ReplyAction="http://tempuri.org/IService1/SalvarEmprestimoResponse")]
+        System.Threading.Tasks.Task SalvarEmprestimoAsync(clientes.ServiceReference1.Emprestimo emprestimo);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -567,6 +704,22 @@ namespace clientes.ServiceReference1 {
         
         public System.Threading.Tasks.Task SalvarContaAsync(clientes.ServiceReference1.Conta conta) {
             return base.Channel.SalvarContaAsync(conta);
+        }
+        
+        public clientes.ServiceReference1.Conta PesquisaContaPorNumeroConta(int numeroConta) {
+            return base.Channel.PesquisaContaPorNumeroConta(numeroConta);
+        }
+        
+        public System.Threading.Tasks.Task<clientes.ServiceReference1.Conta> PesquisaContaPorNumeroContaAsync(int numeroConta) {
+            return base.Channel.PesquisaContaPorNumeroContaAsync(numeroConta);
+        }
+        
+        public void SalvarEmprestimo(clientes.ServiceReference1.Emprestimo emprestimo) {
+            base.Channel.SalvarEmprestimo(emprestimo);
+        }
+        
+        public System.Threading.Tasks.Task SalvarEmprestimoAsync(clientes.ServiceReference1.Emprestimo emprestimo) {
+            return base.Channel.SalvarEmprestimoAsync(emprestimo);
         }
     }
 }

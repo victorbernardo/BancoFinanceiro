@@ -13,8 +13,7 @@ namespace Biblioteca.Interface
 
         void Excluir(Conta conta);
         void Alterar(Conta conta);
-       Conta PesquisarPorId(int numeroConta);
-
+        Conta PesquisarPorId(int numeroConta);
         List<Conta> ListarConta();
     }
 }

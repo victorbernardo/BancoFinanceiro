@@ -1,0 +1,14 @@
+C:\Users\victo\Desktop\Projeto Melo\trunk\clientes\bin\Debug\clientes.exe.config
+C:\Users\victo\Desktop\Projeto Melo\trunk\clientes\bin\Debug\clientes.exe
+C:\Users\victo\Desktop\Projeto Melo\trunk\clientes\bin\Debug\clientes.pdb
+C:\Users\victo\Desktop\Projeto Melo\trunk\clientes\obj\Debug\clientes.FormcadastroConta.resources
+C:\Users\victo\Desktop\Projeto Melo\trunk\clientes\obj\Debug\clientes.FormCadastroCliente.resources
+C:\Users\victo\Desktop\Projeto Melo\trunk\clientes\obj\Debug\clientes.FormCadastroEmprestimo.resources
+C:\Users\victo\Desktop\Projeto Melo\trunk\clientes\obj\Debug\clientes.FormPesquisaAgencia.resources
+C:\Users\victo\Desktop\Projeto Melo\trunk\clientes\obj\Debug\clientes.FormPesquisaCliente.resources
+C:\Users\victo\Desktop\Projeto Melo\trunk\clientes\obj\Debug\clientes.FormPesquisaConta.resources
+C:\Users\victo\Desktop\Projeto Melo\trunk\clientes\obj\Debug\clientes.Properties.Resources.resources
+C:\Users\victo\Desktop\Projeto Melo\trunk\clientes\obj\Debug\Cliente.csproj.GenerateResource.Cache
+C:\Users\victo\Desktop\Projeto Melo\trunk\clientes\obj\Debug\clientes.exe
+C:\Users\victo\Desktop\Projeto Melo\trunk\clientes\obj\Debug\clientes.pdb
+C:\Users\victo\Desktop\Projeto Melo\trunk\clientes\obj\Debug\Cliente.csprojResolveAssemblyReference.cache
