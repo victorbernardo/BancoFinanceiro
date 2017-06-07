@@ -40,6 +40,7 @@ namespace Biblioteca.dados
 
                 cmd.Parameters.Add("@Endereco_id", SqlDbType.Int);
                 cmd.Parameters["@Endereco_id"].Value = cliente.Endereco.IdEndereco;
+                
                 //Executando a instrução
                 cmd.ExecuteNonQuery();
                 //liberando a memoria 
