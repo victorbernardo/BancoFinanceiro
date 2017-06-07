@@ -97,6 +97,9 @@ namespace Biblioteca.dados
                 cmd.Parameters.Add("@saldo", SqlDbType.Decimal);
                 cmd.Parameters["@saldo"].Value = conta.Saldo;
 
+                cmd.Parameters.Add("@numero_conta", SqlDbType.Decimal);
+                cmd.Parameters["@numero_conta"].Value = conta.NumeroConta;
+
                 //executando a instrucao 
                 cmd.ExecuteNonQuery();
                 //liberando a memoria 
@@ -130,8 +133,7 @@ namespace Biblioteca.dados
                 //lendo o resultado da consulta
                 
                 while (DbReader.Read())
-                {
-                    
+                {                    
                     //acessando os valores das colunas do resultado
                     conta.NumeroConta = DbReader.GetInt32(DbReader.GetOrdinal("numero_conta"));
                     conta.Agencia = daoAgencia.PesquisarPorId(DbReader.GetInt32(DbReader.GetOrdinal("Numero_Agencia")));

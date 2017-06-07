@@ -1,34 +1,138 @@
 ﻿using Biblioteca.dados;
-using Biblioteca.exception;
+//using Biblioteca.exception;
 using Biblioteca;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Biblioteca.basica;
 
 namespace Biblioteca.negocio
 {
-    class ContaController : Exception
+    public class ContaController : Exception
     {
-        private DAOConta contaDao;
+        private DAOConta daoConta;
 
-        public ContaController(DAOConta contaDao)
+        public ContaController()
         {
-            this.contaDao = contaDao;
+            this.daoConta = new DAOConta();
         }
 
         public void CriarConta(Conta conta)
         {
 
-            conta = contaDao.ProcurarConta(conta.NumeroConta);
+            conta = daoConta.PesquisarPorId(conta.NumeroConta);
             if (conta != null)
             {
-                throw new GeralException("Conta já existe!");
+                throw new Exception("Conta já existe!");
             }
             else
             {
-                contaDao.Inserir(conta);
+
+			    throw new Exception("Conta Não Existe");
+		    }
+	    }
+        /*public Conta ProcurarContaPorId(int numeroConta)
+        {    
+            return Pesquisa(numeroConta);
+        }
+        */
+       
+        /*
+        public void ProcurarConta(Conta conta)
+        {
+            try
+            {
+                if (conta.Agencia != null)
+                {
+                    throw new BancoException("Agência não encontrada!");
+                }
+                else if (conta.NumeroConta < 10000)
+                {
+                    throw new BancoException("Conta inexiste!");
+                }
+                else if (contaDao.Pesquisar(conta) != null)
+                {
+                    throw new BancoException("Conta inexiste!");
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }            
+        }*/
+        /*
+###########################################################
+FUNÇÕES INTERNAS (fragmentação dos métodos)
+###########################################################
+*/
+       
+        public List<Conta> Listar()
+        {
+            try
+            {
+                return daoConta.ListarConta();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro no listar conta " + ex.Message);
+            }
+        }
+
+        /*
+        private void Salvar(Conta conta)
+        {
+            try
+            {
+
+			    throw new Exception("Conta Não Existe");
+		    }
+	    }
+        /*public Conta ProcurarContaPorId(int numeroConta)
+        {    
+            return Pesquisa(numeroConta);
+        }*/
+       
+        /*
+        public void ProcurarConta(Conta conta)
+        {
+            try
+            {
+                if (conta.Agencia != null)
+                {
+                    throw new BancoException("Agência não encontrada!");
+                }
+                else if (conta.NumeroConta < 10000)
+                {
+                    throw new BancoException("Conta inexiste!");
+                }
+                else if (contaDao.Pesquisar(conta) != null)
+                {
+                    throw new BancoException("Conta inexiste!");
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }            
+        }*/
+        /*
+###########################################################
+FUNÇÕES INTERNAS (fragmentação dos métodos)
+###########################################################
+*/
+       
+        public void Salvar(Conta conta)
+        {
+            try
+            {
+
+                daoConta.Inserir(conta);
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
 
         }
@@ -45,33 +149,53 @@ namespace Biblioteca.negocio
 
         }
 
-        public void Atualizar(Conta conta)
-        {
-
-        }
-
+        
         public void RemoverConta(int numeroConta)
         {
-            Conta conta = contaDao.ProcurarConta(numeroConta);
+            Conta conta = daoConta.PesquisarPorId(numeroConta);
             if (conta != null)
             {
-                contaDao.RemoverConta(conta.NumeroConta);
+                daoConta.Excluir(conta);
 		    }else{
-			    throw new GeralException("Cliente Não Existe");
+			    throw new Exception("Cliente Não Existe");
 		    }
 	    }
 
-        public bool depositar(Conta conta)
+        public Conta PesquisarPorId(int numeroConta)
         {
-            conta = contaDao.ProcurarConta(conta.NumeroConta);
+            
+            try
+            {
+
+                return daoConta.PesquisarPorId(numeroConta);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+        /*public bool depositar(Conta conta)
+        {
+            conta = daoConta.PesquisarPorId(numeroConta);
             if (conta != null)
             {
+
+                throw new Exception("Conta nao existe " + ex.Message);
+            }                                                
+        }
+
+                throw new Exception("Conta nao existe " + ex.Message);
+            }                                                
+        }
+    
+
                 contaDao.Depositar(conta.valorDepositado);
                 return true;
             }
             
             return false;
-        }    
+        }   */ 
+
     }
 
 }

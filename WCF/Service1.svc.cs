@@ -18,6 +18,7 @@ namespace WCF
         private static ContaController contaController;
         private static ClienteController clienteController;
         private static AgenciaController agenciaController;
+        private static EmprestimoController emprestimoController;
         //
         // construtor
         //
@@ -26,6 +27,7 @@ namespace WCF
             contaController = new ContaController();
             clienteController = new ClienteController();
             agenciaController = new AgenciaController();
+            emprestimoController = new EmprestimoController();
         }
         //
         // cliente
@@ -44,19 +46,30 @@ namespace WCF
         //
         // conta
         //
-        public List<Conta> PesquisaConta()
-        {
-            return contaController.ListarTodasContas();
-        }
-
+     
         public void SalvarConta(Conta conta)
         {
             contaController.CriarConta(conta);
         }
-
+       
         public Conta PesquisaContaPorNumeroConta(int numeroConta)
         {
-            return contaController.ProcurarContaPorId(numeroConta);
+            return contaController.PesquisarPorId(numeroConta);
+        }
+        //
+        // emprestimo
+        //
+        public void SalvarEmprestimo(Emprestimo emprestimo)
+        {
+            emprestimoController.Salvar(emprestimo);
+        }
+
+
+
+
+        public List<Conta> PesquisaConta()
+        {
+            return contaController.Listar();
         }
     }
 }

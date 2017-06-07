@@ -63,4 +63,16 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="SalvarEmprestimo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Biblioteca.basica" minOccurs="0" name="emprestimo" nillable="true" type="q6:Emprestimo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SalvarEmprestimoResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

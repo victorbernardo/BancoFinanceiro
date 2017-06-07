@@ -18,6 +18,7 @@ namespace clientes
         private Cliente cliente;
         private Agencia agencia;
         private Conta conta;
+        private Service1Client sv;
         //CONSTRUTOR PADRAO
         public FormcadastroConta()
         {
@@ -25,6 +26,7 @@ namespace clientes
             cliente = new Cliente();
             agencia = new Agencia();
             conta = new Conta();
+            sv = new Service1Client();
         }
         //
         //FUNÇOES DOS BOTÕES
@@ -87,7 +89,7 @@ namespace clientes
         {
             Agencia agen = new Agencia();
             Cliente clie = new Cliente();
-            Service1Client sv = new Service1Client();
+            
 
             if (txtNomeCliente.Text.Equals("") || txtEmail.Text.Equals("") || txtCpf.Text.Equals("") || txtEndereco.Text.Equals("") || txtNumeroAgencia.Text.Equals("") || txtNomeAgencia.Text.Equals("") || txtEnderecoAgencia.Text.Equals(""))
                 MessageBox.Show("Voce nao pode criar um conta com Cliente e Agencia vazios");
@@ -152,6 +154,17 @@ namespace clientes
             txtEnderecoAgencia.Text = ("");
             txtNumeroConta.Text = ("");
             txtSaldo.Text = ("");
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void btnIncluirEmprestimo_Click(object sender, EventArgs e)
+        {
+            FormCadastroEmprestimo fEmprestimo = new FormCadastroEmprestimo();
+            fEmprestimo.ShowDialog();
         }
     }
 }

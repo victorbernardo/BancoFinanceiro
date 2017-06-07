@@ -3,70 +3,67 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Biblioteca.basica;
 using Biblioteca.dados;
-using Biblioteca.exception;
 
 namespace Biblioteca.negocio
 {
-    class EmprestimoController : Exception
+    public class EmprestimoController
     {
-        
-        private DAOEmprestimo emprestimoDao;
-        private ProcurarContaController procurarContaController;
-
-        public EmprestimoController(DAOEmprestimo emprestimoDao, ProcurarContaController procurarContaController)
+        private DAOEmprestimo daoEmprestimo;
+        public EmprestimoController()
         {
-            this.emprestimoDao = emprestimoDao;
-            this.procurarContaController = procurarContaController;
+            this.daoEmprestimo = new DAOEmprestimo();
+        }
+        public void Salvar(Emprestimo emprestimo)
+        {
+            this.ValidaEmprestimo(emprestimo);
+            this.VerificaDuplicidade(emprestimo);
+            this.AumentaSaldo(emprestimo);
+            this.InserirNovo(emprestimo);
+            
         }
 
-        public void FazerEmprestimo(Emprestimo emprestimo)
+
+
+
+
+/*
+###########################################################
+FUNÇÕES INTERNAS (fragmentação dos métodos)
+###########################################################
+*/
+        private void ValidaEmprestimo(Emprestimo e)
         {
-            if (emprestimo != null)
-            {
-                if (emprestimo.TaxaJurosMensal != null)
-                {
-                    if (emprestimo.Valor != null)
-                    {
-                       
-                        emprestimoDao.Inserir(emprestimo);
-                       
-                    }
-                    else
-                    {
-                        throw new GeralException("Informe o valor!");
-                    }
-                }
-                else
-                {
-                    throw new GeralException("Informe a taxa de juros!");
-                }
-
-            }
-            else
-            {
-                throw new GeralException("Não foi possível realizar o empréstimo!");
-            }
+            if (e.QuantidadeParcela.Equals(0))
+                throw new Exception("Emprestimo invalido");
         }
-
-        public bool PagarParcela(Parcela parcela, Conta conta)
+        private void VerificaDuplicidade(Emprestimo e)
         {
-            if (parcela.NumeroParcela <= 12)
-            {
-                if (conta.Saldo > parcela.Valor)
-                {
-                    conta.Saldo -= parcela.Valor;
-
-                    return true;
-                }
-                
-            }
-           
-            return false;
+            //falta configurar a funçao de duplicidade
+            if (daoEmprestimo.PesquisaPorId(e.IdEmprestimo) == null)
+                throw new Exception("Emprestimo ja existe");            
         }
-
-        
+        private void InserirNovo(Emprestimo e)
+        {
+            try
+            {
+                daoEmprestimo.Inserir(e);
+            }
+            catch (Exception ex)
+            {                
+                throw new Exception("Erro no inserir emprestimo " + ex.Message);
+            }
+            
+        }
+        private void AumentaSaldo(Emprestimo e)
+        {
+            DAOConta daoConta = new DAOConta();
+            int numeroConta = e.NumeroConta.NumeroConta;            
+            Conta conta = daoConta.PesquisarPorId(numeroConta);
+            conta.Saldo += e.Valor;                         
+            daoConta.Alterar(conta);
+            
+        }
     }
 }
