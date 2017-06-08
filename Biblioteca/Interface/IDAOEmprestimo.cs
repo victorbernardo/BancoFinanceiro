@@ -12,6 +12,7 @@ namespace Biblioteca.Interface
         void Inserir(Emprestimo emprestimo);
         void Excluir(Emprestimo emprestimo);
         void Alterar(Emprestimo emprestimo);
-        List<Emprestimo> Pesquisar(Emprestimo emprestimo);
+        List<Emprestimo> Pesquisar();
+        Emprestimo PesquisaPorId(int idEmprestimo);
     }
 }

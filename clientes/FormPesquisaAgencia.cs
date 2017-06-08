@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 //importaçao de pacotes
 using clientes.ServiceReference1;
-//using Biblioteca.basica;
 
 namespace clientes
 {

@@ -109,23 +109,21 @@ namespace Biblioteca.dados
                 throw new Exception("Erro ao conectar e atualizar " + ex.Message);
             }
         }
-        public List<Emprestimo> Pesquisar(Emprestimo emprestimo)
+        public List<Emprestimo> Pesquisar()
         {
             List<Emprestimo> retorno = new List<Emprestimo>();
             try
             {
-                //abrir a conexão... Falta criar a classe de conexao
+                //abrir a conexão
                 this.abrirConexao();
-                //instrucao a ser executada... Falta configurar essa string sql
-                string sql = "SELECT emprestimo_id, taxa_juros_mensal, data_criacao, valor, numeroConta FROM emprestimo  where emprestimo_id = @emprestimo_id";
+                //instrucao a ser executada
+                string sql = "select Emprestimo.Emprestimo_id, Conta.Numero_conta, Emprestimo.Valor, Emprestimo.Quantidade_parcela,Emprestimo.Taxa_juros_mensal, Cliente.Nome, Cliente.Cpf from Emprestimo inner join Conta on Emprestimo.Numero_conta = Conta.Numero_conta inner join Cliente on Conta.Cliente_id = Cliente.Cliente_id";
 
                 SqlCommand cmd = new SqlCommand(sql, sqlConn);
 
-                cmd.Parameters.Add("@emprestimo_id", SqlDbType.Int);
-                cmd.Parameters["@emprestimo_id"].Value = emprestimo.IdEmprestimo;
-
                 //executando a instrucao e colocando o resultado em um leitor
                 SqlDataReader DbReader = cmd.ExecuteReader();
+
                 //lendo o resultado da consulta
                 while (DbReader.Read())
                 {
@@ -133,9 +131,12 @@ namespace Biblioteca.dados
                     //acessando os valores das colunas do resultado
                     emprestimo1.IdEmprestimo = DbReader.GetInt32(DbReader.GetOrdinal("emprestimo_id"));
                     emprestimo1.TaxaJurosMensal = DbReader.GetDecimal(DbReader.GetOrdinal("taxa_juros_mensal"));
-                    emprestimo1.DataCriacao = DbReader.GetDateTime(DbReader.GetOrdinal("data_criacao"));
+                    emprestimo1.QuantidadeParcela = DbReader.GetInt32(DbReader.GetOrdinal("quantidade_parcela"));
+                    //emprestimo1.DataCriacao = DbReader.GetDateTime(DbReader.GetOrdinal("data_criacao"));
                     emprestimo1.Valor = DbReader.GetDecimal(DbReader.GetOrdinal("valor"));
-                    emprestimo1.NumeroConta.NumeroConta = DbReader.GetInt32(DbReader.GetOrdinal("numeroConta"));
+                    emprestimo1.NumeroConta.NumeroConta = DbReader.GetInt32(DbReader.GetOrdinal("numero_Conta"));
+                    emprestimo1.NumeroConta.Cliente.Nome = DbReader.GetString(DbReader.GetOrdinal("nome"));
+                    emprestimo1.NumeroConta.Cliente.Cpf = DbReader.GetString(DbReader.GetOrdinal("cpf"));
 
                     retorno.Add(emprestimo1);
                 }
@@ -143,7 +144,7 @@ namespace Biblioteca.dados
                 DbReader.Close();
                 //liberando a memoria 
                 cmd.Dispose();
-                //fechando a conexao... Falta criar a classe de conexao
+                //fechando a conexao
                 this.fecharConexao();
             }
             catch (Exception ex)
@@ -152,33 +153,37 @@ namespace Biblioteca.dados
             }
             return retorno;
         }
-
-        public Emprestimo PesquisaPorId(int idEmprestimo)
-        {            
-            Emprestimo e = new Emprestimo();
+        public Emprestimo PesquisaPorId(int numeroConta)
+        {
+            Emprestimo emprestimo = new Emprestimo();
+            
             try
             {
-                //abrir a conexão... Falta criar a classe de conexao
+                //abrir a conexão
                 this.abrirConexao();
-                //instrucao a ser executada... Falta configurar essa string sql
-                string sql = "SELECT emprestimo_id, taxa_juros_mensal, data_criacao, valor, numero_conta, quantidade_parcela FROM emprestimo  where emprestimo_id = @emprestimo_id";
+                //instrucao a ser executada
+                string sql = "select Emprestimo.Emprestimo_id, Conta.Numero_conta, Emprestimo.Valor, Emprestimo.Quantidade_parcela, Emprestimo.Taxa_juros_mensal, Cliente.Nome, Cliente.Cpf from Emprestimo inner join Conta on Emprestimo.Numero_conta = Conta.Numero_conta inner join Cliente on Conta.Cliente_id = Cliente.Cliente_id where Emprestimo.Numero_conta = @numero_conta";
 
                 SqlCommand cmd = new SqlCommand(sql, sqlConn);
 
-                cmd.Parameters.Add("@emprestimo_id", SqlDbType.Int);
-                cmd.Parameters["@emprestimo_id"].Value = idEmprestimo;
+                cmd.Parameters.Add("@numero_conta", SqlDbType.Int);
+                cmd.Parameters["@numero_conta"].Value = numeroConta;
 
                 //executando a instrucao e colocando o resultado em um leitor
                 SqlDataReader DbReader = cmd.ExecuteReader();
                 while (DbReader.Read())
                 {
+                    
                     //acessando os valores das colunas do resultado
-                    e.IdEmprestimo = DbReader.GetInt32(DbReader.GetOrdinal("emprestimo_id"));
-                    e.TaxaJurosMensal = DbReader.GetDecimal(DbReader.GetOrdinal("taxa_juros_mensal"));
-                    e.DataCriacao = DbReader.GetDateTime(DbReader.GetOrdinal("data_criacao"));
-                    e.Valor = DbReader.GetInt32(DbReader.GetOrdinal("valor"));
-                    e.NumeroConta = daoConta.PesquisarPorId(DbReader.GetInt32(DbReader.GetOrdinal("numero_conta")));
-                    e.QuantidadeParcela = DbReader.GetInt32(DbReader.GetOrdinal("quantidade_parcela"));
+                    emprestimo.IdEmprestimo = DbReader.GetInt32(DbReader.GetOrdinal("emprestimo_id"));
+                    emprestimo.TaxaJurosMensal = DbReader.GetDecimal(DbReader.GetOrdinal("taxa_juros_mensal"));
+                    emprestimo.QuantidadeParcela = DbReader.GetInt32(DbReader.GetOrdinal("quantidade_parcela"));
+                    //emprestimo1.DataCriacao = DbReader.GetDateTime(DbReader.GetOrdinal("data_criacao"));
+                    emprestimo.Valor = DbReader.GetDecimal(DbReader.GetOrdinal("valor"));
+                    emprestimo.NumeroConta.NumeroConta = DbReader.GetInt32(DbReader.GetOrdinal("numero_Conta"));
+                    emprestimo.NumeroConta.Cliente.Nome = DbReader.GetString(DbReader.GetOrdinal("nome"));
+                    emprestimo.NumeroConta.Cliente.Cpf = DbReader.GetString(DbReader.GetOrdinal("cpf"));
+                    
                 }
                 //fechando o leitor de resultados
                 DbReader.Close();
@@ -192,7 +197,7 @@ namespace Biblioteca.dados
             {
                 throw new Exception("Erro ao conectar e pesquisar " + ex.Message);
             }
-            return e;
+            return emprestimo;
         }
     }
 }

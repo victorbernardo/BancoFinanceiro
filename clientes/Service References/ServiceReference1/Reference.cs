@@ -645,6 +645,18 @@ namespace clientes.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SalvarEmprestimo", ReplyAction="http://tempuri.org/IService1/SalvarEmprestimoResponse")]
         System.Threading.Tasks.Task SalvarEmprestimoAsync(clientes.ServiceReference1.Emprestimo emprestimo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/PesquisaEmprestimo", ReplyAction="http://tempuri.org/IService1/PesquisaEmprestimoResponse")]
+        clientes.ServiceReference1.Emprestimo[] PesquisaEmprestimo();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/PesquisaEmprestimo", ReplyAction="http://tempuri.org/IService1/PesquisaEmprestimoResponse")]
+        System.Threading.Tasks.Task<clientes.ServiceReference1.Emprestimo[]> PesquisaEmprestimoAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/PesquisaEmprestimoPorNumeroConta", ReplyAction="http://tempuri.org/IService1/PesquisaEmprestimoPorNumeroContaResponse")]
+        clientes.ServiceReference1.Emprestimo PesquisaEmprestimoPorNumeroConta(int numeroConta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/PesquisaEmprestimoPorNumeroConta", ReplyAction="http://tempuri.org/IService1/PesquisaEmprestimoPorNumeroContaResponse")]
+        System.Threading.Tasks.Task<clientes.ServiceReference1.Emprestimo> PesquisaEmprestimoPorNumeroContaAsync(int numeroConta);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -720,6 +732,22 @@ namespace clientes.ServiceReference1 {
         
         public System.Threading.Tasks.Task SalvarEmprestimoAsync(clientes.ServiceReference1.Emprestimo emprestimo) {
             return base.Channel.SalvarEmprestimoAsync(emprestimo);
+        }
+        
+        public clientes.ServiceReference1.Emprestimo[] PesquisaEmprestimo() {
+            return base.Channel.PesquisaEmprestimo();
+        }
+        
+        public System.Threading.Tasks.Task<clientes.ServiceReference1.Emprestimo[]> PesquisaEmprestimoAsync() {
+            return base.Channel.PesquisaEmprestimoAsync();
+        }
+        
+        public clientes.ServiceReference1.Emprestimo PesquisaEmprestimoPorNumeroConta(int numeroConta) {
+            return base.Channel.PesquisaEmprestimoPorNumeroConta(numeroConta);
+        }
+        
+        public System.Threading.Tasks.Task<clientes.ServiceReference1.Emprestimo> PesquisaEmprestimoPorNumeroContaAsync(int numeroConta) {
+            return base.Channel.PesquisaEmprestimoPorNumeroContaAsync(numeroConta);
         }
     }
 }

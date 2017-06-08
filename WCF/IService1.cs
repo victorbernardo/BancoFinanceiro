@@ -35,8 +35,16 @@ namespace WCF
 
         [OperationContract]
         Conta PesquisaContaPorNumeroConta(int numeroConta);
+        //
+        // emprestimo
+        //
         [OperationContract]
         void SalvarEmprestimo(Emprestimo emprestimo);
+        [OperationContract]
+        List<Emprestimo> PesquisaEmprestimo();
+        [OperationContract]
+        Emprestimo PesquisaEmprestimoPorNumeroConta(int numeroConta);
+       
     }
     // Use a data contract as illustrated in the sample below to add composite types to service operations.
     [DataContract]

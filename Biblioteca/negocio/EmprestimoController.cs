@@ -20,8 +20,15 @@ namespace Biblioteca.negocio
             this.ValidaEmprestimo(emprestimo);
             this.VerificaDuplicidade(emprestimo);
             this.AumentaSaldo(emprestimo);
-            this.InserirNovo(emprestimo);
-            
+            this.InserirNovo(emprestimo);            
+        }
+        public List<Emprestimo> Listar()
+        {
+            return this.ListaTudo();
+        }
+        public Emprestimo PesquisaNumeroConta(int numeroConta)
+        {
+            return this.Pesquisar(numeroConta);
         }
 
 
@@ -62,8 +69,18 @@ FUNÇÕES INTERNAS (fragmentação dos métodos)
             int numeroConta = e.NumeroConta.NumeroConta;            
             Conta conta = daoConta.PesquisarPorId(numeroConta);
             conta.Saldo += e.Valor;                         
-            daoConta.Alterar(conta);
-            
+            daoConta.Alterar(conta);            
+        }
+        private List<Emprestimo> ListaTudo()
+        {
+            return daoEmprestimo.Pesquisar();
+        }
+        private Emprestimo Pesquisar(int numeroConta)
+        {
+            if (!daoEmprestimo.PesquisaPorId(numeroConta).Equals(""))
+                return daoEmprestimo.PesquisaPorId(numeroConta);
+            else
+                throw new Exception("Emprestimo nao existe");
         }
     }
 }

@@ -71,4 +71,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Emprestimo" nillable="true" type="tns:Emprestimo" />
+  <xs:complexType name="ArrayOfEmprestimo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Emprestimo" nillable="true" type="tns:Emprestimo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEmprestimo" nillable="true" type="tns:ArrayOfEmprestimo" />
 </xs:schema>
