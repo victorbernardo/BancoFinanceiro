@@ -31,15 +31,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtNumeroConta = new System.Windows.Forms.TextBox();
             this.btPesquisa = new System.Windows.Forms.Button();
-            this.dgvEmprestimo = new System.Windows.Forms.DataGridView();
-            this.NumeroConta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ValorEmprestimo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QuatidadeParcela = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cpf = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btSelecionar = new System.Windows.Forms.Button();
+            this.btAlterar = new System.Windows.Forms.Button();
             this.btCancelar = new System.Windows.Forms.Button();
             this.btListarTodosEmprestimos = new System.Windows.Forms.Button();
+            this.Cpf = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QuatidadeParcela = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ValorEmprestimo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NumeroConta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvEmprestimo = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmprestimo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,56 +69,15 @@
             this.btPesquisa.UseVisualStyleBackColor = true;
             this.btPesquisa.Click += new System.EventHandler(this.btPesquisa_Click);
             // 
-            // dgvEmprestimo
+            // btAlterar
             // 
-            this.dgvEmprestimo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEmprestimo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.NumeroConta,
-            this.ValorEmprestimo,
-            this.QuatidadeParcela,
-            this.Cliente,
-            this.Cpf});
-            this.dgvEmprestimo.Location = new System.Drawing.Point(12, 56);
-            this.dgvEmprestimo.Name = "dgvEmprestimo";
-            this.dgvEmprestimo.Size = new System.Drawing.Size(584, 248);
-            this.dgvEmprestimo.TabIndex = 3;
-            // 
-            // NumeroConta
-            // 
-            this.NumeroConta.HeaderText = "NumeroConta";
-            this.NumeroConta.Name = "NumeroConta";
-            this.NumeroConta.Width = 110;
-            // 
-            // ValorEmprestimo
-            // 
-            this.ValorEmprestimo.HeaderText = "Valor do Emprestimo";
-            this.ValorEmprestimo.Name = "ValorEmprestimo";
-            this.ValorEmprestimo.Width = 130;
-            // 
-            // QuatidadeParcela
-            // 
-            this.QuatidadeParcela.HeaderText = "QuatidadeParcela";
-            this.QuatidadeParcela.Name = "QuatidadeParcela";
-            // 
-            // Cliente
-            // 
-            this.Cliente.HeaderText = "Cliente";
-            this.Cliente.Name = "Cliente";
-            // 
-            // Cpf
-            // 
-            this.Cpf.HeaderText = "Cpf";
-            this.Cpf.Name = "Cpf";
-            // 
-            // btSelecionar
-            // 
-            this.btSelecionar.Location = new System.Drawing.Point(440, 310);
-            this.btSelecionar.Name = "btSelecionar";
-            this.btSelecionar.Size = new System.Drawing.Size(75, 23);
-            this.btSelecionar.TabIndex = 4;
-            this.btSelecionar.Text = "Selecionar";
-            this.btSelecionar.UseVisualStyleBackColor = true;
-            this.btSelecionar.Click += new System.EventHandler(this.btSelecionar_Click);
+            this.btAlterar.Location = new System.Drawing.Point(440, 310);
+            this.btAlterar.Name = "btAlterar";
+            this.btAlterar.Size = new System.Drawing.Size(75, 23);
+            this.btAlterar.TabIndex = 4;
+            this.btAlterar.Text = "Alterar";
+            this.btAlterar.UseVisualStyleBackColor = true;
+            this.btAlterar.Click += new System.EventHandler(this.btAlterar_Click);
             // 
             // btCancelar
             // 
@@ -140,14 +99,58 @@
             this.btListarTodosEmprestimos.UseVisualStyleBackColor = true;
             this.btListarTodosEmprestimos.Click += new System.EventHandler(this.btListarTodosEmprestimos_Click);
             // 
+            // Cpf
+            // 
+            this.Cpf.HeaderText = "Cpf";
+            this.Cpf.Name = "Cpf";
+            // 
+            // Cliente
+            // 
+            this.Cliente.HeaderText = "Cliente";
+            this.Cliente.Name = "Cliente";
+            // 
+            // QuatidadeParcela
+            // 
+            this.QuatidadeParcela.HeaderText = "QuatidadeParcela";
+            this.QuatidadeParcela.Name = "QuatidadeParcela";
+            // 
+            // ValorEmprestimo
+            // 
+            this.ValorEmprestimo.HeaderText = "Valor do Emprestimo";
+            this.ValorEmprestimo.Name = "ValorEmprestimo";
+            this.ValorEmprestimo.Width = 130;
+            // 
+            // NumeroConta
+            // 
+            this.NumeroConta.HeaderText = "NumeroConta";
+            this.NumeroConta.Name = "NumeroConta";
+            this.NumeroConta.Width = 110;
+            // 
+            // dgvEmprestimo
+            // 
+            this.dgvEmprestimo.AllowUserToAddRows = false;
+            this.dgvEmprestimo.AllowUserToDeleteRows = false;
+            this.dgvEmprestimo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEmprestimo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NumeroConta,
+            this.ValorEmprestimo,
+            this.QuatidadeParcela,
+            this.Cliente,
+            this.Cpf});
+            this.dgvEmprestimo.Location = new System.Drawing.Point(12, 56);
+            this.dgvEmprestimo.Name = "dgvEmprestimo";
+            this.dgvEmprestimo.ReadOnly = true;
+            this.dgvEmprestimo.Size = new System.Drawing.Size(584, 248);
+            this.dgvEmprestimo.TabIndex = 3;
+            // 
             // FormPesquisaEmprestimo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(605, 341);
+            this.ClientSize = new System.Drawing.Size(606, 341);
             this.Controls.Add(this.btListarTodosEmprestimos);
             this.Controls.Add(this.btCancelar);
-            this.Controls.Add(this.btSelecionar);
+            this.Controls.Add(this.btAlterar);
             this.Controls.Add(this.dgvEmprestimo);
             this.Controls.Add(this.btPesquisa);
             this.Controls.Add(this.txtNumeroConta);
@@ -165,14 +168,14 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtNumeroConta;
         private System.Windows.Forms.Button btPesquisa;
-        private System.Windows.Forms.DataGridView dgvEmprestimo;
-        private System.Windows.Forms.Button btSelecionar;
+        private System.Windows.Forms.Button btAlterar;
         private System.Windows.Forms.Button btCancelar;
         private System.Windows.Forms.Button btListarTodosEmprestimos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NumeroConta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ValorEmprestimo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QuatidadeParcela;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cpf;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QuatidadeParcela;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ValorEmprestimo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NumeroConta;
+        private System.Windows.Forms.DataGridView dgvEmprestimo;
     }
 }

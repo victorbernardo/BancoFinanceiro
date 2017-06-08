@@ -73,7 +73,10 @@ namespace WCF
         {
             return emprestimoController.PesquisaNumeroConta(numeroConta);
         }
-
+        public void AlterarEmprestimo(Emprestimo emprestimo)
+        {
+            emprestimoController.AlterarEmprestimo(emprestimo);
+        }
 
 
         

@@ -85,14 +85,17 @@ namespace Biblioteca.dados
         {
             try
             {
-                //abrir a conexão... Falta criar a classe de conexao
+                //abrir a conexão
                 this.abrirConexao();
-                string sql = "update emprestimo set valor = @valor where emprestimo_id = @emprestimo_id";
+                string sql = "update emprestimo set taxa_juros_mensal = @taxa_juros_mensal, quantidade_parcela = @quantidade_parcela where emprestimo_id = @emprestimo_id";
                 //instrucao a ser executada
                 SqlCommand cmd = new SqlCommand(sql, this.sqlConn);
 
-                cmd.Parameters.Add("@valor", SqlDbType.Decimal);
-                cmd.Parameters["@valor"].Value = emprestimo.Valor;
+                cmd.Parameters.Add("@taxa_juros_mensal", SqlDbType.Decimal);
+                cmd.Parameters["@taxa_juros_mensal"].Value = emprestimo.Valor;
+
+                cmd.Parameters.Add("@quantidade_parcela", SqlDbType.Decimal);
+                cmd.Parameters["@quantidade_parcela"].Value = emprestimo.QuantidadeParcela;
 
                 cmd.Parameters.Add("@emprestimo_id", SqlDbType.Decimal);
                 cmd.Parameters["@emprestimo_id"].Value = emprestimo.IdEmprestimo;
@@ -101,7 +104,7 @@ namespace Biblioteca.dados
                 cmd.ExecuteNonQuery();
                 //liberando a memoria 
                 cmd.Dispose();
-                //fechando a conexao... Falta criar a classe de conexao
+                //fechando a conexao
                 this.fecharConexao();
             }
             catch (Exception ex)

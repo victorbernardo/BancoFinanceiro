@@ -15,6 +15,7 @@ namespace Biblioteca.negocio
         {
             this.daoEmprestimo = new DAOEmprestimo();
         }
+
         public void Salvar(Emprestimo emprestimo)
         {
             this.ValidaEmprestimo(emprestimo);
@@ -24,11 +25,15 @@ namespace Biblioteca.negocio
         }
         public List<Emprestimo> Listar()
         {
-            return this.ListaTudo();
+            return ListaTudo();
         }
         public Emprestimo PesquisaNumeroConta(int numeroConta)
         {
-            return this.Pesquisar(numeroConta);
+            return Pesquisar(numeroConta);
+        }
+        public void AlterarEmprestimo(Emprestimo emprestimo)
+        {
+            Alterar(emprestimo);
         }
 
 
@@ -48,7 +53,7 @@ FUNÇÕES INTERNAS (fragmentação dos métodos)
         private void VerificaDuplicidade(Emprestimo e)
         {
             //falta configurar a funçao de duplicidade
-            if (daoEmprestimo.PesquisaPorId(e.IdEmprestimo) == null)
+            if (!daoEmprestimo.PesquisaPorId(e.IdEmprestimo).Equals(""))
                 throw new Exception("Emprestimo ja existe");            
         }
         private void InserirNovo(Emprestimo e)
@@ -81,6 +86,10 @@ FUNÇÕES INTERNAS (fragmentação dos métodos)
                 return daoEmprestimo.PesquisaPorId(numeroConta);
             else
                 throw new Exception("Emprestimo nao existe");
+        }
+        private void Alterar(Emprestimo emprestimo)
+        {
+            daoEmprestimo.Alterar(emprestimo);
         }
     }
 }

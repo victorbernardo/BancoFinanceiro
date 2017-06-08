@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormAlterarEmprestimo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAlterarEmprestimo.Designer.cs">
+      <DependentUpon>FormAlterarEmprestimo.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormcadastroConta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +104,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FormAlterarEmprestimo.resx">
+      <DependentUpon>FormAlterarEmprestimo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormcadastroConta.resx">
       <DependentUpon>FormcadastroConta.cs</DependentUpon>
     </EmbeddedResource>

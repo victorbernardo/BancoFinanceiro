@@ -657,6 +657,12 @@ namespace clientes.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/PesquisaEmprestimoPorNumeroConta", ReplyAction="http://tempuri.org/IService1/PesquisaEmprestimoPorNumeroContaResponse")]
         System.Threading.Tasks.Task<clientes.ServiceReference1.Emprestimo> PesquisaEmprestimoPorNumeroContaAsync(int numeroConta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AlterarEmprestimo", ReplyAction="http://tempuri.org/IService1/AlterarEmprestimoResponse")]
+        void AlterarEmprestimo(clientes.ServiceReference1.Emprestimo emprestimo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AlterarEmprestimo", ReplyAction="http://tempuri.org/IService1/AlterarEmprestimoResponse")]
+        System.Threading.Tasks.Task AlterarEmprestimoAsync(clientes.ServiceReference1.Emprestimo emprestimo);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -748,6 +754,14 @@ namespace clientes.ServiceReference1 {
         
         public System.Threading.Tasks.Task<clientes.ServiceReference1.Emprestimo> PesquisaEmprestimoPorNumeroContaAsync(int numeroConta) {
             return base.Channel.PesquisaEmprestimoPorNumeroContaAsync(numeroConta);
+        }
+        
+        public void AlterarEmprestimo(clientes.ServiceReference1.Emprestimo emprestimo) {
+            base.Channel.AlterarEmprestimo(emprestimo);
+        }
+        
+        public System.Threading.Tasks.Task AlterarEmprestimoAsync(clientes.ServiceReference1.Emprestimo emprestimo) {
+            return base.Channel.AlterarEmprestimoAsync(emprestimo);
         }
     }
 }

@@ -12,9 +12,10 @@ C:\Users\victo\Desktop\Projeto Melo\trunk\clientes\obj\Debug\Cliente.csproj.Gene
 C:\Users\victo\Desktop\Projeto Melo\trunk\clientes\obj\Debug\clientes.exe
 C:\Users\victo\Desktop\Projeto Melo\trunk\clientes\obj\Debug\clientes.pdb
 C:\Users\victo\Desktop\Projeto Melo\trunk\clientes\obj\Debug\Cliente.csprojResolveAssemblyReference.cache
+C:\Projeto Melo\BancoFinanceiro\clientes\bin\Debug\clientes.pdb
 C:\Projeto Melo\BancoFinanceiro\clientes\bin\Debug\clientes.exe.config
 C:\Projeto Melo\BancoFinanceiro\clientes\bin\Debug\clientes.exe
-C:\Projeto Melo\BancoFinanceiro\clientes\bin\Debug\clientes.pdb
+C:\Projeto Melo\BancoFinanceiro\clientes\obj\Debug\clientes.FormAlterarEmprestimo.resources
 C:\Projeto Melo\BancoFinanceiro\clientes\obj\Debug\clientes.FormcadastroConta.resources
 C:\Projeto Melo\BancoFinanceiro\clientes\obj\Debug\clientes.FormCadastroCliente.resources
 C:\Projeto Melo\BancoFinanceiro\clientes\obj\Debug\clientes.FormCadastroEmprestimo.resources

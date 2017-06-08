@@ -30,9 +30,16 @@ namespace clientes
                 this.CarregaGridPorNumeroConta(Int32.Parse(txtNumeroConta.Text));
         }
 
-        private void btSelecionar_Click(object sender, EventArgs e)
-        {
-
+        private void btAlterar_Click(object sender, EventArgs e)
+        {            
+            if(this.RetornaEmprestimoSelecionado() == null)
+                MessageBox.Show("Voce nao selecionou nenhum emprestimo ou nao existe emprestimo cadastrado");
+            else
+            {
+                FormAlterarEmprestimo alterarEmprestimo = new FormAlterarEmprestimo(RetornaEmprestimoSelecionado());
+                //alterarEmprestimo.RecebeEmprestimo(RetornaEmprestimoSelecionado());
+                alterarEmprestimo.ShowDialog();
+            }               
         }
 
         private void btCancelar_Click(object sender, EventArgs e)
@@ -42,13 +49,9 @@ namespace clientes
 
         private void btListarTodosEmprestimos_Click(object sender, EventArgs e)
         {
+            dgvEmprestimo.Rows.Clear();
             this.listar();
         }
-
-
-
-
-
 
 
 
@@ -72,10 +75,11 @@ namespace clientes
         }
         public Emprestimo RetornaEmprestimoSelecionado()
         {
-            Emprestimo emprestimo = dgvEmprestimo.CurrentRow != null ? emprestimos.Find(e=> e.NumeroConta.Equals(dgvEmprestimo.CurrentRow.Cells[0].Value)) : null;
+            sv = new Service1Client();
+            emprestimos = sv.PesquisaEmprestimo().ToList();
+            Emprestimo emprestimo = dgvEmprestimo.CurrentRow != null ? emprestimos.Find(e => e.NumeroConta.NumeroConta.Equals(dgvEmprestimo.CurrentRow.Cells[0].Value)) : null;
             return emprestimo;
         }
-
 
     }
 }
