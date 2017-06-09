@@ -71,6 +71,7 @@
     <Compile Include="negocio\ClienteController.cs" />
     <Compile Include="negocio\ContaController.cs" />
     <Compile Include="negocio\EmprestimoController.cs" />
+    <Compile Include="negocio\MovimentacaoController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

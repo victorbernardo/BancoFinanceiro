@@ -246,7 +246,6 @@ namespace clientes
                 }
                
                 return retorno;                 
-        }
-        
+        }        
     }
 }

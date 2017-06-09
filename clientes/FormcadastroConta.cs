@@ -28,9 +28,7 @@ namespace clientes
             conta = new Conta();
             sv = new Service1Client();
         }
-        //
-        //FUNÇOES DOS BOTÕES
-        //         
+           
         private void btnBuscarCliente_Click(object sender, EventArgs e)
         {
             try
@@ -39,8 +37,12 @@ namespace clientes
                 fPesquisaCliente.ShowDialog();
                 if(fPesquisaCliente.RetornaClienteSelecionado() == null)
                     MessageBox.Show("Voce nao selecionou nenhum cliente ou nao existe cliente cadastrado");
-                cliente = fPesquisaCliente.RetornaClienteSelecionado();                
-                carregaCampoCliente(cliente);               
+                else
+                {
+                    cliente = fPesquisaCliente.RetornaClienteSelecionado();
+                    carregaCampoCliente(cliente);
+                }
+                               
             }
             catch (Exception ex)
             {
@@ -87,9 +89,6 @@ namespace clientes
         }
         private void btnIncluirConta_Click(object sender, EventArgs e)
         {
-            
-            
-
             if (txtNomeCliente.Text.Equals("") || txtEmail.Text.Equals("") || txtCpf.Text.Equals("") || txtEndereco.Text.Equals("") || txtNumeroAgencia.Text.Equals("") || txtNomeAgencia.Text.Equals("") || txtEnderecoAgencia.Text.Equals(""))
                 MessageBox.Show("Voce nao pode criar um conta com Cliente e Agencia vazios");
             else if (txtNumeroConta.Text.Equals("") || txtSaldo.Text.Equals(""))
@@ -98,6 +97,9 @@ namespace clientes
                 MessageBox.Show("Voce só deve informar numeros");
             else if (Convert.ToDecimal(txtSaldo.Text) <= 0)
                 MessageBox.Show("Voce nao pode criar uma conta com saldo R$ 0,00");
+            else if(Information.IsNumeric(txtNumeroConta.Text))            
+                if(txtNumeroConta.Text.Length < 6 || txtNumeroConta.Text.Length > 6)
+                    MessageBox.Show("Sua conta tem que ter 6 digitos");            
             else
             {
                 Agencia agen = new Agencia();
@@ -109,22 +111,42 @@ namespace clientes
                 clie.IdCliente = cliente.IdCliente;
                 conta.Agencia = agen;
                 conta.Cliente = clie;
-
                 try
                 {
-                  
-                        sv.SalvarConta(conta);
-                        MessageBox.Show("Cadastrado com sucesso");
-                        this.LimparCampo();
-                  
-                    
+                    sv.SalvarConta(conta);
+                    MessageBox.Show("Cadastrado com sucesso");
+                    this.LimparCampo();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
-            }            
+            }
+        }  
+        private void btRemover_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                sv.RemoverConta(conta);
+                MessageBox.Show("Removida com sucesso");
+                this.LimparCampo();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }      
+        private void btAlterar_Click(object sender, EventArgs e)
+        {
+            conta.Saldo = Convert.ToDecimal(txtSaldo.Text);
+            sv.AlterarConta(conta);
+            MessageBox.Show("Alterado com sucesso");
+            this.LimparCampo();
         }
+        private void btLimpar_Click(object sender, EventArgs e)
+        {
+            LimparCampo();
+        }              
         //
         //FUNÇOES INTERNAS
         //               
@@ -163,48 +185,6 @@ namespace clientes
             txtSaldo.Text = ("");
             txtNumeroConta.Enabled = true;
 
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-          
-        }
-
-        private void btnIncluirEmprestimo_Click(object sender, EventArgs e)
-        {
-            FormCadastroEmprestimo fEmprestimo = new FormCadastroEmprestimo();
-            fEmprestimo.ShowDialog();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            try
-            {
-               
-              //  sv.RemoverConta(conta);
-                MessageBox.Show("Removida com sucesso");
-                this.LimparCampo();
-            
-
-            }
-
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            conta.Saldo = Convert.ToDecimal(txtSaldo.Text);
-            sv.AlterarConta(conta);
-            MessageBox.Show("Removida com sucesso");
-            this.LimparCampo();
-        }
-
-        private void button2_Click_1(object sender, EventArgs e)
-        {
-            LimparCampo();
-        }
+        }  
     }
 }

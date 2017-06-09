@@ -87,10 +87,36 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="SacarDinheiro">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Biblioteca.basica" minOccurs="0" name="conta" nillable="true" type="q8:Conta" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Biblioteca.basica" minOccurs="0" name="movimentacao" nillable="true" type="q9:Movimentacao" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SacarDinheiroResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DepositarDinheiro">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Biblioteca.basica" minOccurs="0" name="conta" nillable="true" type="q10:Conta" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Biblioteca.basica" minOccurs="0" name="movimentacao" nillable="true" type="q11:Movimentacao" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DepositarDinheiroResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
   <xs:element name="SalvarEmprestimo">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Biblioteca.basica" minOccurs="0" name="emprestimo" nillable="true" type="q8:Emprestimo" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Biblioteca.basica" minOccurs="0" name="emprestimo" nillable="true" type="q12:Emprestimo" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -107,7 +133,7 @@
   <xs:element name="PesquisaEmprestimoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Biblioteca.basica" minOccurs="0" name="PesquisaEmprestimoResult" nillable="true" type="q9:ArrayOfEmprestimo" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Biblioteca.basica" minOccurs="0" name="PesquisaEmprestimoResult" nillable="true" type="q13:ArrayOfEmprestimo" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -121,20 +147,34 @@
   <xs:element name="PesquisaEmprestimoPorNumeroContaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Biblioteca.basica" minOccurs="0" name="PesquisaEmprestimoPorNumeroContaResult" nillable="true" type="q10:Emprestimo" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Biblioteca.basica" minOccurs="0" name="PesquisaEmprestimoPorNumeroContaResult" nillable="true" type="q14:Emprestimo" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AlterarEmprestimo">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Biblioteca.basica" minOccurs="0" name="emprestimo" nillable="true" type="q11:Emprestimo" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Biblioteca.basica" minOccurs="0" name="emprestimo" nillable="true" type="q15:Emprestimo" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AlterarEmprestimoResponse">
     <xs:complexType>
       <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarMovimentacao">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Biblioteca.basica" minOccurs="0" name="movimentacao" nillable="true" type="q16:Movimentacao" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarMovimentacaoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Biblioteca.basica" minOccurs="0" name="ListarMovimentacaoResult" nillable="true" type="q17:Movimentacao" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
 </xs:schema>

@@ -17,33 +17,46 @@ namespace clientes
     {
         private List<Conta> contas;
         private Conta conta;
+        private Service1Client sv;
 
         //CONSTRUTOR PADRAO
         public FormPesquisaConta()
         {
             InitializeComponent();
+            conta = new Conta();
+            sv = new Service1Client();
         }
         //
         //FUNÇOES DOS BOTOES
         //
-        private void btnPesquisar_Click(object sender, EventArgs e)
+        private void btnPesquisarTodasContas_Click(object sender, EventArgs e)
         {
-            if(txtNumeroConta.Text.Equals(""))
-                carregaGridConta();
+            carregaGridConta();    
+        }
+        private void btPesquisar_Click(object sender, EventArgs e)
+        {
+            if (txtNumeroConta.Text.Equals("") || !Information.IsNumeric(txtNumeroConta.Text))
+                MessageBox.Show("Dados invalidos");
             else
             {
-                int numeroConta = Int32.Parse(txtNumeroConta.Text);
-                if (!Information.IsNumeric(numeroConta))
-                    MessageBox.Show("Voce deve informar só numeros");
-                else                    
-                    this.CarregaGridPorNumerConta(numeroConta);
-            }
-                 
-        }
+                conta.NumeroConta = Int32.Parse(txtNumeroConta.Text);
+                try 
+	            {
+                    CarregaGridPorNumerConta(conta.NumeroConta);                 
+	            }
+	            catch (Exception ex)
+	            {
+                    MessageBox.Show(ex.Message);
+	            }                         
+            }      
+        }     
         private void btnSelecionar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+       
+     
+        
         //
         //FUNÇOES INTERNAS
         //                 
@@ -66,8 +79,10 @@ namespace clientes
             contas = new List<Conta>();
             Service1Client sv = new Service1Client();
             contas.Add(sv.PesquisaContaPorNumeroConta(numeroConta));    
-            dgvContas.AutoGenerateColumns = false;
-            dgvContas.DataSource = contas;
+            //dgvContas.AutoGenerateColumns = false;
+            dgvContas.Rows.Clear();
+            //dgvContas.DataSource = contas;
+            contas.ForEach(c => dgvContas.Rows.Add(c.NumeroConta, c.Saldo, c.Cliente.Nome, c.Cliente.Cpf));
         }
     }
 }

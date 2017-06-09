@@ -92,12 +92,12 @@ namespace Biblioteca.dados
                 SqlCommand cmd = new SqlCommand(sql, this.sqlConn);
 
                 cmd.Parameters.Add("@taxa_juros_mensal", SqlDbType.Decimal);
-                cmd.Parameters["@taxa_juros_mensal"].Value = emprestimo.Valor;
+                cmd.Parameters["@taxa_juros_mensal"].Value = emprestimo.TaxaJurosMensal;
 
-                cmd.Parameters.Add("@quantidade_parcela", SqlDbType.Decimal);
+                cmd.Parameters.Add("@quantidade_parcela", SqlDbType.Int);
                 cmd.Parameters["@quantidade_parcela"].Value = emprestimo.QuantidadeParcela;
 
-                cmd.Parameters.Add("@emprestimo_id", SqlDbType.Decimal);
+                cmd.Parameters.Add("@emprestimo_id", SqlDbType.Int);
                 cmd.Parameters["@emprestimo_id"].Value = emprestimo.IdEmprestimo;
 
                 //executando a instrucao 
@@ -174,9 +174,9 @@ namespace Biblioteca.dados
 
                 //executando a instrucao e colocando o resultado em um leitor
                 SqlDataReader DbReader = cmd.ExecuteReader();
-                while (DbReader.Read())
+                if (DbReader.Read())
                 {
-                    
+
                     //acessando os valores das colunas do resultado
                     emprestimo.IdEmprestimo = DbReader.GetInt32(DbReader.GetOrdinal("emprestimo_id"));
                     emprestimo.TaxaJurosMensal = DbReader.GetDecimal(DbReader.GetOrdinal("taxa_juros_mensal"));
@@ -186,8 +186,9 @@ namespace Biblioteca.dados
                     emprestimo.NumeroConta.NumeroConta = DbReader.GetInt32(DbReader.GetOrdinal("numero_Conta"));
                     emprestimo.NumeroConta.Cliente.Nome = DbReader.GetString(DbReader.GetOrdinal("nome"));
                     emprestimo.NumeroConta.Cliente.Cpf = DbReader.GetString(DbReader.GetOrdinal("cpf"));
-                    
                 }
+                else
+                    return emprestimo = null;
                 //fechando o leitor de resultados
                 DbReader.Close();
                 //liberando a memoria 

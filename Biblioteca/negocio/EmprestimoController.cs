@@ -53,10 +53,9 @@ FUNÇÕES INTERNAS (fragmentação dos métodos)
                 throw new Exception("Emprestimo invalido");
         }
         private void VerificaDuplicidade(Emprestimo e)
-        {
-            //falta configurar a funçao de duplicidade
-           /* if (!daoEmprestimo.PesquisaPorId(e.IdEmprestimo).Equals(""))
-                throw new Exception("Emprestimo ja existe");            */
+        {            
+           if (daoEmprestimo.PesquisaPorId(e.IdEmprestimo) == null)
+                throw new Exception("Emprestimo ja existe");           
         }
         private void InserirNovo(Emprestimo e)
         {

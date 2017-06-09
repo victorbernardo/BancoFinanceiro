@@ -13,10 +13,12 @@ namespace Biblioteca.negocio
     public class ContaController : Exception
     {
         private DAOConta daoConta;
+        private DAOMovimentacao daoMovimentacao;
 
         public ContaController()
         {
             this.daoConta = new DAOConta();
+            this.daoMovimentacao = new DAOMovimentacao();
         }
 
         public void CriarConta(Conta conta)
@@ -29,108 +31,38 @@ namespace Biblioteca.negocio
             }
             else
             {
-
 			    throw new Exception("Conta Não Existe");
 		    }
 	    }
 
-
-        /*public Conta ProcurarContaPorId(int numeroConta)
-        {    
-            return Pesquisa(numeroConta);
-        }
-        */
-       
-        /*
-        public void ProcurarConta(Conta conta)
-        {
-            try
-            {
-                if (conta.Agencia != null)
-                {
-                    throw new BancoException("Agência não encontrada!");
-                }
-                else if (conta.NumeroConta < 10000)
-                {
-                    throw new BancoException("Conta inexiste!");
-                }
-                else if (contaDao.Pesquisar(conta) != null)
-                {
-                    throw new BancoException("Conta inexiste!");
-                }
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }            
-        }*/
-        /*
-###########################################################
-FUNÇÕES INTERNAS (fragmentação dos métodos)
-###########################################################
-*/
-       
         public List<Conta> Listar()
         {
             try
             {
-                return daoConta.ListarConta();
+                List<Conta> returnListar = new List<Conta>();
+                returnListar = daoConta.ListarConta();
+
+                if (returnListar != null)                
+                    return returnListar;                
+                else
+                    throw new Exception("Nao existe conta cadastrada");                
             }
             catch (Exception ex)
             {
                 throw new Exception("Erro no listar conta " + ex.Message);
             }
+
+            return null;
         }
-
-        /*
-        private void Salvar(Conta conta)
-        {
-            try
-            {
-
-			    throw new Exception("Conta Não Existe");
-		    }
-	    }
-        /*public Conta ProcurarContaPorId(int numeroConta)
-        {    
-            return Pesquisa(numeroConta);
-        }*/
-       
-        /*
-        public void ProcurarConta(Conta conta)
-        {
-            try
-            {
-                if (conta.Agencia != null)
-                {
-                    throw new BancoException("Agência não encontrada!");
-                }
-                else if (conta.NumeroConta < 10000)
-                {
-                    throw new BancoException("Conta inexiste!");
-                }
-                else if (contaDao.Pesquisar(conta) != null)
-                {
-                    throw new BancoException("Conta inexiste!");
-                }
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }            
-        }*/
-        /*
-###########################################################
-FUNÇÕES INTERNAS (fragmentação dos métodos)
-###########################################################
-*/
-       
+            
         public void Salvar(Conta conta)
         {
             try
             {
-
-                daoConta.Inserir(conta);
+                if (conta != null)
+                    daoConta.Inserir(conta);
+                else
+                    throw new Exception("Informe os dados");
             }
             catch (Exception e)
             {
@@ -143,90 +75,92 @@ FUNÇÕES INTERNAS (fragmentação dos métodos)
         {
             try
             {
-
-                daoConta.Alterar(conta);
+                if(conta != null)
+                    daoConta.Alterar(conta);
             }
             catch (Exception e)
             {
-                throw e;
+                throw new Exception("Não foi possível alterar " + e.Message);
             }
+        }
 
+        public bool Sacar(Conta conta, Movimentacao movimentacao)
+        {
+            Conta contaVerificada = new Conta();
+            contaVerificada = VerificaSaldo(conta);
+
+            if (conta.Saldo > contaVerificada.Saldo)
+                throw new Exception("Saldo insuficinete");
+            else
+            {
+                //decimal valorSaque = conta.Saldo;
+                contaVerificada.Saldo -= conta.Saldo;
+                //conta.Saldo -= movimentacao.Valor;                                
+                daoConta.Sacar(contaVerificada);                
+                daoMovimentacao.Inserir(movimentacao);
+            }
+            return false;
         }
 
         public void excluir(Conta conta)
         {
-            try
+            Conta conta1 = daoConta.PesquisarPorId(conta.NumeroConta);
+            if (conta1 != null)
             {
-
-                daoConta.Excluir(conta);
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-
-        }
-
-        public bool Sacar(Conta conta, decimal valor)
-        {
-            if (conta.Saldo > valor)
-            {
-                conta.Saldo -= valor;
-
-            }
-
-            return false;
-
-        }
-
-        
-        public void RemoverConta(int numeroConta)
-        {
-            Conta conta = daoConta.PesquisarPorId(numeroConta);
-            if (conta != null)
-            {
-                daoConta.Excluir(conta);
+                daoConta.Excluir(conta1);
 		    }else{
 			    throw new Exception("Cliente Não Existe");
 		    }
 	    }
 
         public Conta PesquisarPorId(int numeroConta)
-        {
-            
+        {           
             try
-            {
-
-                return daoConta.PesquisarPorId(numeroConta);
+            {                
+                if (daoConta.PesquisarPorId(numeroConta) != null)
+                    return daoConta.PesquisarPorId(numeroConta);                    
+                else
+                    throw new Exception("Nao existe conta castrada");                    
             }
             catch (Exception e)
             {
                 throw e;
             }
         }
-        /*public bool depositar(Conta conta)
+
+        public void Depositar(Conta conta, Movimentacao movimentacao)
         {
-            conta = daoConta.PesquisarPorId(numeroConta);
-            if (conta != null)
+            Conta contaVerificada = new Conta();
+            contaVerificada = VerificaSaldo(conta);
+
+            if (conta.NumeroConta != null && movimentacao.Valor != null)
             {
-
-                throw new Exception("Conta nao existe " + ex.Message);
-            }                                                
-        }
-
-                throw new Exception("Conta nao existe " + ex.Message);
-            }                                                
-        }
-    
-
-                contaDao.Depositar(conta.valorDepositado);
-                return true;
+                if (conta.Saldo > 0)
+                {
+                    decimal valorDeposito = conta.Saldo;
+                    contaVerificada.Saldo += conta.Saldo;
+                    //conta.Saldo += movimentacao.Valor;
+                    movimentacao.Tipo = "Depósito";
+                    movimentacao.Data = DateTime.Now;
+                    movimentacao.Valor = valorDeposito;
+                    movimentacao.NumeroConta.NumeroConta = conta.NumeroConta;
+                    daoConta.Depositar(contaVerificada);
+                    daoMovimentacao.Inserir(movimentacao);
+                }
+                else
+                    throw new Exception("Deposito minino R$ 1,00");                
             }
-            
-            return false;
-        }   */ 
+            else
+            {
+                throw new Exception("Não foi possível realizar o depósito!");
+            }
+        }
 
-    }
-
+        private Conta VerificaSaldo(Conta conta)
+        {
+            Conta conta1 = daoConta.PesquisarPorId(conta.NumeroConta);
+            return conta1;            
+        }
+     }
 }
 

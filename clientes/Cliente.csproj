@@ -73,6 +73,12 @@
     <Compile Include="FormCadastroEmprestimo.Designer.cs">
       <DependentUpon>FormCadastroEmprestimo.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormDepositar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDepositar.Designer.cs">
+      <DependentUpon>FormDepositar.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormPesquisaAgencia.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +109,12 @@
     <Compile Include="FormPrincipal.Designer.cs">
       <DependentUpon>FormPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormSacar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSacar.Designer.cs">
+      <DependentUpon>FormSacar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\ServiceReference1\Reference.cs">
@@ -122,6 +134,9 @@
     <EmbeddedResource Include="FormCadastroEmprestimo.resx">
       <DependentUpon>FormCadastroEmprestimo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormDepositar.resx">
+      <DependentUpon>FormDepositar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormPesquisaAgencia.resx">
       <DependentUpon>FormPesquisaAgencia.cs</DependentUpon>
     </EmbeddedResource>
@@ -136,6 +151,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormPrincipal.resx">
       <DependentUpon>FormPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSacar.resx">
+      <DependentUpon>FormSacar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -168,6 +186,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ServiceReference1\clientes.ServiceReference1.Emprestimo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference1\clientes.ServiceReference1.Movimentacao.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ServiceReference1\Service1.wsdl" />

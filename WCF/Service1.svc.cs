@@ -18,7 +18,8 @@ namespace WCF
         private static ContaController contaController;
         private static ClienteController clienteController;
         private static AgenciaController agenciaController;
-        private static EmprestimoController emprestimoController;        
+        private static EmprestimoController emprestimoController;
+        private static MovimentacaoController movimentacaoController; 
         //
         // construtor
         //
@@ -66,6 +67,14 @@ namespace WCF
         {
             contaController.excluir(conta);
         }
+        public void SacarDinheiro(Conta conta, Movimentacao movimentacao)
+        {
+            contaController.Sacar(conta, movimentacao);
+        }
+        public void DepositarDinheiro(Conta conta, Movimentacao movimentacao)
+        {
+            contaController.Depositar(conta, movimentacao);
+        }
 
         //
         // emprestimo
@@ -85,6 +94,15 @@ namespace WCF
         public void AlterarEmprestimo(Emprestimo emprestimo)
         {
             emprestimoController.AlterarEmprestimo(emprestimo);
+        }
+        //
+        // movimentaçao
+        //
+        public Movimentacao ListarMovimentacao(Movimentacao movimentacao)
+        {
+            Movimentacao movimentacao1 = new Movimentacao();
+            movimentacao1.Tipo = "Deposito";
+            return movimentacao1;
         }
 
        

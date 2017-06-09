@@ -88,7 +88,7 @@ namespace Biblioteca.dados
         {
             try
             {
-                //abrir a conexão... Falta criar a classe de conexao
+                //abrir a conexão
                 this.abrirConexao();
                 string sql = "update conta set saldo = @saldo where numero_conta = @numero_conta";
                 //instrucao a ser executada
@@ -97,14 +97,14 @@ namespace Biblioteca.dados
                 cmd.Parameters.Add("@saldo", SqlDbType.Decimal);
                 cmd.Parameters["@saldo"].Value = conta.Saldo;
 
-                cmd.Parameters.Add("@numero_conta", SqlDbType.Decimal);
+                cmd.Parameters.Add("@numero_conta", SqlDbType.Int);
                 cmd.Parameters["@numero_conta"].Value = conta.NumeroConta;
 
                 //executando a instrucao 
                 cmd.ExecuteNonQuery();
                 //liberando a memoria 
                 cmd.Dispose();
-                //fechando a conexao... Falta criar a classe de conexao
+                //fechando a conexao
                 this.fecharConexao();
             }
             catch (Exception ex)
@@ -131,24 +131,25 @@ namespace Biblioteca.dados
                 //executando a instrucao e colocando o resultado em um leitor
                 SqlDataReader DbReader = cmd.ExecuteReader();
                 //lendo o resultado da consulta
-                
-                while (DbReader.Read())
-                {                    
+
+                if (DbReader.Read())
+                {
                     //acessando os valores das colunas do resultado
                     conta.NumeroConta = DbReader.GetInt32(DbReader.GetOrdinal("numero_conta"));
                     conta.Agencia = daoAgencia.PesquisarPorId(DbReader.GetInt32(DbReader.GetOrdinal("Numero_Agencia")));
-                    conta.Cliente = daoCliente.PesquisarPorId(DbReader.GetInt32(DbReader.GetOrdinal("cliente_id")));                    
+                    conta.Cliente = daoCliente.PesquisarPorId(DbReader.GetInt32(DbReader.GetOrdinal("cliente_id")));
                     conta.Saldo = DbReader.GetDecimal(DbReader.GetOrdinal("saldo"));
                     conta.DataCriacao = DbReader.GetDateTime(DbReader.GetOrdinal("data_criacao"));
                 }
-                
+                else
+                    return conta = null;
+                           
                 //fechando o leitor de resultados
                 DbReader.Close();
                 //liberando a memoria 
                 cmd.Dispose();
                 //fechando a conexao
-                this.fecharConexao();
-               
+                this.fecharConexao();             
             }
             catch (Exception ex)
             {
@@ -198,6 +199,68 @@ namespace Biblioteca.dados
                 throw new Exception("Erro ao conectar e pesquisar " + ex.Message);
             }
             return retorno;
+        }
+
+        public void Depositar(Conta conta)
+        {
+            try
+            {
+                //abrir a conexão
+                this.abrirConexao();
+                string sql = "update conta set saldo = @saldo where numero_conta = @numero_conta";
+
+                //instrucao a ser executada
+                SqlCommand cmd = new SqlCommand(sql, this.sqlConn);
+
+                cmd.Parameters.Add("@saldo", SqlDbType.Decimal);
+                cmd.Parameters["@saldo"].Value = conta.Saldo;
+
+                cmd.Parameters.Add("@numero_conta", SqlDbType.Decimal);
+                cmd.Parameters["@numero_conta"].Value = conta.NumeroConta;
+
+                //executando a instrucao 
+                cmd.ExecuteNonQuery();
+                //liberando a memoria 
+                cmd.Dispose();
+                //fechando a conexao
+                this.fecharConexao();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao conectar e depositar " + ex.Message);
+            }
+        }
+
+        public bool Sacar(Conta conta)
+        {
+            try
+            {
+                //abrir a conexão
+                this.abrirConexao();
+                string sql = "update conta set saldo = @saldo where numero_conta = @numero_conta";
+
+                //instrucao a ser executada
+                SqlCommand cmd = new SqlCommand(sql, this.sqlConn);
+
+                cmd.Parameters.Add("@saldo", SqlDbType.Decimal);
+                cmd.Parameters["@saldo"].Value = conta.Saldo;
+
+                cmd.Parameters.Add("@numero_conta", SqlDbType.Decimal);
+                cmd.Parameters["@numero_conta"].Value = conta.NumeroConta;               
+
+                //executando a instrucao 
+                cmd.ExecuteNonQuery();
+                //liberando a memoria 
+                cmd.Dispose();
+                //fechando a conexao
+                this.fecharConexao();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao conectar e sacar " + ex.Message);
+            }
+
+            return false;
         }
     }
 }

@@ -14,8 +14,7 @@ namespace clientes
 {
     public partial class FormPesquisaEmprestimo : Form
     {
-        private List<Emprestimo> emprestimos;
-        
+        private List<Emprestimo> emprestimos;    
         Service1Client sv;
         public FormPesquisaEmprestimo()
         {
@@ -27,7 +26,7 @@ namespace clientes
             dgvEmprestimo.Rows.Clear();
             if (txtNumeroConta.Equals("") || !Information.IsNumeric(txtNumeroConta.Text))
                 MessageBox.Show("Dados inválidos");
-            else
+            else               
                 this.CarregaGridPorNumeroConta(Int32.Parse(txtNumeroConta.Text));
         }
 
@@ -38,7 +37,7 @@ namespace clientes
             else
             {
                 FormAlterarEmprestimo alterarEmprestimo = new FormAlterarEmprestimo(RetornaEmprestimoSelecionado());
-                //alterarEmprestimo.RecebeEmprestimo(RetornaEmprestimoSelecionado());
+                alterarEmprestimo.RecebeEmprestimo(RetornaEmprestimoSelecionado());
                 alterarEmprestimo.ShowDialog();
             }               
         }
@@ -63,7 +62,7 @@ namespace clientes
             sv = new Service1Client();
             emprestimos = sv.PesquisaEmprestimo().ToList();
             dgvEmprestimo.AutoGenerateColumns = false;
-            emprestimos.ForEach(e => dgvEmprestimo.Rows.Add(e.NumeroConta.NumeroConta, e.Valor, e.QuantidadeParcela, e.NumeroConta.Cliente.Nome, e.NumeroConta.Cliente.Cpf));
+            emprestimos.ForEach(e => dgvEmprestimo.Rows.Add(e.NumeroConta.NumeroConta,  e.Valor, e.TaxaJurosMensal, e.QuantidadeParcela, e.NumeroConta.Cliente.Nome, e.NumeroConta.Cliente.Cpf));
     
         }
         private void CarregaGridPorNumeroConta(int numeroConta)
@@ -74,7 +73,7 @@ namespace clientes
                 sv = new Service1Client();
                 emprestimos.Add(sv.PesquisaEmprestimoPorNumeroConta(numeroConta));
                 
-                emprestimos.ForEach(e => dgvEmprestimo.Rows.Add(e.NumeroConta.NumeroConta, e.Valor, e.QuantidadeParcela, e.NumeroConta.Cliente.Nome, e.NumeroConta.Cliente.Cpf));
+                emprestimos.ForEach(e => dgvEmprestimo.Rows.Add(e.NumeroConta.NumeroConta, e.Valor,e.TaxaJurosMensal, e.QuantidadeParcela, e.NumeroConta.Cliente.Nome, e.NumeroConta.Cliente.Cpf));
             }
             catch (Exception)
             {

@@ -49,6 +49,18 @@
   <wsdl:message name="IService1_RemoverConta_OutputMessage">
     <wsdl:part name="parameters" element="tns:RemoverContaResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_SacarDinheiro_InputMessage">
+    <wsdl:part name="parameters" element="tns:SacarDinheiro" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SacarDinheiro_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SacarDinheiroResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DepositarDinheiro_InputMessage">
+    <wsdl:part name="parameters" element="tns:DepositarDinheiro" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DepositarDinheiro_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DepositarDinheiroResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_SalvarEmprestimo_InputMessage">
     <wsdl:part name="parameters" element="tns:SalvarEmprestimo" />
   </wsdl:message>
@@ -72,6 +84,12 @@
   </wsdl:message>
   <wsdl:message name="IService1_AlterarEmprestimo_OutputMessage">
     <wsdl:part name="parameters" element="tns:AlterarEmprestimoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ListarMovimentacao_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarMovimentacao" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ListarMovimentacao_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarMovimentacaoResponse" />
   </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="PesquisaCliente">
@@ -102,6 +120,14 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/RemoverConta" message="tns:IService1_RemoverConta_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/RemoverContaResponse" message="tns:IService1_RemoverConta_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="SacarDinheiro">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SacarDinheiro" message="tns:IService1_SacarDinheiro_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SacarDinheiroResponse" message="tns:IService1_SacarDinheiro_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DepositarDinheiro">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/DepositarDinheiro" message="tns:IService1_DepositarDinheiro_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/DepositarDinheiroResponse" message="tns:IService1_DepositarDinheiro_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="SalvarEmprestimo">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/SalvarEmprestimo" message="tns:IService1_SalvarEmprestimo_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/SalvarEmprestimoResponse" message="tns:IService1_SalvarEmprestimo_OutputMessage" />
@@ -117,6 +143,10 @@
     <wsdl:operation name="AlterarEmprestimo">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/AlterarEmprestimo" message="tns:IService1_AlterarEmprestimo_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/AlterarEmprestimoResponse" message="tns:IService1_AlterarEmprestimo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarMovimentacao">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ListarMovimentacao" message="tns:IService1_ListarMovimentacao_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ListarMovimentacaoResponse" message="tns:IService1_ListarMovimentacao_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -184,6 +214,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="SacarDinheiro">
+      <soap:operation soapAction="http://tempuri.org/IService1/SacarDinheiro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DepositarDinheiro">
+      <soap:operation soapAction="http://tempuri.org/IService1/DepositarDinheiro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="SalvarEmprestimo">
       <soap:operation soapAction="http://tempuri.org/IService1/SalvarEmprestimo" style="document" />
       <wsdl:input>
@@ -213,6 +261,15 @@
     </wsdl:operation>
     <wsdl:operation name="AlterarEmprestimo">
       <soap:operation soapAction="http://tempuri.org/IService1/AlterarEmprestimo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarMovimentacao">
+      <soap:operation soapAction="http://tempuri.org/IService1/ListarMovimentacao" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

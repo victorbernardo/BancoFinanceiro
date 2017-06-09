@@ -34,12 +34,14 @@
             this.btAlterar = new System.Windows.Forms.Button();
             this.btCancelar = new System.Windows.Forms.Button();
             this.btListarTodosEmprestimos = new System.Windows.Forms.Button();
-            this.Cpf = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QuatidadeParcela = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ValorEmprestimo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NumeroConta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvEmprestimo = new System.Windows.Forms.DataGridView();
+            this.btRemover = new System.Windows.Forms.Button();
+            this.NumeroConta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ValorEmprestimo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TaxaJuros = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QuatidadeParcela = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cpf = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmprestimo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -99,38 +101,6 @@
             this.btListarTodosEmprestimos.UseVisualStyleBackColor = true;
             this.btListarTodosEmprestimos.Click += new System.EventHandler(this.btListarTodosEmprestimos_Click);
             // 
-            // Cpf
-            // 
-            this.Cpf.HeaderText = "Cpf";
-            this.Cpf.Name = "Cpf";
-            this.Cpf.ReadOnly = true;
-            // 
-            // Cliente
-            // 
-            this.Cliente.HeaderText = "Cliente";
-            this.Cliente.Name = "Cliente";
-            this.Cliente.ReadOnly = true;
-            // 
-            // QuatidadeParcela
-            // 
-            this.QuatidadeParcela.HeaderText = "QuatidadeParcela";
-            this.QuatidadeParcela.Name = "QuatidadeParcela";
-            this.QuatidadeParcela.ReadOnly = true;
-            // 
-            // ValorEmprestimo
-            // 
-            this.ValorEmprestimo.HeaderText = "Valor do Emprestimo";
-            this.ValorEmprestimo.Name = "ValorEmprestimo";
-            this.ValorEmprestimo.ReadOnly = true;
-            this.ValorEmprestimo.Width = 130;
-            // 
-            // NumeroConta
-            // 
-            this.NumeroConta.HeaderText = "NumeroConta";
-            this.NumeroConta.Name = "NumeroConta";
-            this.NumeroConta.ReadOnly = true;
-            this.NumeroConta.Width = 110;
-            // 
             // dgvEmprestimo
             // 
             this.dgvEmprestimo.AllowUserToAddRows = false;
@@ -139,6 +109,7 @@
             this.dgvEmprestimo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NumeroConta,
             this.ValorEmprestimo,
+            this.TaxaJuros,
             this.QuatidadeParcela,
             this.Cliente,
             this.Cpf});
@@ -148,11 +119,59 @@
             this.dgvEmprestimo.Size = new System.Drawing.Size(584, 248);
             this.dgvEmprestimo.TabIndex = 3;
             // 
+            // btRemover
+            // 
+            this.btRemover.Location = new System.Drawing.Point(318, 310);
+            this.btRemover.Name = "btRemover";
+            this.btRemover.Size = new System.Drawing.Size(116, 23);
+            this.btRemover.TabIndex = 7;
+            this.btRemover.Text = "Remover emprestimo";
+            this.btRemover.UseVisualStyleBackColor = true;
+            // 
+            // NumeroConta
+            // 
+            this.NumeroConta.HeaderText = "NumeroConta";
+            this.NumeroConta.Name = "NumeroConta";
+            this.NumeroConta.ReadOnly = true;
+            this.NumeroConta.Width = 110;
+            // 
+            // ValorEmprestimo
+            // 
+            this.ValorEmprestimo.HeaderText = "Valor do Emprestimo";
+            this.ValorEmprestimo.Name = "ValorEmprestimo";
+            this.ValorEmprestimo.ReadOnly = true;
+            this.ValorEmprestimo.Width = 130;
+            // 
+            // TaxaJuros
+            // 
+            this.TaxaJuros.HeaderText = "Taxa de juros";
+            this.TaxaJuros.Name = "TaxaJuros";
+            this.TaxaJuros.ReadOnly = true;
+            // 
+            // QuatidadeParcela
+            // 
+            this.QuatidadeParcela.HeaderText = "QuatidadeParcela";
+            this.QuatidadeParcela.Name = "QuatidadeParcela";
+            this.QuatidadeParcela.ReadOnly = true;
+            // 
+            // Cliente
+            // 
+            this.Cliente.HeaderText = "Cliente";
+            this.Cliente.Name = "Cliente";
+            this.Cliente.ReadOnly = true;
+            // 
+            // Cpf
+            // 
+            this.Cpf.HeaderText = "Cpf";
+            this.Cpf.Name = "Cpf";
+            this.Cpf.ReadOnly = true;
+            // 
             // FormPesquisaEmprestimo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(606, 341);
+            this.Controls.Add(this.btRemover);
             this.Controls.Add(this.btListarTodosEmprestimos);
             this.Controls.Add(this.btCancelar);
             this.Controls.Add(this.btAlterar);
@@ -177,11 +196,13 @@
         private System.Windows.Forms.Button btAlterar;
         private System.Windows.Forms.Button btCancelar;
         private System.Windows.Forms.Button btListarTodosEmprestimos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cpf;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cliente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QuatidadeParcela;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ValorEmprestimo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NumeroConta;
         private System.Windows.Forms.DataGridView dgvEmprestimo;
+        private System.Windows.Forms.Button btRemover;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NumeroConta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ValorEmprestimo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TaxaJuros;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QuatidadeParcela;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cpf;
     }
 }

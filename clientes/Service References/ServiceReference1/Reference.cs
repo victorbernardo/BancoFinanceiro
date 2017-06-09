@@ -483,6 +483,115 @@ namespace clientes.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Movimentacao", Namespace="http://schemas.datacontract.org/2004/07/Biblioteca.basica")]
+    [System.SerializableAttribute()]
+    public partial class Movimentacao : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime DataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdMovimentacaoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private clientes.ServiceReference1.Conta NumeroContaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TipoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal ValorField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime Data {
+            get {
+                return this.DataField;
+            }
+            set {
+                if ((this.DataField.Equals(value) != true)) {
+                    this.DataField = value;
+                    this.RaisePropertyChanged("Data");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdMovimentacao {
+            get {
+                return this.IdMovimentacaoField;
+            }
+            set {
+                if ((this.IdMovimentacaoField.Equals(value) != true)) {
+                    this.IdMovimentacaoField = value;
+                    this.RaisePropertyChanged("IdMovimentacao");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public clientes.ServiceReference1.Conta NumeroConta {
+            get {
+                return this.NumeroContaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NumeroContaField, value) != true)) {
+                    this.NumeroContaField = value;
+                    this.RaisePropertyChanged("NumeroConta");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Tipo {
+            get {
+                return this.TipoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TipoField, value) != true)) {
+                    this.TipoField = value;
+                    this.RaisePropertyChanged("Tipo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Valor {
+            get {
+                return this.ValorField;
+            }
+            set {
+                if ((this.ValorField.Equals(value) != true)) {
+                    this.ValorField = value;
+                    this.RaisePropertyChanged("Valor");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Emprestimo", Namespace="http://schemas.datacontract.org/2004/07/Biblioteca.basica")]
     [System.SerializableAttribute()]
     public partial class Emprestimo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -793,6 +902,18 @@ namespace clientes.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/RemoverConta", ReplyAction="http://tempuri.org/IService1/RemoverContaResponse")]
         System.Threading.Tasks.Task RemoverContaAsync(clientes.ServiceReference1.Conta conta);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SacarDinheiro", ReplyAction="http://tempuri.org/IService1/SacarDinheiroResponse")]
+        void SacarDinheiro(clientes.ServiceReference1.Conta conta, clientes.ServiceReference1.Movimentacao movimentacao);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SacarDinheiro", ReplyAction="http://tempuri.org/IService1/SacarDinheiroResponse")]
+        System.Threading.Tasks.Task SacarDinheiroAsync(clientes.ServiceReference1.Conta conta, clientes.ServiceReference1.Movimentacao movimentacao);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DepositarDinheiro", ReplyAction="http://tempuri.org/IService1/DepositarDinheiroResponse")]
+        void DepositarDinheiro(clientes.ServiceReference1.Conta conta, clientes.ServiceReference1.Movimentacao movimentacao);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DepositarDinheiro", ReplyAction="http://tempuri.org/IService1/DepositarDinheiroResponse")]
+        System.Threading.Tasks.Task DepositarDinheiroAsync(clientes.ServiceReference1.Conta conta, clientes.ServiceReference1.Movimentacao movimentacao);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SalvarEmprestimo", ReplyAction="http://tempuri.org/IService1/SalvarEmprestimoResponse")]
         void SalvarEmprestimo(clientes.ServiceReference1.Emprestimo emprestimo);
         
@@ -816,6 +937,12 @@ namespace clientes.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AlterarEmprestimo", ReplyAction="http://tempuri.org/IService1/AlterarEmprestimoResponse")]
         System.Threading.Tasks.Task AlterarEmprestimoAsync(clientes.ServiceReference1.Emprestimo emprestimo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ListarMovimentacao", ReplyAction="http://tempuri.org/IService1/ListarMovimentacaoResponse")]
+        clientes.ServiceReference1.Movimentacao ListarMovimentacao(clientes.ServiceReference1.Movimentacao movimentacao);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ListarMovimentacao", ReplyAction="http://tempuri.org/IService1/ListarMovimentacaoResponse")]
+        System.Threading.Tasks.Task<clientes.ServiceReference1.Movimentacao> ListarMovimentacaoAsync(clientes.ServiceReference1.Movimentacao movimentacao);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -901,6 +1028,22 @@ namespace clientes.ServiceReference1 {
             return base.Channel.RemoverContaAsync(conta);
         }
         
+        public void SacarDinheiro(clientes.ServiceReference1.Conta conta, clientes.ServiceReference1.Movimentacao movimentacao) {
+            base.Channel.SacarDinheiro(conta, movimentacao);
+        }
+        
+        public System.Threading.Tasks.Task SacarDinheiroAsync(clientes.ServiceReference1.Conta conta, clientes.ServiceReference1.Movimentacao movimentacao) {
+            return base.Channel.SacarDinheiroAsync(conta, movimentacao);
+        }
+        
+        public void DepositarDinheiro(clientes.ServiceReference1.Conta conta, clientes.ServiceReference1.Movimentacao movimentacao) {
+            base.Channel.DepositarDinheiro(conta, movimentacao);
+        }
+        
+        public System.Threading.Tasks.Task DepositarDinheiroAsync(clientes.ServiceReference1.Conta conta, clientes.ServiceReference1.Movimentacao movimentacao) {
+            return base.Channel.DepositarDinheiroAsync(conta, movimentacao);
+        }
+        
         public void SalvarEmprestimo(clientes.ServiceReference1.Emprestimo emprestimo) {
             base.Channel.SalvarEmprestimo(emprestimo);
         }
@@ -931,6 +1074,14 @@ namespace clientes.ServiceReference1 {
         
         public System.Threading.Tasks.Task AlterarEmprestimoAsync(clientes.ServiceReference1.Emprestimo emprestimo) {
             return base.Channel.AlterarEmprestimoAsync(emprestimo);
+        }
+        
+        public clientes.ServiceReference1.Movimentacao ListarMovimentacao(clientes.ServiceReference1.Movimentacao movimentacao) {
+            return base.Channel.ListarMovimentacao(movimentacao);
+        }
+        
+        public System.Threading.Tasks.Task<clientes.ServiceReference1.Movimentacao> ListarMovimentacaoAsync(clientes.ServiceReference1.Movimentacao movimentacao) {
+            return base.Channel.ListarMovimentacaoAsync(movimentacao);
         }
     }
 }

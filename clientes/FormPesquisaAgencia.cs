@@ -22,14 +22,16 @@ namespace clientes
         {
             InitializeComponent();
         }
-        //
-        //FUNÇOES DOS BOTÕES
-        //
+      
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
             carregaGridAgencia();
         }
         private void btnSelecionar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        private void btCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
@@ -53,5 +55,7 @@ namespace clientes
             Agencia agencia = dgvAgencias.CurrentRow != null ? agencias.Find(c => c.NumeroAgencia.Equals(dgvAgencias.CurrentRow.Cells[1].Value)) : null;
             return agencia;
         }
+
+      
     }
 }

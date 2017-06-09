@@ -60,6 +60,16 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Conta" nillable="true" type="tns:Conta" />
+  <xs:complexType name="Movimentacao">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Data" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IdMovimentacao" type="xs:int" />
+      <xs:element minOccurs="0" name="NumeroConta" nillable="true" type="tns:Conta" />
+      <xs:element minOccurs="0" name="Tipo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Valor" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Movimentacao" nillable="true" type="tns:Movimentacao" />
   <xs:complexType name="Emprestimo">
     <xs:sequence>
       <xs:element minOccurs="0" name="DataCriacao" type="xs:dateTime" />

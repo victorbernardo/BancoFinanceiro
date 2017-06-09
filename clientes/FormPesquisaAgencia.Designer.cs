@@ -42,6 +42,7 @@
             this.btnSelecionar = new System.Windows.Forms.Button();
             this.btnPesquisar = new System.Windows.Forms.Button();
             this.btnLimpar = new System.Windows.Forms.Button();
+            this.btCancelar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAgencias)).BeginInit();
             this.SuspendLayout();
@@ -146,7 +147,7 @@
             // 
             // btnSelecionar
             // 
-            this.btnSelecionar.Location = new System.Drawing.Point(457, 383);
+            this.btnSelecionar.Location = new System.Drawing.Point(489, 354);
             this.btnSelecionar.Name = "btnSelecionar";
             this.btnSelecionar.Size = new System.Drawing.Size(75, 23);
             this.btnSelecionar.TabIndex = 15;
@@ -156,7 +157,7 @@
             // 
             // btnPesquisar
             // 
-            this.btnPesquisar.Location = new System.Drawing.Point(566, 383);
+            this.btnPesquisar.Location = new System.Drawing.Point(570, 354);
             this.btnPesquisar.Name = "btnPesquisar";
             this.btnPesquisar.Size = new System.Drawing.Size(75, 23);
             this.btnPesquisar.TabIndex = 14;
@@ -166,18 +167,29 @@
             // 
             // btnLimpar
             // 
-            this.btnLimpar.Location = new System.Drawing.Point(343, 383);
+            this.btnLimpar.Location = new System.Drawing.Point(408, 354);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(75, 23);
             this.btnLimpar.TabIndex = 13;
             this.btnLimpar.Text = "Limpar";
             this.btnLimpar.UseVisualStyleBackColor = true;
             // 
+            // btCancelar
+            // 
+            this.btCancelar.Location = new System.Drawing.Point(327, 354);
+            this.btCancelar.Name = "btCancelar";
+            this.btCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btCancelar.TabIndex = 16;
+            this.btCancelar.Text = "Cancelar";
+            this.btCancelar.UseVisualStyleBackColor = true;
+            this.btCancelar.Click += new System.EventHandler(this.btCancelar_Click);
+            // 
             // FormPesquisaAgencia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(677, 418);
+            this.ClientSize = new System.Drawing.Size(660, 394);
+            this.Controls.Add(this.btCancelar);
             this.Controls.Add(this.btnSelecionar);
             this.Controls.Add(this.btnPesquisar);
             this.Controls.Add(this.btnLimpar);
@@ -209,5 +221,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nome;
         private System.Windows.Forms.DataGridViewTextBoxColumn Numero;
         private System.Windows.Forms.DataGridViewTextBoxColumn endereco;
+        private System.Windows.Forms.Button btCancelar;
     }
 }

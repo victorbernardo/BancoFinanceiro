@@ -29,10 +29,11 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btPesquisar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtNumeroConta = new System.Windows.Forms.TextBox();
+            this.btnPesquisarTodasContas = new System.Windows.Forms.Button();
             this.btnSelecionar = new System.Windows.Forms.Button();
-            this.btnPesquisar = new System.Windows.Forms.Button();
             this.btnLimpar = new System.Windows.Forms.Button();
             this.dgvContas = new System.Windows.Forms.DataGridView();
             this.numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,14 +46,26 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btPesquisar);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txtNumeroConta);
+            this.groupBox1.Controls.Add(this.btnPesquisarTodasContas);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(479, 66);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtro";
+            // 
+            // btPesquisar
+            // 
+            this.btPesquisar.Location = new System.Drawing.Point(180, 20);
+            this.btPesquisar.Name = "btPesquisar";
+            this.btPesquisar.Size = new System.Drawing.Size(75, 23);
+            this.btPesquisar.TabIndex = 15;
+            this.btPesquisar.Text = "Pesquisar...";
+            this.btPesquisar.UseVisualStyleBackColor = true;
+            this.btPesquisar.Click += new System.EventHandler(this.btPesquisar_Click);
             // 
             // label1
             // 
@@ -67,12 +80,22 @@
             // 
             this.txtNumeroConta.Location = new System.Drawing.Point(91, 22);
             this.txtNumeroConta.Name = "txtNumeroConta";
-            this.txtNumeroConta.Size = new System.Drawing.Size(197, 20);
+            this.txtNumeroConta.Size = new System.Drawing.Size(83, 20);
             this.txtNumeroConta.TabIndex = 0;
+            // 
+            // btnPesquisarTodasContas
+            // 
+            this.btnPesquisarTodasContas.Location = new System.Drawing.Point(261, 20);
+            this.btnPesquisarTodasContas.Name = "btnPesquisarTodasContas";
+            this.btnPesquisarTodasContas.Size = new System.Drawing.Size(128, 23);
+            this.btnPesquisarTodasContas.TabIndex = 14;
+            this.btnPesquisarTodasContas.Text = "Pesquisar todas contas";
+            this.btnPesquisarTodasContas.UseVisualStyleBackColor = true;
+            this.btnPesquisarTodasContas.Click += new System.EventHandler(this.btnPesquisarTodasContas_Click);
             // 
             // btnSelecionar
             // 
-            this.btnSelecionar.Location = new System.Drawing.Point(294, 325);
+            this.btnSelecionar.Location = new System.Drawing.Point(416, 289);
             this.btnSelecionar.Name = "btnSelecionar";
             this.btnSelecionar.Size = new System.Drawing.Size(75, 23);
             this.btnSelecionar.TabIndex = 15;
@@ -80,19 +103,9 @@
             this.btnSelecionar.UseVisualStyleBackColor = true;
             this.btnSelecionar.Click += new System.EventHandler(this.btnSelecionar_Click);
             // 
-            // btnPesquisar
-            // 
-            this.btnPesquisar.Location = new System.Drawing.Point(403, 325);
-            this.btnPesquisar.Name = "btnPesquisar";
-            this.btnPesquisar.Size = new System.Drawing.Size(75, 23);
-            this.btnPesquisar.TabIndex = 14;
-            this.btnPesquisar.Text = "Pesquisar";
-            this.btnPesquisar.UseVisualStyleBackColor = true;
-            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
-            // 
             // btnLimpar
             // 
-            this.btnLimpar.Location = new System.Drawing.Point(180, 325);
+            this.btnLimpar.Location = new System.Drawing.Point(335, 289);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(75, 23);
             this.btnLimpar.TabIndex = 13;
@@ -109,7 +122,7 @@
             this.saldo,
             this.cliente,
             this.cpf});
-            this.dgvContas.Location = new System.Drawing.Point(12, 100);
+            this.dgvContas.Location = new System.Drawing.Point(12, 84);
             this.dgvContas.Name = "dgvContas";
             this.dgvContas.ReadOnly = true;
             this.dgvContas.Size = new System.Drawing.Size(478, 199);
@@ -145,10 +158,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(513, 360);
+            this.ClientSize = new System.Drawing.Size(499, 322);
             this.Controls.Add(this.dgvContas);
             this.Controls.Add(this.btnSelecionar);
-            this.Controls.Add(this.btnPesquisar);
             this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.groupBox1);
             this.Name = "FormPesquisaConta";
@@ -167,12 +179,13 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtNumeroConta;
         private System.Windows.Forms.Button btnSelecionar;
-        private System.Windows.Forms.Button btnPesquisar;
+        private System.Windows.Forms.Button btnPesquisarTodasContas;
         private System.Windows.Forms.Button btnLimpar;
         private System.Windows.Forms.DataGridView dgvContas;
         private System.Windows.Forms.DataGridViewTextBoxColumn numero;
         private System.Windows.Forms.DataGridViewTextBoxColumn saldo;
         private System.Windows.Forms.DataGridViewTextBoxColumn cliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn cpf;
+        private System.Windows.Forms.Button btPesquisar;
     }
 }

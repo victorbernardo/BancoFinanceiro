@@ -22,9 +22,7 @@ namespace clientes
         {
             InitializeComponent();
         }
-        //
-        //FUNÇOES DOS BOTOES
-        //
+  
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
             carrehaGridClientes();
@@ -37,6 +35,10 @@ namespace clientes
         {
 
         }
+        private void btCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        } 
         //
         //FUNÇOES INTERNAS
         //              
@@ -58,6 +60,6 @@ namespace clientes
         {
             Cliente cliente = dgvClientes.CurrentRow != null ? clientes.Find(c => c.Cpf.Equals(dgvClientes.CurrentRow.Cells[1].Value)) : null;
             return cliente;
-        }        
+        }
     }
 }

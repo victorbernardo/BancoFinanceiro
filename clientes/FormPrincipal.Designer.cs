@@ -34,6 +34,8 @@
             this.cadastrarEnorestimoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarContaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sacarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.depositarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarEmprestimoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -83,10 +85,27 @@
             // 
             // consultarContaToolStripMenuItem
             // 
+            this.consultarContaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sacarToolStripMenuItem,
+            this.depositarToolStripMenuItem});
             this.consultarContaToolStripMenuItem.Name = "consultarContaToolStripMenuItem";
             this.consultarContaToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.consultarContaToolStripMenuItem.Text = "Consultar Conta";
             this.consultarContaToolStripMenuItem.Click += new System.EventHandler(this.consultarContaToolStripMenuItem_Click);
+            // 
+            // sacarToolStripMenuItem
+            // 
+            this.sacarToolStripMenuItem.Name = "sacarToolStripMenuItem";
+            this.sacarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.sacarToolStripMenuItem.Text = "Sacar";
+            this.sacarToolStripMenuItem.Click += new System.EventHandler(this.sacarToolStripMenuItem_Click);
+            // 
+            // depositarToolStripMenuItem
+            // 
+            this.depositarToolStripMenuItem.Name = "depositarToolStripMenuItem";
+            this.depositarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.depositarToolStripMenuItem.Text = "Depositar";
+            this.depositarToolStripMenuItem.Click += new System.EventHandler(this.depositarToolStripMenuItem_Click);
             // 
             // consultarEmprestimoToolStripMenuItem
             // 
@@ -121,5 +140,7 @@
         private System.Windows.Forms.ToolStripMenuItem consultaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem consultarContaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem consultarEmprestimoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sacarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem depositarToolStripMenuItem;
     }
 }

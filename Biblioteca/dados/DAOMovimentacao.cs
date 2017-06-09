@@ -17,7 +17,7 @@ namespace Biblioteca.dados
         {
             try
             {
-                //abre uma conexao... Falta fazer a classe de concexao
+                //abre uma conexao
                 this.abrirConexao();
                 string sql = "insert into movimentacao(data, tipo, valor, numero_conta)";
                 sql += "values(@data, @tipo, @valor, @numero_conta)";

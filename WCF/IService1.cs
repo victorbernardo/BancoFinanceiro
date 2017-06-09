@@ -41,6 +41,10 @@ namespace WCF
 
         [OperationContract]
         void RemoverConta(Conta conta);
+        [OperationContract]
+        void SacarDinheiro(Conta conta, Movimentacao movimentacao);
+        [OperationContract]
+        void DepositarDinheiro(Conta conta, Movimentacao movimentacao);
         //
         // emprestimo
         //
@@ -52,6 +56,11 @@ namespace WCF
         Emprestimo PesquisaEmprestimoPorNumeroConta(int numeroConta);
         [OperationContract]
         void AlterarEmprestimo(Emprestimo emprestimo);
+        //
+        // movimentaçao
+        //
+        [OperationContract]
+        Movimentacao ListarMovimentacao(Movimentacao movimentacao);
        
     }
     // Use a data contract as illustrated in the sample below to add composite types to service operations.

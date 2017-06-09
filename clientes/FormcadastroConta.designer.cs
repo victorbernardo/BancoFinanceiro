@@ -53,9 +53,9 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtNumeroConta = new System.Windows.Forms.TextBox();
             this.btnIncluirConta = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btRemover = new System.Windows.Forms.Button();
+            this.btAlterar = new System.Windows.Forms.Button();
+            this.btLimpar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -178,7 +178,7 @@
             // 
             this.btnBuscarAgencia.Location = new System.Drawing.Point(591, 29);
             this.btnBuscarAgencia.Name = "btnBuscarAgencia";
-            this.btnBuscarAgencia.Size = new System.Drawing.Size(98, 20);
+            this.btnBuscarAgencia.Size = new System.Drawing.Size(98, 30);
             this.btnBuscarAgencia.TabIndex = 8;
             this.btnBuscarAgencia.Text = "Buscar Agencia";
             this.btnBuscarAgencia.UseVisualStyleBackColor = true;
@@ -293,7 +293,7 @@
             // 
             // btnIncluirConta
             // 
-            this.btnIncluirConta.Location = new System.Drawing.Point(605, 377);
+            this.btnIncluirConta.Location = new System.Drawing.Point(626, 363);
             this.btnIncluirConta.Name = "btnIncluirConta";
             this.btnIncluirConta.Size = new System.Drawing.Size(98, 30);
             this.btnIncluirConta.TabIndex = 8;
@@ -301,44 +301,44 @@
             this.btnIncluirConta.UseVisualStyleBackColor = true;
             this.btnIncluirConta.Click += new System.EventHandler(this.btnIncluirConta_Click);
             // 
-            // button3
+            // btRemover
             // 
-            this.button3.Location = new System.Drawing.Point(111, 377);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(98, 30);
-            this.button3.TabIndex = 10;
-            this.button3.Text = "Remover Conta";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btRemover.Location = new System.Drawing.Point(418, 363);
+            this.btRemover.Name = "btRemover";
+            this.btRemover.Size = new System.Drawing.Size(98, 30);
+            this.btRemover.TabIndex = 10;
+            this.btRemover.Text = "Remover Conta";
+            this.btRemover.UseVisualStyleBackColor = true;
+            this.btRemover.Click += new System.EventHandler(this.btRemover_Click);
             // 
-            // button1
+            // btAlterar
             // 
-            this.button1.Location = new System.Drawing.Point(483, 377);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(98, 30);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Alterar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btAlterar.Location = new System.Drawing.Point(522, 363);
+            this.btAlterar.Name = "btAlterar";
+            this.btAlterar.Size = new System.Drawing.Size(98, 30);
+            this.btAlterar.TabIndex = 11;
+            this.btAlterar.Text = "Alterar";
+            this.btAlterar.UseVisualStyleBackColor = true;
+            this.btAlterar.Click += new System.EventHandler(this.btAlterar_Click);
             // 
-            // button2
+            // btLimpar
             // 
-            this.button2.Location = new System.Drawing.Point(360, 377);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(98, 30);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "Limpar";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            this.btLimpar.Location = new System.Drawing.Point(314, 363);
+            this.btLimpar.Name = "btLimpar";
+            this.btLimpar.Size = new System.Drawing.Size(98, 30);
+            this.btLimpar.TabIndex = 12;
+            this.btLimpar.Text = "Limpar";
+            this.btLimpar.UseVisualStyleBackColor = true;
+            this.btLimpar.Click += new System.EventHandler(this.btLimpar_Click);
             // 
             // FormcadastroConta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(739, 423);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button3);
+            this.ClientSize = new System.Drawing.Size(734, 401);
+            this.Controls.Add(this.btLimpar);
+            this.Controls.Add(this.btAlterar);
+            this.Controls.Add(this.btRemover);
             this.Controls.Add(this.btnIncluirConta);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -383,8 +383,8 @@
         private System.Windows.Forms.TextBox txtSaldo;
         private System.Windows.Forms.Button btnBuscarConta;
         private System.Windows.Forms.Button btnIncluirConta;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btRemover;
+        private System.Windows.Forms.Button btAlterar;
+        private System.Windows.Forms.Button btLimpar;
     }
 }

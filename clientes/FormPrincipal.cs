@@ -42,5 +42,17 @@ namespace clientes
             FormPesquisaEmprestimo fPesquisaEmprestimo = new FormPesquisaEmprestimo();
             fPesquisaEmprestimo.ShowDialog();
         }
+
+        private void sacarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormSacar fSacar = new FormSacar();
+            fSacar.ShowDialog();
+        }
+
+        private void depositarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormDepositar fDepositar = new FormDepositar();
+            fDepositar.ShowDialog();
+        }
     }
 }

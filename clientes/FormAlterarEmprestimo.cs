@@ -20,7 +20,7 @@ namespace clientes
         {
             
             InitializeComponent();
-
+            this.emprestimo = new Emprestimo();
 
             CarregaCampo(emprestimo);
 
@@ -53,6 +53,7 @@ namespace clientes
 
 
 
+
         private void Simulacao()
         {
             int qtdParcela = 0;
@@ -75,24 +76,18 @@ namespace clientes
             lbValorEmprestimo.Text = txtValor.Text;
             lbTaxaJuros.Text = txtTaxaJuro.Text;
             lbQtdParcela.Text = qtdParcela.ToString();
-            lbValorParcela.Text = String.Format("{0:n2}", resul);
-            /*
-            txtNome.Text = ("");
-            txtNumeroConta.Text = ("");
-            txtValor.Text = ("");
-            cbQtdParcela.SelectedIndex = -1;
-            */
-        }
-        /*public void RecebeEmprestimo(Emprestimo emprestimo) 
-        {
-            CarregaCampo(emprestimo);
-        }*/
+            lbValorParcela.Text = String.Format("{0:n2}", resul);          
+        }               
         private void CarregaCampo(Emprestimo emprestimo)
         {
             txtNumeroConta.Text = emprestimo.NumeroConta.NumeroConta.ToString();
             txtNome.Text = emprestimo.NumeroConta.Cliente.Nome;
             txtValor.Text = emprestimo.Valor.ToString();
             cbQtdParcela.Text = emprestimo.QuantidadeParcela.ToString();
+        }
+        public Emprestimo RecebeEmprestimo(Emprestimo emprestimo)
+        {
+            return this.emprestimo = emprestimo;
         }
         private void SalvarAlteracao()
         {
@@ -110,7 +105,8 @@ namespace clientes
                         qtdParcela = item;
                     }
                 }
-                emprestimo = new Emprestimo();                             
+              
+                emprestimo.IdEmprestimo = this.emprestimo.IdEmprestimo;               
                 emprestimo.TaxaJurosMensal = Decimal.Parse(txtTaxaJuro.Text);
                 emprestimo.QuantidadeParcela = qtdParcela;
                 //emprestimo.DataCriacao = DateTime.Now;
@@ -122,13 +118,9 @@ namespace clientes
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception("Erro ao Alterar emprestimo" + ex.Message);
+                    MessageBox.Show("Erro ao Alterar emprestimo " + ex.Message);
                 }
             }
-        }
-
-        
-
-       
+        } 
     }
 }
