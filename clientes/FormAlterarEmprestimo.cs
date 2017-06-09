@@ -20,7 +20,10 @@ namespace clientes
         {
             
             InitializeComponent();
+
+
             CarregaCampo(emprestimo);
+
             for (int i = 1; i <= 36; i++)
             {
                 cbQtdParcela.Items.Add(i);

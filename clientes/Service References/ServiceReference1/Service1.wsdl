@@ -37,6 +37,18 @@
   <wsdl:message name="IService1_PesquisaContaPorNumeroConta_OutputMessage">
     <wsdl:part name="parameters" element="tns:PesquisaContaPorNumeroContaResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_AlterarConta_InputMessage">
+    <wsdl:part name="parameters" element="tns:AlterarConta" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AlterarConta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AlterarContaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_RemoverConta_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoverConta" />
+  </wsdl:message>
+  <wsdl:message name="IService1_RemoverConta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoverContaResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_SalvarEmprestimo_InputMessage">
     <wsdl:part name="parameters" element="tns:SalvarEmprestimo" />
   </wsdl:message>
@@ -81,6 +93,14 @@
     <wsdl:operation name="PesquisaContaPorNumeroConta">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/PesquisaContaPorNumeroConta" message="tns:IService1_PesquisaContaPorNumeroConta_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/PesquisaContaPorNumeroContaResponse" message="tns:IService1_PesquisaContaPorNumeroConta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AlterarConta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AlterarConta" message="tns:IService1_AlterarConta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AlterarContaResponse" message="tns:IService1_AlterarConta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoverConta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/RemoverConta" message="tns:IService1_RemoverConta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/RemoverContaResponse" message="tns:IService1_RemoverConta_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="SalvarEmprestimo">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/SalvarEmprestimo" message="tns:IService1_SalvarEmprestimo_InputMessage" />
@@ -139,6 +159,24 @@
     </wsdl:operation>
     <wsdl:operation name="PesquisaContaPorNumeroConta">
       <soap:operation soapAction="http://tempuri.org/IService1/PesquisaContaPorNumeroConta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AlterarConta">
+      <soap:operation soapAction="http://tempuri.org/IService1/AlterarConta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoverConta">
+      <soap:operation soapAction="http://tempuri.org/IService1/RemoverConta" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

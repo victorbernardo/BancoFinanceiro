@@ -19,8 +19,8 @@ namespace Biblioteca.dados
             {
                 //abre uma conexao
                 this.abrirConexao();
-                string sql = "insert into parcela(data_vencimento, valor, emprestimo_id)";
-                sql += "values(@data_vencimento, @valor, @emprestimo_id)";
+                string sql = "insert into parcela(data_vencimento, valor,numero_parcela, emprestimo_id)";
+                sql += "values(@data_vencimento, @valor,@numero_parcela, @emprestimo_id)";
 
                 SqlCommand cmd = new SqlCommand(sql, this.sqlConn);
 
@@ -29,6 +29,9 @@ namespace Biblioteca.dados
 
                 cmd.Parameters.Add("@valor", SqlDbType.Decimal);
                 cmd.Parameters["@valor"].Value = parcela.Valor;
+
+                cmd.Parameters.Add("@numero_parcela", SqlDbType.Int);
+                cmd.Parameters["@numero_parcela"].Value = parcela.NumeroParcela;
 
                 cmd.Parameters.Add("@emprestimo_id", SqlDbType.Int);
                 cmd.Parameters["@emprestimo_id"].Value = parcela.Emprestimo.IdEmprestimo;
@@ -104,7 +107,7 @@ namespace Biblioteca.dados
             }
         }
 
-        public List<Parcela> Pesquisar(Parcela parcela)
+        public List<Parcela> Pesquisar()
         {
             List<Parcela> retorno = new List<Parcela>();
             try
@@ -112,13 +115,13 @@ namespace Biblioteca.dados
                 //abrir a conexão... Falta criar a classe de conexao
                 this.abrirConexao();
                 //instrucao a ser executada... Falta configurar essa string sql
-                string sql = "SELECT Data_vencimento, Parcela_id, Valor, Emprestimo_id FROM Parcela  where Parcela_id = @parcela_id";
+                string sql = "SELECT Data_vencimento, Parcela_id, Valor, numero_parcela, Emprestimo_id FROM Parcela ";
 
                 SqlCommand cmd = new SqlCommand(sql, sqlConn);
 
-                cmd.Parameters.Add("@parcela_id", SqlDbType.Int);
+                /*cmd.Parameters.Add("@parcela_id", SqlDbType.Int);
                 cmd.Parameters["@parcela_id"].Value = parcela.IdParcela;
-
+                */
                 //executando a instrucao e colocando o resultado em um leitor
                 SqlDataReader DbReader = cmd.ExecuteReader();
                 //lendo o resultado da consulta
@@ -128,6 +131,7 @@ namespace Biblioteca.dados
                     //acessando os valores das colunas do resultado
                     p.DataVencimento = DbReader.GetDateTime(DbReader.GetOrdinal("Data_vencimento"));
                     p.IdParcela = DbReader.GetInt32(DbReader.GetOrdinal("Parcela_id"));
+                    p.NumeroParcela = DbReader.GetInt32(DbReader.GetOrdinal("numero_parcela"));
                     p.Valor = DbReader.GetDecimal(DbReader.GetOrdinal("Valor"));
                     p.Emprestimo.IdEmprestimo = DbReader.GetInt32(DbReader.GetOrdinal("Emprestimo_id"));
 
@@ -146,6 +150,46 @@ namespace Biblioteca.dados
                 throw new Exception("Erro ao conectar e pesquisar " + ex.Message);
             }
             return retorno;
+        }
+        public Parcela Pesquisar(int numeroParcela)
+        {
+            Parcela parcela = new Parcela();
+            try
+            {
+                //abrir a conexão... Falta criar a classe de conexao
+                this.abrirConexao();
+                //instrucao a ser executada... Falta configurar essa string sql
+                string sql = "SELECT Data_vencimento, Parcela_id, Valor, Emprestimo_id FROM Parcela  where Parcela_id = @parcela_id";
+
+                SqlCommand cmd = new SqlCommand(sql, sqlConn);
+
+                cmd.Parameters.Add("@parcela_id", SqlDbType.Int);
+                cmd.Parameters["@parcela_id"].Value = numeroParcela;
+
+                //executando a instrucao e colocando o resultado em um leitor
+                SqlDataReader DbReader = cmd.ExecuteReader();
+                //lendo o resultado da consulta
+                while (DbReader.Read())
+                {
+                                       //acessando os valores das colunas do resultado
+                    parcela.DataVencimento = DbReader.GetDateTime(DbReader.GetOrdinal("Data_vencimento"));
+                    parcela.IdParcela = DbReader.GetInt32(DbReader.GetOrdinal("Parcela_id"));
+                    parcela.Valor = DbReader.GetDecimal(DbReader.GetOrdinal("Valor"));
+                    parcela.Emprestimo.IdEmprestimo = DbReader.GetInt32(DbReader.GetOrdinal("Emprestimo_id"));
+
+                }
+                //fechando o leitor de resultados
+                DbReader.Close();
+                //liberando a memoria 
+                cmd.Dispose();
+                //fechando a conexao... Falta criar a classe de conexao
+                this.fecharConexao();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao conectar e pesquisar " + ex.Message);
+            }
+            return parcela;
         }
     }
 }

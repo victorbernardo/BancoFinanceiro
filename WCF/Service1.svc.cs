@@ -48,7 +48,7 @@ namespace WCF
         //     
         public void SalvarConta(Conta conta)
         {
-            contaController.CriarConta(conta);
+            contaController.Salvar(conta);
         }       
         public Conta PesquisaContaPorNumeroConta(int numeroConta)
         {
@@ -58,6 +58,15 @@ namespace WCF
         {
             return contaController.Listar();
         }
+        public void AlterarConta(Conta conta)
+        {
+            contaController.alterar(conta);
+        }
+        public void RemoverConta(Conta conta)
+        {
+            contaController.excluir(conta);
+        }
+
         //
         // emprestimo
         //
@@ -78,7 +87,6 @@ namespace WCF
             emprestimoController.AlterarEmprestimo(emprestimo);
         }
 
-
-        
+       
     }
 }

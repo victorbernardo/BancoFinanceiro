@@ -103,27 +103,32 @@
             // 
             this.Cpf.HeaderText = "Cpf";
             this.Cpf.Name = "Cpf";
+            this.Cpf.ReadOnly = true;
             // 
             // Cliente
             // 
             this.Cliente.HeaderText = "Cliente";
             this.Cliente.Name = "Cliente";
+            this.Cliente.ReadOnly = true;
             // 
             // QuatidadeParcela
             // 
             this.QuatidadeParcela.HeaderText = "QuatidadeParcela";
             this.QuatidadeParcela.Name = "QuatidadeParcela";
+            this.QuatidadeParcela.ReadOnly = true;
             // 
             // ValorEmprestimo
             // 
             this.ValorEmprestimo.HeaderText = "Valor do Emprestimo";
             this.ValorEmprestimo.Name = "ValorEmprestimo";
+            this.ValorEmprestimo.ReadOnly = true;
             this.ValorEmprestimo.Width = 130;
             // 
             // NumeroConta
             // 
             this.NumeroConta.HeaderText = "NumeroConta";
             this.NumeroConta.Name = "NumeroConta";
+            this.NumeroConta.ReadOnly = true;
             this.NumeroConta.Width = 110;
             // 
             // dgvEmprestimo
@@ -156,6 +161,7 @@
             this.Controls.Add(this.txtNumeroConta);
             this.Controls.Add(this.label1);
             this.Name = "FormPesquisaEmprestimo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FormPesquisaEmprestimo";
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmprestimo)).EndInit();
             this.ResumeLayout(false);

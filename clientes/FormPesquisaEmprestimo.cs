@@ -15,6 +15,7 @@ namespace clientes
     public partial class FormPesquisaEmprestimo : Form
     {
         private List<Emprestimo> emprestimos;
+        
         Service1Client sv;
         public FormPesquisaEmprestimo()
         {
@@ -67,11 +68,20 @@ namespace clientes
         }
         private void CarregaGridPorNumeroConta(int numeroConta)
         {
-            emprestimos = new List<Emprestimo>();
-            sv = new Service1Client();           
-            emprestimos.Add(sv.PesquisaEmprestimoPorNumeroConta(numeroConta));
-            dgvEmprestimo.AutoGenerateColumns = false;            
-            emprestimos.ForEach(e => dgvEmprestimo.Rows.Add(e.NumeroConta.NumeroConta, e.Valor, e.QuantidadeParcela, e.NumeroConta.Cliente.Nome, e.NumeroConta.Cliente.Cpf));
+            try
+            {
+                emprestimos = new List<Emprestimo>();
+                sv = new Service1Client();
+                emprestimos.Add(sv.PesquisaEmprestimoPorNumeroConta(numeroConta));
+                
+                emprestimos.ForEach(e => dgvEmprestimo.Rows.Add(e.NumeroConta.NumeroConta, e.Valor, e.QuantidadeParcela, e.NumeroConta.Cliente.Nome, e.NumeroConta.Cliente.Cpf));
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+           
         }
         public Emprestimo RetornaEmprestimoSelecionado()
         {

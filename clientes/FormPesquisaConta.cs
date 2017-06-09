@@ -52,9 +52,9 @@ namespace clientes
             contas = new List<Conta>();
             Service1Client sv = new Service1Client();
             contas = sv.PesquisaConta().ToList();
-            dgvContas.AutoGenerateColumns = false;
-            dgvContas.DataSource = contas;
-           
+            dgvContas.Rows.Clear();
+            contas.ForEach(c => dgvContas.Rows.Add(c.NumeroConta, c.Saldo, c.Cliente.Nome, c.Cliente.Cpf));
+
         }      
         public Conta RetornaContaSelecionado()
         {

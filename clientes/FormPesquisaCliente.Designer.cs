@@ -38,14 +38,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvClientes = new System.Windows.Forms.DataGridView();
-            this.btnLimpar = new System.Windows.Forms.Button();
-            this.btnPesquisar = new System.Windows.Forms.Button();
-            this.btnSelecionar = new System.Windows.Forms.Button();
             this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cpf = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Telefone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.endereco = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnLimpar = new System.Windows.Forms.Button();
+            this.btnPesquisar = new System.Windows.Forms.Button();
+            this.btnSelecionar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.SuspendLayout();
@@ -148,36 +148,6 @@
             this.dgvClientes.Size = new System.Drawing.Size(675, 180);
             this.dgvClientes.TabIndex = 9;
             // 
-            // btnLimpar
-            // 
-            this.btnLimpar.Location = new System.Drawing.Point(383, 340);
-            this.btnLimpar.Name = "btnLimpar";
-            this.btnLimpar.Size = new System.Drawing.Size(75, 23);
-            this.btnLimpar.TabIndex = 10;
-            this.btnLimpar.Text = "Limpar";
-            this.btnLimpar.UseVisualStyleBackColor = true;
-            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
-            // 
-            // btnPesquisar
-            // 
-            this.btnPesquisar.Location = new System.Drawing.Point(606, 340);
-            this.btnPesquisar.Name = "btnPesquisar";
-            this.btnPesquisar.Size = new System.Drawing.Size(75, 23);
-            this.btnPesquisar.TabIndex = 11;
-            this.btnPesquisar.Text = "Pesquisar";
-            this.btnPesquisar.UseVisualStyleBackColor = true;
-            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
-            // 
-            // btnSelecionar
-            // 
-            this.btnSelecionar.Location = new System.Drawing.Point(497, 340);
-            this.btnSelecionar.Name = "btnSelecionar";
-            this.btnSelecionar.Size = new System.Drawing.Size(75, 23);
-            this.btnSelecionar.TabIndex = 12;
-            this.btnSelecionar.Text = "Selecionar";
-            this.btnSelecionar.UseVisualStyleBackColor = true;
-            this.btnSelecionar.Click += new System.EventHandler(this.btnSelecionar_Click);
-            // 
             // Nome
             // 
             this.Nome.DataPropertyName = "Nome";
@@ -212,6 +182,36 @@
             this.endereco.Name = "endereco";
             this.endereco.ReadOnly = true;
             // 
+            // btnLimpar
+            // 
+            this.btnLimpar.Location = new System.Drawing.Point(383, 340);
+            this.btnLimpar.Name = "btnLimpar";
+            this.btnLimpar.Size = new System.Drawing.Size(75, 23);
+            this.btnLimpar.TabIndex = 10;
+            this.btnLimpar.Text = "Limpar";
+            this.btnLimpar.UseVisualStyleBackColor = true;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
+            // 
+            // btnPesquisar
+            // 
+            this.btnPesquisar.Location = new System.Drawing.Point(606, 340);
+            this.btnPesquisar.Name = "btnPesquisar";
+            this.btnPesquisar.Size = new System.Drawing.Size(75, 23);
+            this.btnPesquisar.TabIndex = 11;
+            this.btnPesquisar.Text = "Pesquisar";
+            this.btnPesquisar.UseVisualStyleBackColor = true;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
+            // 
+            // btnSelecionar
+            // 
+            this.btnSelecionar.Location = new System.Drawing.Point(497, 340);
+            this.btnSelecionar.Name = "btnSelecionar";
+            this.btnSelecionar.Size = new System.Drawing.Size(75, 23);
+            this.btnSelecionar.TabIndex = 12;
+            this.btnSelecionar.Text = "Selecionar";
+            this.btnSelecionar.UseVisualStyleBackColor = true;
+            this.btnSelecionar.Click += new System.EventHandler(this.btnSelecionar_Click);
+            // 
             // FormPesquisaCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -223,6 +223,7 @@
             this.Controls.Add(this.dgvClientes);
             this.Controls.Add(this.groupBox1);
             this.Name = "FormPesquisaCliente";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FormPesquisaCliente";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

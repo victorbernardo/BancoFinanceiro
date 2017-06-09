@@ -41,6 +41,8 @@ namespace clientes
             agencias = new List<Agencia>();
             Service1Client sv = new Service1Client();         
             agencias = sv.PesquisaAgencia().ToList();
+
+            dgvAgencias.Rows.Clear();
             dgvAgencias.AutoGenerateColumns = false;
             dgvAgencias.AutoSize = true;
 

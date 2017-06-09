@@ -63,10 +63,34 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="AlterarConta">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Biblioteca.basica" minOccurs="0" name="conta" nillable="true" type="q6:Conta" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AlterarContaResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoverConta">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Biblioteca.basica" minOccurs="0" name="conta" nillable="true" type="q7:Conta" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoverContaResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
   <xs:element name="SalvarEmprestimo">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Biblioteca.basica" minOccurs="0" name="emprestimo" nillable="true" type="q6:Emprestimo" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Biblioteca.basica" minOccurs="0" name="emprestimo" nillable="true" type="q8:Emprestimo" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -83,7 +107,7 @@
   <xs:element name="PesquisaEmprestimoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Biblioteca.basica" minOccurs="0" name="PesquisaEmprestimoResult" nillable="true" type="q7:ArrayOfEmprestimo" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Biblioteca.basica" minOccurs="0" name="PesquisaEmprestimoResult" nillable="true" type="q9:ArrayOfEmprestimo" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -97,14 +121,14 @@
   <xs:element name="PesquisaEmprestimoPorNumeroContaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Biblioteca.basica" minOccurs="0" name="PesquisaEmprestimoPorNumeroContaResult" nillable="true" type="q8:Emprestimo" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Biblioteca.basica" minOccurs="0" name="PesquisaEmprestimoPorNumeroContaResult" nillable="true" type="q10:Emprestimo" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AlterarEmprestimo">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Biblioteca.basica" minOccurs="0" name="emprestimo" nillable="true" type="q9:Emprestimo" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Biblioteca.basica" minOccurs="0" name="emprestimo" nillable="true" type="q11:Emprestimo" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

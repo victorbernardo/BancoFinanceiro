@@ -33,6 +33,8 @@ namespace Biblioteca.negocio
 			    throw new Exception("Conta Não Existe");
 		    }
 	    }
+
+
         /*public Conta ProcurarContaPorId(int numeroConta)
         {    
             return Pesquisa(numeroConta);
@@ -129,6 +131,34 @@ FUNÇÕES INTERNAS (fragmentação dos métodos)
             {
 
                 daoConta.Inserir(conta);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+        }
+
+        public void alterar(Conta conta)
+        {
+            try
+            {
+
+                daoConta.Alterar(conta);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+        }
+
+        public void excluir(Conta conta)
+        {
+            try
+            {
+
+                daoConta.Excluir(conta);
             }
             catch (Exception e)
             {

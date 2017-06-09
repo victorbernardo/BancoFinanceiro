@@ -500,6 +500,9 @@ namespace clientes.ServiceReference1 {
         private clientes.ServiceReference1.Conta NumeroContaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private clientes.ServiceReference1.Parcela[] ParcelasField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int QuantidadeParcelaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -558,6 +561,19 @@ namespace clientes.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public clientes.ServiceReference1.Parcela[] Parcelas {
+            get {
+                return this.ParcelasField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ParcelasField, value) != true)) {
+                    this.ParcelasField = value;
+                    this.RaisePropertyChanged("Parcelas");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public int QuantidadeParcela {
             get {
                 return this.QuantidadeParcelaField;
@@ -579,6 +595,131 @@ namespace clientes.ServiceReference1 {
                 if ((this.TaxaJurosMensalField.Equals(value) != true)) {
                     this.TaxaJurosMensalField = value;
                     this.RaisePropertyChanged("TaxaJurosMensal");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Valor {
+            get {
+                return this.ValorField;
+            }
+            set {
+                if ((this.ValorField.Equals(value) != true)) {
+                    this.ValorField = value;
+                    this.RaisePropertyChanged("Valor");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Parcela", Namespace="http://schemas.datacontract.org/2004/07/Biblioteca.basica")]
+    [System.SerializableAttribute()]
+    public partial class Parcela : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime DataVencimentoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private clientes.ServiceReference1.Emprestimo EmprestimoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdParcelaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int NumeroParcelaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal ValorField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime DataVencimento {
+            get {
+                return this.DataVencimentoField;
+            }
+            set {
+                if ((this.DataVencimentoField.Equals(value) != true)) {
+                    this.DataVencimentoField = value;
+                    this.RaisePropertyChanged("DataVencimento");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public clientes.ServiceReference1.Emprestimo Emprestimo {
+            get {
+                return this.EmprestimoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmprestimoField, value) != true)) {
+                    this.EmprestimoField = value;
+                    this.RaisePropertyChanged("Emprestimo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdParcela {
+            get {
+                return this.IdParcelaField;
+            }
+            set {
+                if ((this.IdParcelaField.Equals(value) != true)) {
+                    this.IdParcelaField = value;
+                    this.RaisePropertyChanged("IdParcela");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int NumeroParcela {
+            get {
+                return this.NumeroParcelaField;
+            }
+            set {
+                if ((this.NumeroParcelaField.Equals(value) != true)) {
+                    this.NumeroParcelaField = value;
+                    this.RaisePropertyChanged("NumeroParcela");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Status {
+            get {
+                return this.StatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StatusField, value) != true)) {
+                    this.StatusField = value;
+                    this.RaisePropertyChanged("Status");
                 }
             }
         }
@@ -639,6 +780,18 @@ namespace clientes.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/PesquisaContaPorNumeroConta", ReplyAction="http://tempuri.org/IService1/PesquisaContaPorNumeroContaResponse")]
         System.Threading.Tasks.Task<clientes.ServiceReference1.Conta> PesquisaContaPorNumeroContaAsync(int numeroConta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AlterarConta", ReplyAction="http://tempuri.org/IService1/AlterarContaResponse")]
+        void AlterarConta(clientes.ServiceReference1.Conta conta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AlterarConta", ReplyAction="http://tempuri.org/IService1/AlterarContaResponse")]
+        System.Threading.Tasks.Task AlterarContaAsync(clientes.ServiceReference1.Conta conta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/RemoverConta", ReplyAction="http://tempuri.org/IService1/RemoverContaResponse")]
+        void RemoverConta(clientes.ServiceReference1.Conta conta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/RemoverConta", ReplyAction="http://tempuri.org/IService1/RemoverContaResponse")]
+        System.Threading.Tasks.Task RemoverContaAsync(clientes.ServiceReference1.Conta conta);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SalvarEmprestimo", ReplyAction="http://tempuri.org/IService1/SalvarEmprestimoResponse")]
         void SalvarEmprestimo(clientes.ServiceReference1.Emprestimo emprestimo);
@@ -730,6 +883,22 @@ namespace clientes.ServiceReference1 {
         
         public System.Threading.Tasks.Task<clientes.ServiceReference1.Conta> PesquisaContaPorNumeroContaAsync(int numeroConta) {
             return base.Channel.PesquisaContaPorNumeroContaAsync(numeroConta);
+        }
+        
+        public void AlterarConta(clientes.ServiceReference1.Conta conta) {
+            base.Channel.AlterarConta(conta);
+        }
+        
+        public System.Threading.Tasks.Task AlterarContaAsync(clientes.ServiceReference1.Conta conta) {
+            return base.Channel.AlterarContaAsync(conta);
+        }
+        
+        public void RemoverConta(clientes.ServiceReference1.Conta conta) {
+            base.Channel.RemoverConta(conta);
+        }
+        
+        public System.Threading.Tasks.Task RemoverContaAsync(clientes.ServiceReference1.Conta conta) {
+            return base.Channel.RemoverContaAsync(conta);
         }
         
         public void SalvarEmprestimo(clientes.ServiceReference1.Emprestimo emprestimo) {

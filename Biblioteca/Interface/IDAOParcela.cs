@@ -14,7 +14,9 @@ namespace Biblioteca.Interface
 
         void Excluir(Parcela parcela);
         void Alterar(Parcela parcela);
-        List<Parcela> Pesquisar(Parcela parcela);
-         
+        Parcela Pesquisar(int idParcela);
+        List<Parcela> Pesquisar();
+
+
     }
 }

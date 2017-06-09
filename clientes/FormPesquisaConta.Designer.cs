@@ -37,6 +37,8 @@
             this.dgvContas = new System.Windows.Forms.DataGridView();
             this.numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.saldo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cpf = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvContas)).BeginInit();
             this.SuspendLayout();
@@ -59,7 +61,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 13);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Número ";          
+            this.label1.Text = "Número ";
             // 
             // txtNumeroConta
             // 
@@ -104,7 +106,9 @@
             this.dgvContas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvContas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.numero,
-            this.saldo});
+            this.saldo,
+            this.cliente,
+            this.cpf});
             this.dgvContas.Location = new System.Drawing.Point(12, 100);
             this.dgvContas.Name = "dgvContas";
             this.dgvContas.ReadOnly = true;
@@ -125,6 +129,18 @@
             this.saldo.Name = "saldo";
             this.saldo.ReadOnly = true;
             // 
+            // cliente
+            // 
+            this.cliente.HeaderText = "Cliente";
+            this.cliente.Name = "cliente";
+            this.cliente.ReadOnly = true;
+            // 
+            // cpf
+            // 
+            this.cpf.HeaderText = "CPF";
+            this.cpf.Name = "cpf";
+            this.cpf.ReadOnly = true;
+            // 
             // FormPesquisaConta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -136,6 +152,7 @@
             this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.groupBox1);
             this.Name = "FormPesquisaConta";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FormPesquisaConta";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -155,5 +172,7 @@
         private System.Windows.Forms.DataGridView dgvContas;
         private System.Windows.Forms.DataGridViewTextBoxColumn numero;
         private System.Windows.Forms.DataGridViewTextBoxColumn saldo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cpf;
     }
 }

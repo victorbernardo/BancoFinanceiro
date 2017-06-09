@@ -87,8 +87,7 @@ namespace clientes
         }
         private void btnIncluirConta_Click(object sender, EventArgs e)
         {
-            Agencia agen = new Agencia();
-            Cliente clie = new Cliente();
+            
             
 
             if (txtNomeCliente.Text.Equals("") || txtEmail.Text.Equals("") || txtCpf.Text.Equals("") || txtEndereco.Text.Equals("") || txtNumeroAgencia.Text.Equals("") || txtNomeAgencia.Text.Equals("") || txtEnderecoAgencia.Text.Equals(""))
@@ -97,10 +96,12 @@ namespace clientes
                 MessageBox.Show("Voce deve preencher todos os campos");
             else if (!Information.IsNumeric(txtNumeroConta.Text) || !Information.IsNumeric(txtSaldo.Text))
                 MessageBox.Show("Voce só deve informar numeros");
-            else if (Convert.ToInt32(txtSaldo.Text) <= 0)
+            else if (Convert.ToDecimal(txtSaldo.Text) <= 0)
                 MessageBox.Show("Voce nao pode criar uma conta com saldo R$ 0,00");
             else
             {
+                Agencia agen = new Agencia();
+                Cliente clie = new Cliente();
                 conta.NumeroConta = Convert.ToInt32(txtNumeroConta.Text.Trim());
                 conta.Saldo = Convert.ToDecimal(txtSaldo.Text.Trim());
                 conta.DataCriacao = DateTime.Today;
@@ -108,11 +109,15 @@ namespace clientes
                 clie.IdCliente = cliente.IdCliente;
                 conta.Agencia = agen;
                 conta.Cliente = clie;
+
                 try
                 {
-                    sv.SalvarConta(conta);
-                    MessageBox.Show("Cadastrado com sucesso");
-                    this.LimparCampo();
+                  
+                        sv.SalvarConta(conta);
+                        MessageBox.Show("Cadastrado com sucesso");
+                        this.LimparCampo();
+                  
+                    
                 }
                 catch (Exception ex)
                 {
@@ -139,9 +144,11 @@ namespace clientes
         private void carregaCampoConta(Conta conta)
         {
             txtNumeroConta.Text = conta.NumeroConta.ToString();
+            txtNumeroConta.Enabled = false;
             txtSaldo.Text = Convert.ToString(conta.Saldo);
-            //carregaCampoAgencia(conta.Numero_agencia);
-            //carregaCampoCliente(conta.Cliente);
+            carregaCampoAgencia(conta.Agencia);
+            carregaCampoCliente(conta.Cliente);
+
         }
         private void LimparCampo()
         {
@@ -154,6 +161,8 @@ namespace clientes
             txtEnderecoAgencia.Text = ("");
             txtNumeroConta.Text = ("");
             txtSaldo.Text = ("");
+            txtNumeroConta.Enabled = true;
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -165,6 +174,37 @@ namespace clientes
         {
             FormCadastroEmprestimo fEmprestimo = new FormCadastroEmprestimo();
             fEmprestimo.ShowDialog();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+               
+              //  sv.RemoverConta(conta);
+                MessageBox.Show("Removida com sucesso");
+                this.LimparCampo();
+            
+
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            conta.Saldo = Convert.ToDecimal(txtSaldo.Text);
+            sv.AlterarConta(conta);
+            MessageBox.Show("Removida com sucesso");
+            this.LimparCampo();
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            LimparCampo();
         }
     }
 }

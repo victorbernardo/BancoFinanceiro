@@ -19,16 +19,17 @@ namespace clientes
         private Emprestimo emprestimo;
         private Conta conta;
         private Service1Client sv;
-        private string caminho = @"C:\Xml\Emprestimo.xml";
+        private string caminho = AppDomain.CurrentDomain.BaseDirectory.ToString()+"\\Emprestimo.xml";
         public FormCadastroEmprestimo()
         {
-            InitializeComponent();            
-            this.CriarArquivo();
-            this.CarregaArquivoXml();
+            InitializeComponent();
             for (int i = 1; i <= 36; i++)
             {
-                cbQtdParcela.Items.Add(i);                
-            }              
+                cbQtdParcela.Items.Add(i);
+            }
+            this.CriarArquivo();
+            this.CarregaArquivoXml();
+                   
         }
         private void btSalvar_Click(object sender, EventArgs e)
         {
@@ -91,6 +92,14 @@ namespace clientes
                 emprestimo.TaxaJurosMensal = Decimal.Parse(txtTaxaJuro.Text);
                 emprestimo.QuantidadeParcela = qtdParcela;
                 emprestimo.DataCriacao = DateTime.Now;
+
+                decimal valordaParcela = (emprestimo.Valor / emprestimo.QuantidadeParcela) * emprestimo.TaxaJurosMensal * 2;
+
+                valordaParcela = valordaParcela + (emprestimo.Valor / emprestimo.QuantidadeParcela);
+
+ 
+
+
                 try
                 {
                     sv = new Service1Client();
@@ -207,28 +216,35 @@ namespace clientes
             string qtdParcela = "";
 
                 XmlDocument doc = new XmlDocument();
-                doc.Load(caminho);
-                foreach (XmlNode no in doc.DocumentElement.ChildNodes)
+                if (File.Exists(caminho))
                 {
-                    if (no.ChildNodes != null)
+                    doc.Load(caminho);
+                    foreach (XmlNode no in doc.DocumentElement.ChildNodes)
                     {
-                        nome = no.ChildNodes.Item(0).InnerText;
-                        numeroConta = no.ChildNodes.Item(1).InnerText;
-                        valor = no.ChildNodes.Item(2).InnerText;
-                        qtdParcela = no.ChildNodes.Item(4).InnerText;
-                        retorno = true;
+                        if (no.ChildNodes != null)
+                        {
+                            nome = no.ChildNodes.Item(0).InnerText;
+                            numeroConta = no.ChildNodes.Item(1).InnerText;
+                            valor = no.ChildNodes.Item(2).InnerText;
+                            qtdParcela = no.ChildNodes.Item(4).InnerText;
+                            retorno = true;
+                        }
+                    }
+                    if (retorno)
+                    {
+                        if (MessageBox.Show("Voce tem arquivo pré-carregado, Voce deseja carregar ? ", "Atençao", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            txtNome.Text = nome;
+                            txtNumeroConta.Text = numeroConta;
+                            txtValor.Text = valor;
+                            cbQtdParcela.SelectedIndex = Convert.ToInt32(qtdParcela) - 1;
+                        
+
+
+                    }
                     }
                 }
-                if (retorno)
-                {
-                    if (MessageBox.Show("Voce tem arquivo pré-carregado, Voce deseja carregar ? ", "Atençao", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                    {
-                        txtNome.Text = nome;
-                        txtNumeroConta.Text = numeroConta;
-                        txtValor.Text = valor;
-                        cbQtdParcela.Text = qtdParcela;
-                    }
-                }
+               
                 return retorno;                 
         }
         

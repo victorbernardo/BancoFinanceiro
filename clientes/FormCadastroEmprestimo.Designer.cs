@@ -49,10 +49,10 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lbValorEmprestimo = new System.Windows.Forms.Label();
-            this.lbTaxaJuros = new System.Windows.Forms.Label();
-            this.lbQtdParcela = new System.Windows.Forms.Label();
             this.lbValorParcela = new System.Windows.Forms.Label();
+            this.lbQtdParcela = new System.Windows.Forms.Label();
+            this.lbTaxaJuros = new System.Windows.Forms.Label();
+            this.lbValorEmprestimo = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -248,23 +248,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Simulação";
             // 
-            // lbValorEmprestimo
+            // lbValorParcela
             // 
-            this.lbValorEmprestimo.AutoSize = true;
-            this.lbValorEmprestimo.Location = new System.Drawing.Point(162, 33);
-            this.lbValorEmprestimo.Name = "lbValorEmprestimo";
-            this.lbValorEmprestimo.Size = new System.Drawing.Size(46, 13);
-            this.lbValorEmprestimo.TabIndex = 21;
-            this.lbValorEmprestimo.Text = "RS 0,00";
-            // 
-            // lbTaxaJuros
-            // 
-            this.lbTaxaJuros.AutoSize = true;
-            this.lbTaxaJuros.Location = new System.Drawing.Point(162, 69);
-            this.lbTaxaJuros.Name = "lbTaxaJuros";
-            this.lbTaxaJuros.Size = new System.Drawing.Size(13, 13);
-            this.lbTaxaJuros.TabIndex = 22;
-            this.lbTaxaJuros.Text = "0";
+            this.lbValorParcela.AutoSize = true;
+            this.lbValorParcela.Location = new System.Drawing.Point(162, 151);
+            this.lbValorParcela.Name = "lbValorParcela";
+            this.lbValorParcela.Size = new System.Drawing.Size(46, 13);
+            this.lbValorParcela.TabIndex = 24;
+            this.lbValorParcela.Text = "RS 0,00";
             // 
             // lbQtdParcela
             // 
@@ -275,14 +266,23 @@
             this.lbQtdParcela.TabIndex = 23;
             this.lbQtdParcela.Text = "0";
             // 
-            // lbValorParcela
+            // lbTaxaJuros
             // 
-            this.lbValorParcela.AutoSize = true;
-            this.lbValorParcela.Location = new System.Drawing.Point(162, 151);
-            this.lbValorParcela.Name = "lbValorParcela";
-            this.lbValorParcela.Size = new System.Drawing.Size(46, 13);
-            this.lbValorParcela.TabIndex = 24;
-            this.lbValorParcela.Text = "RS 0,00";
+            this.lbTaxaJuros.AutoSize = true;
+            this.lbTaxaJuros.Location = new System.Drawing.Point(162, 69);
+            this.lbTaxaJuros.Name = "lbTaxaJuros";
+            this.lbTaxaJuros.Size = new System.Drawing.Size(13, 13);
+            this.lbTaxaJuros.TabIndex = 22;
+            this.lbTaxaJuros.Text = "0";
+            // 
+            // lbValorEmprestimo
+            // 
+            this.lbValorEmprestimo.AutoSize = true;
+            this.lbValorEmprestimo.Location = new System.Drawing.Point(162, 33);
+            this.lbValorEmprestimo.Name = "lbValorEmprestimo";
+            this.lbValorEmprestimo.Size = new System.Drawing.Size(46, 13);
+            this.lbValorEmprestimo.TabIndex = 21;
+            this.lbValorEmprestimo.Text = "RS 0,00";
             // 
             // FormCadastroEmprestimo
             // 
@@ -308,6 +308,7 @@
             this.Controls.Add(this.txtValor);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "FormCadastroEmprestimo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FormCadastroEmprestimo";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

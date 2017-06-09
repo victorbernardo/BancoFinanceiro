@@ -35,6 +35,12 @@ namespace WCF
 
         [OperationContract]
         Conta PesquisaContaPorNumeroConta(int numeroConta);
+
+        [OperationContract]
+        void AlterarConta(Conta conta);
+
+        [OperationContract]
+        void RemoverConta(Conta conta);
         //
         // emprestimo
         //

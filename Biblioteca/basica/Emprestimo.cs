@@ -14,11 +14,12 @@ namespace Biblioteca.basica
         private decimal valor;
         private Conta numeroConta;
         private int quantidadeParcela;
-
+        private List<Parcela> parcelas;
         public Emprestimo()
         {
             numeroConta = new Conta();
-    }
+            parcelas = new List<Parcela>();
+        }
         public int QuantidadeParcela
         {
             get { return quantidadeParcela; }
@@ -57,6 +58,11 @@ namespace Biblioteca.basica
         {
             get { return numeroConta; }
             set { numeroConta = value; }
+        }
+        public List<Parcela> Parcelas
+        {
+            get { return parcelas; }
+            set { parcelas = value; }
         }
     }
 }

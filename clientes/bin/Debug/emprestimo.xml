@@ -1,8 +1,23 @@
-<?xml version="1.0"?>
-<Emprestimo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <DataCriacao>0001-01-01T00:00:00</DataCriacao>
-  <IdEmprestimo>0</IdEmprestimo>
-  <QuantidadeParcela>0</QuantidadeParcela>
-  <TaxaJurosMensal>0</TaxaJurosMensal>
-  <Valor>30000</Valor>
-</Emprestimo>
+<Banco_Financeiro_Emprestimo>
+  <emprestimo>
+    <nome>teste02</nome>
+    <numeroConta>12345</numeroConta>
+    <valor>100000</valor>
+    <taxaJuros>2,5</taxaJuros>
+    <quantidade_parcela>26</quantidade_parcela>
+  </emprestimo>
+  <emprestimo>
+    <nome>teste02</nome>
+    <numeroConta>12345</numeroConta>
+    <valor>100</valor>
+    <taxaJuros>2,5</taxaJuros>
+    <quantidade_parcela>26</quantidade_parcela>
+  </emprestimo>
+  <emprestimo>
+    <nome>teste02</nome>
+    <numeroConta>12345</numeroConta>
+    <valor>100</valor>
+    <taxaJuros>2,5</taxaJuros>
+    <quantidade_parcela>10</quantidade_parcela>
+  </emprestimo>
+</Banco_Financeiro_Emprestimo>

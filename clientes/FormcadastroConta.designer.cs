@@ -53,9 +53,9 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtNumeroConta = new System.Windows.Forms.TextBox();
             this.btnIncluirConta = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.btnIncluirEmprestimo = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -297,52 +297,54 @@
             this.btnIncluirConta.Name = "btnIncluirConta";
             this.btnIncluirConta.Size = new System.Drawing.Size(98, 30);
             this.btnIncluirConta.TabIndex = 8;
-            this.btnIncluirConta.Text = "Incluir Conta";
+            this.btnIncluirConta.Text = "Salvar";
             this.btnIncluirConta.UseVisualStyleBackColor = true;
             this.btnIncluirConta.Click += new System.EventHandler(this.btnIncluirConta_Click);
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(454, 377);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(98, 30);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "Alterar Conta";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(309, 377);
+            this.button3.Location = new System.Drawing.Point(111, 377);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(98, 30);
             this.button3.TabIndex = 10;
             this.button3.Text = "Remover Conta";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // btnIncluirEmprestimo
+            // button1
             // 
-            this.btnIncluirEmprestimo.Location = new System.Drawing.Point(169, 377);
-            this.btnIncluirEmprestimo.Name = "btnIncluirEmprestimo";
-            this.btnIncluirEmprestimo.Size = new System.Drawing.Size(114, 30);
-            this.btnIncluirEmprestimo.TabIndex = 11;
-            this.btnIncluirEmprestimo.Text = "Incluir Emprestimo";
-            this.btnIncluirEmprestimo.UseVisualStyleBackColor = true;
-            this.btnIncluirEmprestimo.Click += new System.EventHandler(this.btnIncluirEmprestimo_Click);
+            this.button1.Location = new System.Drawing.Point(483, 377);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(98, 30);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "Alterar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(360, 377);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(98, 30);
+            this.button2.TabIndex = 12;
+            this.button2.Text = "Limpar";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // FormcadastroConta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(739, 423);
-            this.Controls.Add(this.btnIncluirEmprestimo);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.btnIncluirConta);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "FormcadastroConta";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "cadastroConta";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -381,8 +383,8 @@
         private System.Windows.Forms.TextBox txtSaldo;
         private System.Windows.Forms.Button btnBuscarConta;
         private System.Windows.Forms.Button btnIncluirConta;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button btnIncluirEmprestimo;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

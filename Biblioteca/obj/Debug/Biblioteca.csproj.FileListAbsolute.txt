@@ -9,3 +9,8 @@ C:\Projeto Melo\BancoFinanceiro\Biblioteca\bin\Debug\Biblioteca.pdb
 C:\Projeto Melo\BancoFinanceiro\Biblioteca\obj\Debug\Biblioteca.exe
 C:\Projeto Melo\BancoFinanceiro\Biblioteca\obj\Debug\Biblioteca.pdb
 C:\Projeto Melo\BancoFinanceiro\Biblioteca\obj\Debug\Biblioteca.csprojResolveAssemblyReference.cache
+E:\Repositórios\Projeto Melo\trunk\Biblioteca\bin\Debug\Biblioteca.exe.config
+E:\Repositórios\Projeto Melo\trunk\Biblioteca\bin\Debug\Biblioteca.exe
+E:\Repositórios\Projeto Melo\trunk\Biblioteca\bin\Debug\Biblioteca.pdb
+E:\Repositórios\Projeto Melo\trunk\Biblioteca\obj\Debug\Biblioteca.exe
+E:\Repositórios\Projeto Melo\trunk\Biblioteca\obj\Debug\Biblioteca.pdb

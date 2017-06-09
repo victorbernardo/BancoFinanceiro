@@ -309,6 +309,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtValor);
             this.Name = "FormAlterarEmprestimo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FormAlterarEmprestimo";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

@@ -38,10 +38,10 @@
             this.dgvAgencias = new System.Windows.Forms.DataGridView();
             this.nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.endereco = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSelecionar = new System.Windows.Forms.Button();
             this.btnPesquisar = new System.Windows.Forms.Button();
             this.btnLimpar = new System.Windows.Forms.Button();
-            this.endereco = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAgencias)).BeginInit();
             this.SuspendLayout();
@@ -138,6 +138,12 @@
             this.Numero.Name = "Numero";
             this.Numero.ReadOnly = true;
             // 
+            // endereco
+            // 
+            this.endereco.HeaderText = "Endereço";
+            this.endereco.Name = "endereco";
+            this.endereco.ReadOnly = true;
+            // 
             // btnSelecionar
             // 
             this.btnSelecionar.Location = new System.Drawing.Point(457, 383);
@@ -167,12 +173,6 @@
             this.btnLimpar.Text = "Limpar";
             this.btnLimpar.UseVisualStyleBackColor = true;
             // 
-            // endereco
-            // 
-            this.endereco.HeaderText = "Endereço";
-            this.endereco.Name = "endereco";
-            this.endereco.ReadOnly = true;
-            // 
             // FormPesquisaAgencia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -184,6 +184,7 @@
             this.Controls.Add(this.dgvAgencias);
             this.Controls.Add(this.groupBox1);
             this.Name = "FormPesquisaAgencia";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FormPesquisaAgencia";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

@@ -11,9 +11,11 @@ namespace Biblioteca.negocio
     public class EmprestimoController
     {
         private DAOEmprestimo daoEmprestimo;
+        private DAOParcela daoParcela;
         public EmprestimoController()
         {
             this.daoEmprestimo = new DAOEmprestimo();
+            this.daoParcela = new DAOParcela();
         }
 
         public void Salvar(Emprestimo emprestimo)
@@ -53,14 +55,23 @@ FUNÇÕES INTERNAS (fragmentação dos métodos)
         private void VerificaDuplicidade(Emprestimo e)
         {
             //falta configurar a funçao de duplicidade
-            if (!daoEmprestimo.PesquisaPorId(e.IdEmprestimo).Equals(""))
-                throw new Exception("Emprestimo ja existe");            
+           /* if (!daoEmprestimo.PesquisaPorId(e.IdEmprestimo).Equals(""))
+                throw new Exception("Emprestimo ja existe");            */
         }
         private void InserirNovo(Emprestimo e)
         {
             try
             {
                 daoEmprestimo.Inserir(e);
+                for (int i = 1;i <= e.QuantidadeParcela;i++ )
+                {
+                    Parcela parcela = new Parcela();
+
+
+                }
+
+
+
             }
             catch (Exception ex)
             {                

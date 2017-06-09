@@ -65,12 +65,30 @@
       <xs:element minOccurs="0" name="DataCriacao" type="xs:dateTime" />
       <xs:element minOccurs="0" name="IdEmprestimo" type="xs:int" />
       <xs:element minOccurs="0" name="NumeroConta" nillable="true" type="tns:Conta" />
+      <xs:element minOccurs="0" name="Parcelas" nillable="true" type="tns:ArrayOfParcela" />
       <xs:element minOccurs="0" name="QuantidadeParcela" type="xs:int" />
       <xs:element minOccurs="0" name="TaxaJurosMensal" type="xs:decimal" />
       <xs:element minOccurs="0" name="Valor" type="xs:decimal" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Emprestimo" nillable="true" type="tns:Emprestimo" />
+  <xs:complexType name="ArrayOfParcela">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Parcela" nillable="true" type="tns:Parcela" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfParcela" nillable="true" type="tns:ArrayOfParcela" />
+  <xs:complexType name="Parcela">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DataVencimento" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Emprestimo" nillable="true" type="tns:Emprestimo" />
+      <xs:element minOccurs="0" name="IdParcela" type="xs:int" />
+      <xs:element minOccurs="0" name="NumeroParcela" type="xs:int" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Valor" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Parcela" nillable="true" type="tns:Parcela" />
   <xs:complexType name="ArrayOfEmprestimo">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Emprestimo" nillable="true" type="tns:Emprestimo" />
